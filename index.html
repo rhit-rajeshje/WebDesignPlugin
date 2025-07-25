@@ -6,19 +6,183 @@
     <title>Penpot plugin example</title>
   </head>
   <body>
-    <p>Penpot plugin starter template</p>
+    <script>
+      function changeImage1(){
+        var img1 = document.getElementById("img1");
+        var img2 = document.getElementById("img2");
+        var img3 = document.getElementById("img3");
+        var img4 = document.getElementById("img4");
+        var img5 = document.getElementById("img5");
+        var img6 = document.getElementById("img6");
+        var img7 = document.getElementById("img7");
+        var img8 = document.getElementById("img8");
 
-    <p>
-      Checkout the
-      <a target="_blank" href="https://help.penpot.app/plugins/"
-        >documentation</a
-      >
-      to get started.
-    </p>
+        img1.style.visibility = "visible";
+        img2.style.visibility = "visible";
+        img3.style.visibility = "hidden";
+        img4.style.visibility = "hidden";
+        img5.style.visibility = "hidden";
+        img6.style.visibility = "hidden";
+        img7.style.visibility = "hidden";
+        img8.style.visibility = "hidden";
+      }
+      function changeImage2(){
+        var img1 = document.getElementById("img1");
+        var img2 = document.getElementById("img2");
+        var img3 = document.getElementById("img3");
+        var img4 = document.getElementById("img4");
+        var img5 = document.getElementById("img5");
+        var img6 = document.getElementById("img6");
+        var img7 = document.getElementById("img7");
+        var img8 = document.getElementById("img8");
 
-    <button type="button" data-appearance="primary" data-handler="create-text">
+        img1.style.visibility = "hidden";
+        img2.style.visibility = "hidden";
+        img3.style.visibility = "visible";
+        img4.style.visibility = "visible";
+        img5.style.visibility = "hidden";
+        img6.style.visibility = "hidden";
+        img7.style.visibility = "hidden";
+        img8.style.visibility = "hidden";
+      }
+      function changeImage3(){
+        var img1 = document.getElementById("img1");
+        var img2 = document.getElementById("img2");
+        var img3 = document.getElementById("img3");
+        var img4 = document.getElementById("img4");
+        var img5 = document.getElementById("img5");
+        var img6 = document.getElementById("img6");
+        var img7 = document.getElementById("img7");
+        var img8 = document.getElementById("img8");
+
+        img1.style.visibility = "hidden";
+        img2.style.visibility = "hidden";
+        img3.style.visibility = "hidden";
+        img4.style.visibility = "hidden";
+        img5.style.visibility = "visible";
+        img6.style.visibility = "visible";
+        img7.style.visibility = "hidden";
+        img8.style.visibility = "hidden";
+      }
+      function changeImage4(){
+        var img1 = document.getElementById("img1");
+        var img2 = document.getElementById("img2");
+        var img3 = document.getElementById("img3");
+        var img4 = document.getElementById("img4");
+        var img5 = document.getElementById("img5");
+        var img6 = document.getElementById("img6");
+        var img7 = document.getElementById("img7");
+        var img8 = document.getElementById("img8");
+
+        img1.style.visibility = "hidden";
+        img2.style.visibility = "hidden";
+        img3.style.visibility = "hidden";
+        img4.style.visibility = "hidden";
+        img5.style.visibility = "hidden";
+        img6.style.visibility = "hidden";
+        img7.style.visibility = "visible";
+        img8.style.visibility = "visible";
+      }
+
+      let buttonVersion = "1";
+      
+
+      function changeVersion(){
+        buttonVersion = "1";
+        const settings = document.getElementById("settings");
+        settings.open=true;
+      }
+      function changeVersion2(){
+        buttonVersion = "2";
+        const settings = document.getElementById("settings");
+        settings.open=true;
+      }
+      function closeSettings(){
+        const settings = document.getElementById("settings");
+        settings.open=false;
+      }
+
+      function createMessage(){
+        var width= document.getElementById("width").value;
+        var height= document.getElementById("height").value;
+        var radius= document.getElementById("radius").value;
+        var fillcolor= document.getElementById("fillcolor").value;
+        var iconcolor= document.getElementById("iconcolor").value;
+
+        var element = document.getElementById("submit");
+        element.setAttribute("data-width",width);
+        console.log("data-width",element.dataset.width);
+        element.setAttribute("data-height",height);
+        console.log("data-height",element.dataset.height);
+        element.setAttribute("data-radius",radius);
+        console.log("data-radius",element.dataset.radius);
+        element.setAttribute("data-fillcolor",fillcolor);
+        console.log("data-fillcolor",element.dataset.fillcolor);
+        element.setAttribute("data-iconcolor",iconcolor);
+        console.log("data-iconcolor",element.dataset.iconcolor);
+        element.setAttribute("data-version",buttonVersion);
+        console.log("data-version",element.dataset.version);
+      }
+
+    </script>
+    <div id="sideNavBar">
+      <div class = "item">
+      <button onclick="changeImage1()"><img src="icon1.png" width = "40px" height= "40px"></button>
+      <p>Item 1</p>
+      </div>
+      <div class = "item">
+      <button onclick="changeImage2()"><img src="icon2.png" width = "40px" height= "40px"></button>
+      <p>Item 2</p>
+      </div>
+      <div class = "item">
+      <button onclick="changeImage3()"><img src="icon3.png" width = "40px" height= "40px"></button>
+      <p>Item 3</p>
+      </div>
+      <div class = "item">
+      <button onclick="changeImage4()"><img src="icon4.png" width = "40px" height= "40px"></button>
+      <p>Item 4</p>
+      </div>
+    </div>
+
+    <div id= "images">
+      <div id="group1"> 
+        <button id="img1" data-handler="circle" ><img src="fillerImage1.jpg" width="300px" height="150px"></button>
+        <button id="img3" data-handler="circle"><img src="fillerImage3.jpg" width="300px" height="150px"> </button>
+        <button id="img5" data-handler="circle"><img src="fillerImage5.jpg" width="300px" height="150px"></button>
+        <button id="img7" data-handler="circle" onclick = changeVersion()><img src="fillerImage7.jpg" width="300px" height="150px"></button>
+      </div>
+      <div id="group2">
+        <button id="img2" data-handler="square"><img src="fillerImage2.jpg" width="300px" height="150px"></button>
+        <button id="img4" data-handler="square"><img src="fillerImage4.jpg" width="300px" height="150px"></button>
+        <button id="img6" data-handler="square"><img src="fillerImage6.jpg" width="300px" height="150px"></button>
+        <button id="img8" data-handler="square" onclick = changeVersion2()><img src="fillerImage8.jpg" width="300px" height="150px"></button>
+      </div>
+    </div>
+
+    <dialog id="settings" close>
+        <h2>Settings</h2>
+        <label for="width">Width: </label>
+        <input type="number" id="width" name="width" placeholder="100">
+        <br>
+        <label for="height">Height: </label>
+        <input type="number" id="height" name="height" placeholder="100">
+        <br>
+        <label for="radius">Border Radius: </label>
+        <input type="number" id="radius" name="radius" placeholder="100">
+        <br>
+        <label for="fillcolor">Fill Color (Enter Hex Code): </label>
+        <input type="text" id="fillcolor" name="fillcolor" placeholder="#FF8577">
+        <br>
+         <label for="iconcolor">Icon Color (Enter Hex Code): </label>
+        <input type="text" id="iconcolor" name="iconcolor" placeholder="#FFFFFF">
+        <br>
+        <button id = "submit" onclick = createMessage()>Submit</button>
+        <button id = "close" onclick = closeSettings()>Close</button>
+    </dialog>
+
+    <!-- <button type="button" data-appearance="primary" data-handler="create-text">
       Create text
-    </button>
+    </button> -->
 
     <script type="module" src="/src/main.ts"></script>
   </body>

@@ -4,7 +4,83 @@ body {
   line-height: 1.5;
   padding: 10px;
 }
-
-p {
-  margin-block-end: 0.75rem;
+button {
+  background-color: white;
 }
+
+#sideNavBar{
+  display:flex;
+  flex-direction:column;
+  float:right;
+}
+
+.item{
+  padding-top: 30px;
+  padding-bottom:30px;
+  padding-left: 10px;
+  padding-right:10px;
+}
+
+#images{
+  display:flex;
+  flex-direction:column;
+}
+/* #images img{
+  margin:10px;
+} */
+
+/*Kind of glitchy and needs to be fixed*/
+@media only screen and (max-width: 600px) {
+  #images img, #images button {
+    width:420px;
+    height:230px;
+  }
+}
+@media only screen and (min-width: 601px) {
+  #images img, #images button {
+    width:550px;
+    height:270px;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  #images img, #images button {
+    width:800px;
+    height:450px;
+  }
+}
+
+#group1{
+  position: relative;
+  z-index:1;
+}
+#group2{
+  position:relative;
+  z-index:2;
+}
+  
+#img1{ 
+  position: absolute;
+ } 
+ #img2{ 
+  position: absolute;
+ } 
+ #img3{ 
+  position: absolute;
+ } 
+ #img4{ 
+  position: absolute;
+ } 
+#img5{ 
+  position: absolute;
+ } 
+ #img6{ 
+  position: absolute;
+ } 
+#img7{ 
+  position: relative;
+ } 
+#img8{ 
+  position: relative;
+ } 
+ 
+ 
