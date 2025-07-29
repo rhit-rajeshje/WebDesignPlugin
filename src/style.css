@@ -21,16 +21,16 @@ button {
   padding-right:10px;
 }
 
-#images{
+/* #images{
   display:flex;
   flex-direction:column;
-}
+} */
 /* #images img{
   margin:10px;
 } */
 
 /*Kind of glitchy and needs to be fixed*/
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   #images img, #images button {
     width:420px;
     height:230px;
@@ -81,6 +81,6 @@ button {
  } 
 #img8{ 
   position: relative;
- } 
+ }  */
  
  

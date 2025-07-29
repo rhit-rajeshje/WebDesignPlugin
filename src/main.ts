@@ -28,14 +28,14 @@ document.body.dataset.theme = searchParams.get("theme") ?? "light";
 //   // send message to plugin.ts
 //   parent.postMessage(document.getElementById('img6')?.dataset.handler, "*");
 // });
-document.querySelector("[id = 'img7']")?.addEventListener("click", () => {
-  // send message to plugin.ts
-  parent.postMessage(document.getElementById('img7')?.dataset.handler, "*");
-});
-document.querySelector("[id = 'img8']")?.addEventListener("click", () => {
-  // send message to plugin.ts
-  parent.postMessage(document.getElementById('img8')?.dataset.handler, "*");
-});
+// document.querySelector("[id = 'img7']")?.addEventListener("click", () => {
+//   // send message to plugin.ts
+//   parent.postMessage(document.getElementById('img7')?.dataset.handler, "*");
+// });
+// document.querySelector("[id = 'img8']")?.addEventListener("click", () => {
+//   // send message to plugin.ts
+//   parent.postMessage(document.getElementById('img8')?.dataset.handler, "*");
+// });
 document.querySelector("[id = 'submit']")?.addEventListener("click", () => {
   // send message to plugin.ts
   const width = document.getElementById('submit')?.dataset.width;
@@ -43,9 +43,10 @@ document.querySelector("[id = 'submit']")?.addEventListener("click", () => {
   const borderRadius = document.getElementById('submit')?.dataset.radius;
   const fillColor = document.getElementById('submit')?.dataset.fillcolor;
   const iconColor = document.getElementById('submit')?.dataset.iconcolor;
+  const items = document.getElementById('submit')?.dataset.items;
   const version = document.getElementById('submit')?.dataset.version;
 
-  const dataMap = new Map([["data-width",width],["data-height",height],["data-borderRadius",borderRadius],["data-fillColor",fillColor],["data-iconColor",iconColor],["data-version",version]]);
+  const dataMap = new Map([["data-width",width],["data-height",height],["data-borderRadius",borderRadius],["data-fillColor",fillColor],["data-iconColor",iconColor],["data-items", items],["data-version",version]]);
 
   parent.postMessage(dataMap, "*");
   console.table(dataMap);

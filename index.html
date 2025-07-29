@@ -7,7 +7,9 @@
   </head>
   <body>
     <script>
-      function changeImage1(){
+      let changeVar = 1;
+      let changeVar2 = 2;
+      function declareVariables(){
         var img1 = document.getElementById("img1");
         var img2 = document.getElementById("img2");
         var img3 = document.getElementById("img3");
@@ -17,84 +19,73 @@
         var img7 = document.getElementById("img7");
         var img8 = document.getElementById("img8");
 
-        img1.style.visibility = "visible";
-        img2.style.visibility = "visible";
-        img3.style.visibility = "hidden";
-        img4.style.visibility = "hidden";
-        img5.style.visibility = "hidden";
-        img6.style.visibility = "hidden";
-        img7.style.visibility = "hidden";
-        img8.style.visibility = "hidden";
+        var images = [img1,img2,img3,img4,img5,img6,img7,img8];
+        for(let i=0; i<images.length;i++){
+          if(changeVar == i || changeVar2 == i){
+            images[i].style.display = "inline";
+          }
+          else{
+            images[i].style.display="none";
+          }
+        }
+      }
+      function changeImage1(){
+        changeVar = 0;
+        changeVar2 = 1;
+        declareVariables();
+        closeSettings()
       }
       function changeImage2(){
-        var img1 = document.getElementById("img1");
-        var img2 = document.getElementById("img2");
-        var img3 = document.getElementById("img3");
-        var img4 = document.getElementById("img4");
-        var img5 = document.getElementById("img5");
-        var img6 = document.getElementById("img6");
-        var img7 = document.getElementById("img7");
-        var img8 = document.getElementById("img8");
-
-        img1.style.visibility = "hidden";
-        img2.style.visibility = "hidden";
-        img3.style.visibility = "visible";
-        img4.style.visibility = "visible";
-        img5.style.visibility = "hidden";
-        img6.style.visibility = "hidden";
-        img7.style.visibility = "hidden";
-        img8.style.visibility = "hidden";
+        changeVar = 2;
+        changeVar2 = 3;
+        declareVariables();
+        closeSettings();
       }
       function changeImage3(){
-        var img1 = document.getElementById("img1");
-        var img2 = document.getElementById("img2");
-        var img3 = document.getElementById("img3");
-        var img4 = document.getElementById("img4");
-        var img5 = document.getElementById("img5");
-        var img6 = document.getElementById("img6");
-        var img7 = document.getElementById("img7");
-        var img8 = document.getElementById("img8");
-
-        img1.style.visibility = "hidden";
-        img2.style.visibility = "hidden";
-        img3.style.visibility = "hidden";
-        img4.style.visibility = "hidden";
-        img5.style.visibility = "visible";
-        img6.style.visibility = "visible";
-        img7.style.visibility = "hidden";
-        img8.style.visibility = "hidden";
+        changeVar = 4;
+        changeVar2 = 5;
+        declareVariables();
+        closeSettings();
       }
       function changeImage4(){
-        var img1 = document.getElementById("img1");
-        var img2 = document.getElementById("img2");
-        var img3 = document.getElementById("img3");
-        var img4 = document.getElementById("img4");
-        var img5 = document.getElementById("img5");
-        var img6 = document.getElementById("img6");
-        var img7 = document.getElementById("img7");
-        var img8 = document.getElementById("img8");
-
-        img1.style.visibility = "hidden";
-        img2.style.visibility = "hidden";
-        img3.style.visibility = "hidden";
-        img4.style.visibility = "hidden";
-        img5.style.visibility = "hidden";
-        img6.style.visibility = "hidden";
-        img7.style.visibility = "visible";
-        img8.style.visibility = "visible";
+        changeVar = 6;
+        changeVar2 = 7;
+        declareVariables();
+        closeSettings();
       }
 
       let buttonVersion = "1";
-      
-
       function changeVersion(){
         buttonVersion = "1";
         const settings = document.getElementById("settings");
+        var itemsDiv = document.getElementById("itemsDiv");
+        itemsDiv.style.display = "none";
+        var heightDiv = document.getElementById("heightDiv");
+        heightDiv.style.display = "block";
+        var borderRadiusDiv = document.getElementById("borderRadiusDiv");
+        borderRadiusDiv.style.display = "block";
         settings.open=true;
       }
       function changeVersion2(){
         buttonVersion = "2";
         const settings = document.getElementById("settings");
+        var itemsDiv = document.getElementById("itemsDiv");
+        itemsDiv.style.display = "none";
+        var heightDiv = document.getElementById("heightDiv");
+        heightDiv.style.display = "block";
+        var borderRadiusDiv = document.getElementById("borderRadiusDiv");
+        borderRadiusDiv.style.display = "block";
+        settings.open=true;
+      }
+      function changeVersion3(){
+        buttonVersion = "3";
+        const settings = document.getElementById("settings");
+        var itemsDiv = document.getElementById("itemsDiv");
+        itemsDiv.style.display = "block";
+        var heightDiv = document.getElementById("heightDiv");
+        heightDiv.style.display = "none";
+        var borderRadiusDiv = document.getElementById("borderRadiusDiv");
+        borderRadiusDiv.style.display = "none";
         settings.open=true;
       }
       function closeSettings(){
@@ -108,6 +99,7 @@
         var radius= document.getElementById("radius").value;
         var fillcolor= document.getElementById("fillcolor").value;
         var iconcolor= document.getElementById("iconcolor").value;
+        var items = document.getElementById("items").value;
 
         var element = document.getElementById("submit");
         element.setAttribute("data-width",width);
@@ -120,6 +112,8 @@
         console.log("data-fillcolor",element.dataset.fillcolor);
         element.setAttribute("data-iconcolor",iconcolor);
         console.log("data-iconcolor",element.dataset.iconcolor);
+        element.setAttribute("data-items",items);
+        console.log("data-items",element.dataset.items);
         element.setAttribute("data-version",buttonVersion);
         console.log("data-version",element.dataset.version);
       }
@@ -144,41 +138,63 @@
       </div>
     </div>
 
-    <div id= "images">
+    <!-- <div id= "images">
       <div id="group1"> 
         <button id="img1" data-handler="circle" ><img src="fillerImage1.jpg" width="300px" height="150px"></button>
         <button id="img3" data-handler="circle"><img src="fillerImage3.jpg" width="300px" height="150px"> </button>
         <button id="img5" data-handler="circle"><img src="fillerImage5.jpg" width="300px" height="150px"></button>
         <button id="img7" data-handler="circle" onclick = changeVersion()><img src="fillerImage7.jpg" width="300px" height="150px"></button>
       </div>
+      
       <div id="group2">
         <button id="img2" data-handler="square"><img src="fillerImage2.jpg" width="300px" height="150px"></button>
         <button id="img4" data-handler="square"><img src="fillerImage4.jpg" width="300px" height="150px"></button>
-        <button id="img6" data-handler="square"><img src="fillerImage6.jpg" width="300px" height="150px"></button>
+        <button id="img6" data-handler="square" onclick = changeVersion3()><img src="fillerImage6.jpg" width="300px" height="150px"></button>
         <button id="img8" data-handler="square" onclick = changeVersion2()><img src="fillerImage8.jpg" width="300px" height="150px"></button>
       </div>
-    </div>
-
-    <dialog id="settings" close>
+    </div> -->
+    <div id= "images">
+      <div id="group1"> 
+        <button id="img1"><img src="fillerImage1.jpg" width="300px" height="150px"></button>
+        <button id="img2"><img src="fillerImage2.jpg" width="300px" height="150px"></button>
+      </div>
+      <div id = "group2">
+        <button id="img3"><img src="fillerImage3.jpg" width="300px" height="150px"> </button>
+        <button id="img4"><img src="fillerImage4.jpg" width="300px" height="150px"></button>
+      </div>
+       <dialog id="settings" close>
         <h2>Settings</h2>
-        <label for="width">Width: </label>
-        <input type="number" id="width" name="width" placeholder="100">
-        <br>
-        <label for="height">Height: </label>
-        <input type="number" id="height" name="height" placeholder="100">
-        <br>
-        <label for="radius">Border Radius: </label>
-        <input type="number" id="radius" name="radius" placeholder="100">
-        <br>
-        <label for="fillcolor">Fill Color (Enter Hex Code): </label>
-        <input type="text" id="fillcolor" name="fillcolor" placeholder="#FF8577">
-        <br>
-         <label for="iconcolor">Icon Color (Enter Hex Code): </label>
-        <input type="text" id="iconcolor" name="iconcolor" placeholder="#FFFFFF">
-        <br>
+        <div id = "widthDiv"><label for="width">Width: </label>
+        <input type="number" id="width" name="width" placeholder="100"></div>
+        <div id= "heightDiv"><label for="height">Height: </label>
+        <input type="number" id="height" name="height" placeholder="100"></div>
+        <div id="borderRadiusDiv"><label for="radius">Border Radius: </label>
+        <input type="number" id="radius" name="radius" placeholder="100"></div>
+        <div id="fillcolorDiv"><label for="fillcolor">Fill Color (Enter Hex Code): </label>
+        <input type="text" id="fillcolor" name="fillcolor" placeholder="#FF8577"> </div>
+        <div id="iconcolorDiv"><label for="iconcolor">Icon Color (Enter Hex Code): </label>
+        <input type="text" id="iconcolor" name="iconcolor" placeholder="#FFFFFF"></div>
+        <div id="itemsDiv"><label for="items">Number of Items </label>
+        <input type="number" id="items" name="items" placeholder="7"></div>
         <button id = "submit" onclick = createMessage()>Submit</button>
         <button id = "close" onclick = closeSettings()>Close</button>
-    </dialog>
+      </dialog>
+      <div id = "group3">
+        <button id="img5"><img src="fillerImage5.jpg" width="300px" height="150px"></button>
+        <button id="img6" onclick = changeVersion3()><img src="fillerImage6.jpg" width="300px" height="150px"></button>
+      </div>
+      <div id = "group4">
+        <button id="img7" onclick = changeVersion()><img src="fillerImage7.jpg" width="300px" height="150px"></button>
+        <button id="img8" onclick = changeVersion2()><img src="fillerImage8.jpg" width="300px" height="150px"> </button>
+      </div>
+     
+      <!-- <div id="group2">
+        <button id="img2"><img src="fillerImage2.jpg" width="300px" height="150px"></button>
+        <button id="img4"><img src="fillerImage4.jpg" width="300px" height="150px"></button>
+        <button id="img6" onclick = changeVersion3()><img src="fillerImage6.jpg" width="300px" height="150px"></button>
+        <button id="img8" onclick = changeVersion2()><img src="fillerImage8.jpg" width="300px" height="150px"></button>
+      </div> -->
+    </div>
 
     <!-- <button type="button" data-appearance="primary" data-handler="create-text">
       Create text
