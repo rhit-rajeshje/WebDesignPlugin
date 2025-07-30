@@ -57,6 +57,7 @@
       let buttonVersion = "1";
       function changeVersion(){
         buttonVersion = "1";
+        document.getElementById("title").innerHTML = "Button Style 1";
         const settings = document.getElementById("settings");
         var itemsDiv = document.getElementById("itemsDiv");
         itemsDiv.style.display = "none";
@@ -64,10 +65,13 @@
         heightDiv.style.display = "block";
         var borderRadiusDiv = document.getElementById("borderRadiusDiv");
         borderRadiusDiv.style.display = "block";
+        var iconDiv = document.getElementById("iconDiv");
+        iconDiv.style.display = "none";
         settings.open=true;
       }
       function changeVersion2(){
         buttonVersion = "2";
+        document.getElementById("title").innerHTML = "Button Style 2";
         const settings = document.getElementById("settings");
         var itemsDiv = document.getElementById("itemsDiv");
         itemsDiv.style.display = "none";
@@ -75,10 +79,13 @@
         heightDiv.style.display = "block";
         var borderRadiusDiv = document.getElementById("borderRadiusDiv");
         borderRadiusDiv.style.display = "block";
+        var iconDiv = document.getElementById("iconDiv");
+        iconDiv.style.display = "none";
         settings.open=true;
       }
       function changeVersion3(){
         buttonVersion = "3";
+        document.getElementById("title").innerHTML = "Dropdown";
         const settings = document.getElementById("settings");
         var itemsDiv = document.getElementById("itemsDiv");
         itemsDiv.style.display = "block";
@@ -86,6 +93,22 @@
         heightDiv.style.display = "none";
         var borderRadiusDiv = document.getElementById("borderRadiusDiv");
         borderRadiusDiv.style.display = "none";
+        var iconDiv = document.getElementById("iconDiv");
+        iconDiv.style.display = "none";
+        settings.open=true;
+      }
+       function changeVersion4(){
+        buttonVersion = "4";
+        document.getElementById("title").innerHTML = "Navigation Bar Style 1";
+        const settings = document.getElementById("settings");
+        var itemsDiv = document.getElementById("itemsDiv");
+        itemsDiv.style.display = "none";
+        var heightDiv = document.getElementById("heightDiv");
+        heightDiv.style.display = "block";
+        var borderRadiusDiv = document.getElementById("borderRadiusDiv");
+        borderRadiusDiv.style.display = "none";
+        var iconDiv = document.getElementById("iconDiv");
+        iconDiv.style.display = "block";
         settings.open=true;
       }
       function closeSettings(){
@@ -99,7 +122,26 @@
         var radius= document.getElementById("radius").value;
         var fillcolor= document.getElementById("fillcolor").value;
         var iconcolor= document.getElementById("iconcolor").value;
+        var textcolor= document.getElementById("textcolor").value;
         var items = document.getElementById("items").value;
+
+        var addIcon = document.getElementById("add");
+        var homeIcon = document.getElementById("home");
+        var cameraIcon = document.getElementById("camera");
+        var filesIcon = document.getElementById("files");
+        var profileIcon = document.getElementById("profile");
+        var searchIcon = document.getElementById("search");
+        var logoutIcon = document.getElementById("logout");
+
+        var iconList = [addIcon,homeIcon,cameraIcon,filesIcon,profileIcon,searchIcon,logoutIcon];
+        var iconListName = [];
+        for(let i=0; i<iconList.length;i++){
+          console.log(iconList[i]+":"+iconList[i].checked);
+          if(iconList[i].checked == true){
+            iconListName.push(String(iconList[i].value));
+          }
+        }
+        console.log(iconListName);
 
         var element = document.getElementById("submit");
         element.setAttribute("data-width",width);
@@ -112,8 +154,12 @@
         console.log("data-fillcolor",element.dataset.fillcolor);
         element.setAttribute("data-iconcolor",iconcolor);
         console.log("data-iconcolor",element.dataset.iconcolor);
+        element.setAttribute("data-textcolor",textcolor);
+        console.log("data-textcolor",element.dataset.textcolor);
         element.setAttribute("data-items",items);
         console.log("data-items",element.dataset.items);
+        element.setAttribute("data-icons",iconListName);
+        console.log("data-icons",element.dataset.icons);
         element.setAttribute("data-version",buttonVersion);
         console.log("data-version",element.dataset.version);
       }
@@ -163,7 +209,7 @@
         <button id="img4"><img src="fillerImage4.jpg" width="300px" height="150px"></button>
       </div>
        <dialog id="settings" close>
-        <h2>Settings</h2>
+        <h2 id = "title">Settings</h2>
         <div id = "widthDiv"><label for="width">Width: </label>
         <input type="number" id="width" name="width" placeholder="100"></div>
         <div id= "heightDiv"><label for="height">Height: </label>
@@ -171,16 +217,35 @@
         <div id="borderRadiusDiv"><label for="radius">Border Radius: </label>
         <input type="number" id="radius" name="radius" placeholder="100"></div>
         <div id="fillcolorDiv"><label for="fillcolor">Fill Color (Enter Hex Code): </label>
-        <input type="text" id="fillcolor" name="fillcolor" placeholder="#FF8577"> </div>
+        <input type="color" id="fillcolor" name="fillcolor" placeholder="#FF8577"> </div> <!--could change to color type-->
         <div id="iconcolorDiv"><label for="iconcolor">Icon Color (Enter Hex Code): </label>
-        <input type="text" id="iconcolor" name="iconcolor" placeholder="#FFFFFF"></div>
+        <input type="color" id="iconcolor" name="iconcolor" placeholder="#FFFFFF"></div>
+        <div id="textcolorDiv"><label for="textcolor">Text Color (Enter Hex Code): </label>
+        <input type="color" id="textcolor" name="textcolor" placeholder="#FFFFFF"></div>
         <div id="itemsDiv"><label for="items">Number of Items </label>
         <input type="number" id="items" name="items" placeholder="7"></div>
+       
+        <div id = "iconDiv"> <br> <label for = "icons">-Icon Selection-</label>
+        <br>
+        <label for="add" style="font-size: 14px;">Add: </label><input type="checkbox" id="add" name="add" value="add">
+        <br>
+        <label for="home" style="font-size: 14px;">Home: </label><input type="checkbox" id="home" name="home" value="home">
+        <br>
+        <label for="camera" style="font-size: 14px;">Camera: </label><input type="checkbox" id="camera" name="camera" value="camera">
+        <br>
+        <label for="files" style="font-size: 14px;">Files: </label><input type="checkbox" id="files" name="files" value="files">
+        <br>
+        <label for="profile" style="font-size: 14px;">Profile: </label><input type="checkbox" id="profile" name="profile" value="profile">
+        <br>
+        <label for="search" style="font-size: 14px;">Search: </label><input type="checkbox" id="search" name="search" value="search">
+        <br>
+        <label for="logout" style="font-size: 14px;">Logout: </label><input type="checkbox" id="logout" name="logout" value="logout"></div>
+
         <button id = "submit" onclick = createMessage()>Submit</button>
         <button id = "close" onclick = closeSettings()>Close</button>
       </dialog>
       <div id = "group3">
-        <button id="img5"><img src="fillerImage5.jpg" width="300px" height="150px"></button>
+        <button id="img5" onclick = changeVersion4()><img src="fillerImage5.jpg" width="300px" height="150px"></button>
         <button id="img6" onclick = changeVersion3()><img src="fillerImage6.jpg" width="300px" height="150px"></button>
       </div>
       <div id = "group4">

@@ -7,7 +7,10 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
   const borderRadius = Number(message.get("data-borderRadius"));
   const fillColor = message.get("data-fillColor");
   const iconColor = message.get("data-iconColor");
+  const textColor = message.get("data-textColor");
   const items = Number(message.get("data-items"));
+  const iconListNames = message.get("data-icons")?.split(",").reverse();
+  console.log(iconListNames);
   console.log(items);
   if (message.get("data-version")=="1") {
     const buttonBoard = penpot.createBoard();
@@ -31,8 +34,7 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
     buttonText.fontSize= '45';
     buttonText.fontFamily = 'Sour Gummy';
     buttonText.fills = [{fillColor: fillColor}];
-    buttonBoard.insertChild(0, buttonText);
-  }
+    buttonBoard.insertChild(0, buttonText);}
     buttonBoard.insertChild(0, button);
   
     const buttonBoard2 = penpot.createBoard();
@@ -55,8 +57,7 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
     buttonText2.fontSize= '45';
     buttonText2.fontFamily = 'Sour Gummy';
     buttonText2.fills = [{fillColor: iconColor}];
-    buttonBoard2.insertChild(0, buttonText2);
-    }
+    buttonBoard2.insertChild(0, buttonText2);}
     buttonBoard2.insertChild(0, button2);
     buttonBoard2.addInteraction('mouse-enter', {type: 'navigate-to', destination: buttonBoard});
     buttonBoard.addInteraction('mouse-leave', {type: 'navigate-to', destination: buttonBoard2});
@@ -220,7 +221,6 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
       text3.name = "Item Text";
       rectBoard2.insertChild(0,text3);
       }
-      
     }
     penpot.selection = selectionList;
     const choiceGroup = penpot.group(penpot.selection);
@@ -247,7 +247,7 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
     rect.fills = [{fillColor: fillColor}];
     rect.name = "Dropdown Box";
 
-     const title = penpot.createText("Dropdown");
+    const title = penpot.createText("Dropdown");
     if(title){
       title.x = penpot.viewport.center.x+width/12.85;
       title.y = penpot.viewport.center.y+width/10;
@@ -276,6 +276,126 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
     }
   }
 
+  if(message.get("data-version")=="4"){
+    const homeBar = penpot.createRectangle();
+    homeBar.x = penpot.viewport.center.x;
+    homeBar.y = penpot.viewport.center.y;
+    homeBar.resize(width,height); //(2200,200)
+    homeBar.fills = [{fillColor: fillColor}];
+    homeBar.name = "Navigation Bar";
+
+    const menu = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#666666" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></svg>');
+    if(menu){
+      menu.resize(width/13.75,height/1.25);
+      menu.x = penpot.viewport.center.x+width/73.33;
+      menu.y = penpot.viewport.center.y+height/10;
+      menu.name = "Menu";
+    }
+
+    const logo = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#b2b4b3" class="bi bi-gitlab" viewBox="0 0 16 16"><path d="m15.734 6.1-.022-.058L13.534.358a.57.57 0 0 0-.563-.356.6.6 0 0 0-.328.122.6.6 0 0 0-.193.294l-1.47 4.499H5.025l-1.47-4.5A.572.572 0 0 0 2.47.358L.289 6.04l-.022.057A4.044 4.044 0 0 0 1.61 10.77l.007.006.02.014 3.318 2.485 1.64 1.242 1 .755a.67.67 0 0 0 .814 0l1-.755 1.64-1.242 3.338-2.5.009-.007a4.05 4.05 0 0 0 1.34-4.668Z"/></svg>');
+    if(logo){
+      logo.resize(width/27.5,height/2.5);
+      logo.x = penpot.viewport.center.x+width/10;
+      logo.y = penpot.viewport.center.y+height/3.33;
+      logo.name = "Filler Logo (Replace with Company Logo if applicable)";
+    }
+
+    const title = penpot.createText("[Insert Company Name]");
+    if(title){
+      title.x = penpot.viewport.center.x+width/6.76;
+      title.y = penpot.viewport.center.y+height/3.077;
+      title.fontSize = String(width/40);
+      title.fills = [{fillColor: textColor}];
+      title.fontFamily = "Sour Gummy";
+      title.name = "Filler Title (Replace with Company name if applicable)";
+    }
+
+    var iconsSelected = [];
+    if(iconListNames){
+      for(let i=0;i<iconListNames.length;i++){
+        if(iconListNames[i]==="add"){
+          const add = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#666666" class="bi bi-plus" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/> </svg>');
+          if(add){
+          add.x = penpot.viewport.center.x + width/1.06 - (width/14.66)*i;
+          add.y = penpot.viewport.center.y+height/4.44;
+          add.resize(width/20.95,height/1.9);
+          add.name = "Plus Icon";
+          iconsSelected.push(add);
+        }
+        }
+        else if(iconListNames[i]==="home"){
+          const home = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#666666" class="bi bi-house-door-fill" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5"/></svg>');
+          if(home){
+          home.x = penpot.viewport.center.x + width/1.06 - (width/14.66)*i;
+          home.y = penpot.viewport.center.y+height/4.44;
+          home.resize(width/20.95,height/1.9);
+          home.name = "Home Icon";
+          iconsSelected.push(home);
+        }
+        }
+        else if(iconListNames[i]==="camera"){
+          const camera = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#666666" class="bi bi-camera-fill" viewBox="0 0 16 16"><path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/><path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0"/></svg>');
+          if(camera){
+          camera.x = penpot.viewport.center.x + width/1.06 - (width/14.66)*i;
+          camera.y = penpot.viewport.center.y+height/4.44;
+          camera.resize(width/20.95,height/1.9);
+          camera.name = "Camera Icon";
+          iconsSelected.push(camera);
+        }
+        }
+        else if(iconListNames[i]==="files"){
+          const files = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#666666" class="bi bi-folder" viewBox="0 0 16 16"><path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139q.323-.119.684-.12h5.396z"/></svg>');
+          if(files){
+          files.x = penpot.viewport.center.x + width/1.06 - (width/14.66)*i;
+          files.y = penpot.viewport.center.y+height/4.44;
+          files.resize(width/20.95,height/1.9);
+          files.name = "Files Icon";
+          iconsSelected.push(files);
+        }
+        }
+        else if(iconListNames[i]==="profile"){
+          const profile = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#666666" class="bi bi-person-circle" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/></svg>');
+          if(profile){
+          profile.x = penpot.viewport.center.x + width/1.06 - (width/14.66)*i;
+          profile.y = penpot.viewport.center.y+height/4.44;
+          profile.resize(width/20.95,height/1.9);
+          profile.name = "Profile Icon";
+          iconsSelected.push(profile);
+        }
+        }
+        else if(iconListNames[i]==="search"){
+          const search = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#666666" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>');
+          if(search){
+          search.x = penpot.viewport.center.x + width/1.06 - (width/14.66)*i;
+          search.y = penpot.viewport.center.y+height/4.44;
+          search.resize(width/20.95,height/1.9);
+          search.name = "Search Icon";
+          iconsSelected.push(search);
+        }
+        }
+        else if(iconListNames[i]==="logout"){
+          const logout = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#666666" class="bi bi-box-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/><path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/></svg>');
+          if(logout){
+          logout.x = penpot.viewport.center.x + width/1.06 - (width/14.66)*i;
+          logout.y = penpot.viewport.center.y+height/4.44;
+          logout.resize(width/20.95,height/1.9);
+          logout.name = "Logout Icon";
+          iconsSelected.push(logout);
+        } 
+        }
+      }
+    }
+    penpot.selection = iconsSelected;
+    const iconGroup = penpot.group(penpot.selection);
+    if(iconGroup && title && menu && logo){
+      iconGroup.name = "Icon Group";
+      penpot.selection = [iconGroup, title,menu,logo,homeBar];
+      const navBar = penpot.group(penpot.selection);
+      if(navBar){
+        navBar.name = "Navigation Bar Style 1";
+      }
+    }
+  }
 });
 
 // Update the theme in the iframe

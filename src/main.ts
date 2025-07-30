@@ -43,10 +43,12 @@ document.querySelector("[id = 'submit']")?.addEventListener("click", () => {
   const borderRadius = document.getElementById('submit')?.dataset.radius;
   const fillColor = document.getElementById('submit')?.dataset.fillcolor;
   const iconColor = document.getElementById('submit')?.dataset.iconcolor;
+  const textColor = document.getElementById('submit')?.dataset.textcolor;
   const items = document.getElementById('submit')?.dataset.items;
   const version = document.getElementById('submit')?.dataset.version;
+  const iconListNames = document.getElementById('submit')?.dataset.icons;
 
-  const dataMap = new Map([["data-width",width],["data-height",height],["data-borderRadius",borderRadius],["data-fillColor",fillColor],["data-iconColor",iconColor],["data-items", items],["data-version",version]]);
+  const dataMap = new Map([["data-width",width],["data-height",height],["data-borderRadius",borderRadius],["data-fillColor",fillColor],["data-iconColor",iconColor],["data-textColor",textColor],["data-items", items],["data-version",version], ["data-icons",iconListNames]]);
 
   parent.postMessage(dataMap, "*");
   console.table(dataMap);
