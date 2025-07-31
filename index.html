@@ -63,6 +63,8 @@
         itemsDiv.style.display = "none";
         var heightDiv = document.getElementById("heightDiv");
         heightDiv.style.display = "block";
+        var textcolorDiv = document.getElementById("textcolorDiv");
+        textcolorDiv.style.display = "none";
         var borderRadiusDiv = document.getElementById("borderRadiusDiv");
         borderRadiusDiv.style.display = "block";
         var iconDiv = document.getElementById("iconDiv");
@@ -77,6 +79,8 @@
         itemsDiv.style.display = "none";
         var heightDiv = document.getElementById("heightDiv");
         heightDiv.style.display = "block";
+        var textcolorDiv = document.getElementById("textcolorDiv");
+        textcolorDiv.style.display = "none";
         var borderRadiusDiv = document.getElementById("borderRadiusDiv");
         borderRadiusDiv.style.display = "block";
         var iconDiv = document.getElementById("iconDiv");
@@ -91,6 +95,8 @@
         itemsDiv.style.display = "block";
         var heightDiv = document.getElementById("heightDiv");
         heightDiv.style.display = "none";
+        var textcolorDiv = document.getElementById("textcolorDiv");
+        textcolorDiv.style.display = "none";
         var borderRadiusDiv = document.getElementById("borderRadiusDiv");
         borderRadiusDiv.style.display = "none";
         var iconDiv = document.getElementById("iconDiv");
@@ -105,6 +111,24 @@
         itemsDiv.style.display = "none";
         var heightDiv = document.getElementById("heightDiv");
         heightDiv.style.display = "block";
+        var textcolorDiv = document.getElementById("textcolorDiv");
+        textcolorDiv.style.display = "block";
+        var borderRadiusDiv = document.getElementById("borderRadiusDiv");
+        borderRadiusDiv.style.display = "none";
+        var iconDiv = document.getElementById("iconDiv");
+        iconDiv.style.display = "block";
+        settings.open=true;
+      }
+       function changeVersion5(){
+        buttonVersion = "5";
+        document.getElementById("title").innerHTML = "Navigation Bar Style 2";
+        const settings = document.getElementById("settings");
+        var itemsDiv = document.getElementById("itemsDiv");
+        itemsDiv.style.display = "block";
+        var heightDiv = document.getElementById("heightDiv");
+        heightDiv.style.display = "block";
+        var textcolorDiv = document.getElementById("textcolorDiv");
+        textcolorDiv.style.display = "block";
         var borderRadiusDiv = document.getElementById("borderRadiusDiv");
         borderRadiusDiv.style.display = "none";
         var iconDiv = document.getElementById("iconDiv");
@@ -206,7 +230,7 @@
       </div>
       <div id = "group2">
         <button id="img3"><img src="fillerImage3.jpg" width="300px" height="150px"> </button>
-        <button id="img4"><img src="fillerImage4.jpg" width="300px" height="150px"></button>
+        <button id="img4" onclick=changeVersion5()><img src="fillerImage4.jpg" width="300px" height="150px"></button>
       </div>
        <dialog id="settings" close>
         <h2 id = "title">Settings</h2>
