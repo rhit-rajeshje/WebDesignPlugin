@@ -59,6 +59,7 @@
         buttonVersion = "1";
         document.getElementById("title").innerHTML = "Button Style 1";
         const settings = document.getElementById("settings");
+
         var itemsDiv = document.getElementById("itemsDiv");
         itemsDiv.style.display = "none";
         var heightDiv = document.getElementById("heightDiv");
@@ -69,12 +70,21 @@
         borderRadiusDiv.style.display = "block";
         var iconDiv = document.getElementById("iconDiv");
         iconDiv.style.display = "none";
+
+        var w = document.getElementById("width");
+        w.placeholder = '200';
+        var b = document.getElementById("radius");
+        b.placeholder = '40';
+        var h = document.getElementById("height");
+        h.placeholder = '100';
+
         settings.open=true;
       }
       function changeVersion2(){
         buttonVersion = "2";
         document.getElementById("title").innerHTML = "Button Style 2";
         const settings = document.getElementById("settings");
+
         var itemsDiv = document.getElementById("itemsDiv");
         itemsDiv.style.display = "none";
         var heightDiv = document.getElementById("heightDiv");
@@ -85,12 +95,21 @@
         borderRadiusDiv.style.display = "block";
         var iconDiv = document.getElementById("iconDiv");
         iconDiv.style.display = "none";
+
+        var w = document.getElementById("width");
+        w.placeholder = '100';
+        var b = document.getElementById("radius");
+        b.placeholder = '100';
+        var h = document.getElementById("height");
+        h.placeholder = '100';
+
         settings.open=true;
       }
       function changeVersion3(){
         buttonVersion = "3";
         document.getElementById("title").innerHTML = "Dropdown";
         const settings = document.getElementById("settings");
+
         var itemsDiv = document.getElementById("itemsDiv");
         itemsDiv.style.display = "block";
         var heightDiv = document.getElementById("heightDiv");
@@ -101,12 +120,19 @@
         borderRadiusDiv.style.display = "none";
         var iconDiv = document.getElementById("iconDiv");
         iconDiv.style.display = "none";
+
+        var w = document.getElementById("width");
+        w.placeholder = '800';
+        var i = document.getElementById("items");
+        i.placeholder = '7 ';
+
         settings.open=true;
       }
        function changeVersion4(){
         buttonVersion = "4";
         document.getElementById("title").innerHTML = "Navigation Bar Style 1";
         const settings = document.getElementById("settings");
+
         var itemsDiv = document.getElementById("itemsDiv");
         itemsDiv.style.display = "none";
         var heightDiv = document.getElementById("heightDiv");
@@ -117,12 +143,19 @@
         borderRadiusDiv.style.display = "none";
         var iconDiv = document.getElementById("iconDiv");
         iconDiv.style.display = "block";
+
+        var w = document.getElementById("width");
+        w.placeholder = '2200';
+        var h = document.getElementById("height");
+        h.placeholder = '200';
+
         settings.open=true;
       }
        function changeVersion5(){
         buttonVersion = "5";
         document.getElementById("title").innerHTML = "Navigation Bar Style 2";
         const settings = document.getElementById("settings");
+
         var itemsDiv = document.getElementById("itemsDiv");
         itemsDiv.style.display = "block";
         var heightDiv = document.getElementById("heightDiv");
@@ -133,6 +166,39 @@
         borderRadiusDiv.style.display = "none";
         var iconDiv = document.getElementById("iconDiv");
         iconDiv.style.display = "block";
+
+        var w = document.getElementById("width");
+        w.placeholder = '800';
+        var h = document.getElementById("height");
+        h.placeholder = '2100';
+        var i = document.getElementById("items");
+        i.placeholder = '3 ';
+
+        settings.open=true;
+      }
+      function changeVersion6(){
+        buttonVersion = "6";
+        document.getElementById("title").innerHTML = "Calender";
+        const settings = document.getElementById("settings");
+
+        var itemsDiv = document.getElementById("itemsDiv");
+        itemsDiv.style.display = "block";
+        var heightDiv = document.getElementById("heightDiv");
+        heightDiv.style.display = "block";
+        var textcolorDiv = document.getElementById("textcolorDiv");
+        textcolorDiv.style.display = "block";
+        var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
+        borderRadiusDiv.style.display = "none";
+        var iconDiv = document.getElementById("iconDiv");
+        iconDiv.style.display = "block";
+
+        var w = document.getElementById("width");
+        w.placeholder = '800';
+        var h = document.getElementById("height");
+        h.placeholder = '2100';
+        var i = document.getElementById("items");
+        i.placeholder = '3 ';
+
         settings.open=true;
       }
       function closeSettings(){
@@ -229,7 +295,7 @@
         <button id="img2"><img src="fillerImage2.jpg" width="300px" height="150px"></button>
       </div>
       <div id = "group2">
-        <button id="img3"><img src="fillerImage3.jpg" width="300px" height="150px"> </button>
+        <button id="img3" onclick=changeVersion6()><img src="fillerImage3.jpg" width="300px" height="150px"> </button>
         <button id="img4" onclick=changeVersion5()><img src="fillerImage4.jpg" width="300px" height="150px"></button>
       </div>
        <dialog id="settings" close>
@@ -241,11 +307,11 @@
         <div id="borderRadiusDiv"><label for="radius">Border Radius: </label>
         <input type="number" id="radius" name="radius" placeholder="100"></div>
         <div id="fillcolorDiv"><label for="fillcolor">Fill Color (Enter Hex Code): </label>
-        <input type="color" id="fillcolor" name="fillcolor" placeholder="#FF8577"> </div> <!--could change to color type-->
+        <input type="color" id="fillcolor" name="fillcolor" value="#FFFFFF"> </div> <!--could change to color type-->
         <div id="iconcolorDiv"><label for="iconcolor">Icon Color (Enter Hex Code): </label>
-        <input type="color" id="iconcolor" name="iconcolor" placeholder="#FFFFFF"></div>
+        <input type="color" id="iconcolor" name="iconcolor" value="#666666"></div>
         <div id="textcolorDiv"><label for="textcolor">Text Color (Enter Hex Code): </label>
-        <input type="color" id="textcolor" name="textcolor" placeholder="#FFFFFF"></div>
+        <input type="color" id="textcolor" name="textcolor" value="#800000"></div>
         <div id="itemsDiv"><label for="items">Number of Items </label>
         <input type="number" id="items" name="items" placeholder="7"></div>
        
