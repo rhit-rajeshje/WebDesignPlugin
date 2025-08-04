@@ -136,3 +136,99 @@ export function dropdown(width:number, fillColor:string, iconColor:string,items:
       dropdownGroup.name = "Dropdown";
     }
 }
+
+export function pageNav(width:number, height:number, fillColor:string, iconColor:string, textColor:string, items:number){
+    const arrowSquare = penpot.createRectangle();
+    arrowSquare.x = penpot.viewport.center.x;
+    arrowSquare.y = penpot.viewport.center.y;
+    arrowSquare.resize(width,height); //(100,100)
+    arrowSquare.borderRadius = width/10;
+    arrowSquare.fills = [{fillColor: fillColor}]; //('#a54646')
+
+    const iconColorString = '"'+iconColor+'"';
+    const arrowLeftString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-arrow-left-short" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/></svg>';
+    // const arrowLeft = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFFFFF" class="bi bi-arrow-left-short" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/></svg>');
+    const arrowLeft = penpot.createShapeFromSvg(arrowLeftString);
+    if(arrowLeft){
+      arrowLeft.x = arrowSquare.x+width/7.69;
+      arrowLeft.y = arrowSquare.y+height/6.66;
+      arrowLeft.resize(width/1.33,height/1.33);
+    }
+    var itemNum = items; 
+    var content;
+    var contentList = [];  
+    if(itemNum>5){
+      itemNum = 5;
+      content = ["1", "2", "...", String(itemNum-1), String(itemNum)];
+    }
+    else{
+      content = ["1", "2", "3", "4", "5"];
+    }
+    for(let i=1; i<=itemNum;i++){
+      const pageOption = penpot.createRectangle();
+      pageOption.x = penpot.viewport.center.x+width/1.25+width*i;
+      pageOption.y = penpot.viewport.center.y;
+      pageOption.resize(width,height);
+      pageOption.strokes = [{strokeColor: '#000000', strokeOpacity:.35  }]
+      pageOption.name = "Square"
+      const number = penpot.createText(content[i-1]);
+      if(number){
+        number.x = pageOption.x+width/2.5;
+        number.y = pageOption.y+height/5;
+        number.fontSize = String(width/2.083);
+        number.fontFamily = 'Sour Gummy';
+        if(i==1){
+          pageOption.fills = [{fillColor: fillColor, fillOpacity: .4}]; //('800000')
+          number.fills = [{fillColor: '#FFFFFF'}]; //white
+        }else{
+          pageOption.fills = [{fillColor: iconColor}]; //white
+          number.fills = [{fillColor: textColor}];  //black
+        }
+        number.name = content[i-1];
+        penpot.selection = [pageOption,number];
+        const pageOptionGroup = penpot.group(penpot.selection);
+        if(pageOptionGroup){
+          pageOptionGroup.name = "Page Option";
+          contentList.push(pageOptionGroup);
+        }
+      }
+    }
+    penpot.selection = contentList;
+    const pageOptionsGroup = penpot.group(penpot.selection);
+    if(pageOptionsGroup){
+      pageOptionsGroup.name = "Page Options";
+    }
+
+    const arrowSquare2 = penpot.createRectangle();
+    arrowSquare2.x = penpot.viewport.center.x+(itemNum+1)*width+((width/1.25)*2);
+    arrowSquare2.y = penpot.viewport.center.y;
+    arrowSquare2.resize(width,height);
+    arrowSquare2.borderRadius = width/10;
+    arrowSquare2.fills = [{fillColor: fillColor}];
+    
+    
+    const arrowRightString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-arrow-right-short" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/></svg>';
+    // const arrowRight = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFFFFF" class="bi bi-arrow-right-short" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/></svg>');
+    const arrowRight = penpot.createShapeFromSvg(arrowRightString);
+    if(arrowRight){
+      arrowRight.x = arrowSquare2.x+width/7.69;
+      arrowRight.y = arrowSquare2.y+height/6.666;
+      arrowRight.resize(width/1.33,height/1.33);
+    }
+
+    if(arrowLeft && pageOptionsGroup && arrowRight){
+      penpot.selection = [arrowSquare2,arrowRight];
+      const arrowRightGroup = penpot.group(penpot.selection);
+      penpot.selection = [arrowSquare,arrowLeft];
+      const arrowLeftGroup = penpot.group(penpot.selection);
+      if(arrowRightGroup && arrowLeftGroup){
+        arrowRightGroup.name = "Arrow Right";
+        arrowLeftGroup.name = "Arrow Left";
+        penpot.selection = [arrowRightGroup,arrowLeftGroup,pageOptionsGroup];
+        const pageNav = penpot.group(penpot.selection);
+        if(pageNav){
+          pageNav.name = "Page Navigation";
+        } 
+      }
+    }
+}

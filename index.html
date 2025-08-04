@@ -77,6 +77,10 @@
         b.placeholder = '40';
         var h = document.getElementById("height");
         h.placeholder = '100';
+        var fillC = document.getElementById("fillcolor");
+        fillC.value = "#800000";
+        var iconC = document.getElementById("iconcolor");
+        iconC.value = "#FFFFFF";
 
         settings.open=true;
       }
@@ -102,6 +106,10 @@
         b.placeholder = '100';
         var h = document.getElementById("height");
         h.placeholder = '100';
+        var fillC = document.getElementById("fillcolor");
+        fillC.value = "#800000";
+        var iconC = document.getElementById("iconcolor");
+        iconC.value = "#FFFFFF";
 
         settings.open=true;
       }
@@ -125,6 +133,12 @@
         w.placeholder = '800';
         var i = document.getElementById("items");
         i.placeholder = '7 ';
+        var fillC = document.getElementById("fillcolor");
+        fillC.value = "#FFFFFF";
+        var iconC = document.getElementById("iconcolor");
+        iconC.value = "#666666";
+        var textC = document.getElementById("textcolor");
+        textC.value = "#800000";
 
         settings.open=true;
       }
@@ -148,6 +162,12 @@
         w.placeholder = '2200';
         var h = document.getElementById("height");
         h.placeholder = '200';
+        var fillC = document.getElementById("fillcolor");
+        fillC.value = "#FFFFFF";
+        var iconC = document.getElementById("iconcolor");
+        iconC.value = "#666666";
+        var textC = document.getElementById("textcolor");
+        textC.value = "#800000";
 
         settings.open=true;
       }
@@ -173,12 +193,47 @@
         h.placeholder = '2100';
         var i = document.getElementById("items");
         i.placeholder = '3 ';
+        var fillC = document.getElementById("fillcolor");
+        fillC.value = "#FFFFFF";
+        var iconC = document.getElementById("iconcolor");
+        iconC.value = "#666666";
+        var textC = document.getElementById("textcolor");
+        textC.value = "#800000";
 
         settings.open=true;
       }
       function changeVersion6(){
         buttonVersion = "6";
         document.getElementById("title").innerHTML = "Calender";
+        const settings = document.getElementById("settings");
+
+        var itemsDiv = document.getElementById("itemsDiv");
+        itemsDiv.style.display = "none";
+        var heightDiv = document.getElementById("heightDiv");
+        heightDiv.style.display = "block";
+        var textcolorDiv = document.getElementById("textcolorDiv");
+        textcolorDiv.style.display = "block";
+        var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
+        borderRadiusDiv.style.display = "none";
+        var iconDiv = document.getElementById("iconDiv");
+        iconDiv.style.display = "none";
+
+        var w = document.getElementById("width");
+        w.placeholder = '2850';
+        var h = document.getElementById("height");
+        h.placeholder = '675';
+        var fillC = document.getElementById("fillcolor");
+        fillC.value = "#FFFFFF";
+        var iconC = document.getElementById("iconcolor");
+        iconC.value = "#666666";
+        var textC = document.getElementById("textcolor");
+        textC.value = "#800000";
+        
+        settings.open=true;
+      }
+       function changeVersion7(){
+        buttonVersion = "7";
+        document.getElementById("title").innerHTML = "Page Navigation";
         const settings = document.getElementById("settings");
 
         var itemsDiv = document.getElementById("itemsDiv");
@@ -190,14 +245,20 @@
         var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
         borderRadiusDiv.style.display = "none";
         var iconDiv = document.getElementById("iconDiv");
-        iconDiv.style.display = "block";
+        iconDiv.style.display = "none";
 
         var w = document.getElementById("width");
-        w.placeholder = '800';
+        w.placeholder = '100';
         var h = document.getElementById("height");
-        h.placeholder = '2100';
+        h.placeholder = '100';
         var i = document.getElementById("items");
-        i.placeholder = '3 ';
+        i.placeholder = '5';
+        var fillC = document.getElementById("fillcolor");
+        fillC.value = "#800000";
+        var iconC = document.getElementById("iconcolor");
+        iconC.value = "#FFFFFF";
+        var textC = document.getElementById("textcolor");
+        textC.value = "#000000";
 
         settings.open=true;
       }
@@ -292,7 +353,7 @@
     <div id= "images">
       <div id="group1"> 
         <button id="img1"><img src="fillerImage1.jpg" width="300px" height="150px"></button>
-        <button id="img2"><img src="fillerImage2.jpg" width="300px" height="150px"></button>
+        <button id="img2" onclick=changeVersion7()><img src="fillerImage2.jpg" width="300px" height="150px"></button>
       </div>
       <div id = "group2">
         <button id="img3" onclick=changeVersion6()><img src="fillerImage3.jpg" width="300px" height="150px"> </button>
