@@ -262,6 +262,35 @@
 
         settings.open=true;
       }
+      function changeVersion8(){
+        buttonVersion = "8";
+        document.getElementById("title").innerHTML = "Payment Details Card";
+        const settings = document.getElementById("settings");
+
+        var itemsDiv = document.getElementById("itemsDiv");
+        itemsDiv.style.display = "none";
+        var heightDiv = document.getElementById("heightDiv");
+        heightDiv.style.display = "block";
+        var textcolorDiv = document.getElementById("textcolorDiv");
+        textcolorDiv.style.display = "block";
+        var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
+        borderRadiusDiv.style.display = "none";
+        var iconDiv = document.getElementById("iconDiv");
+        iconDiv.style.display = "none";
+
+        var w = document.getElementById("width");
+        w.placeholder = '950';
+        var h = document.getElementById("height");
+        h.placeholder = '600';
+        var fillC = document.getElementById("fillcolor");
+        fillC.value = "#FFFFFF";
+        var iconC = document.getElementById("iconcolor");
+        iconC.value = "#666666";
+        var textC = document.getElementById("textcolor");
+        textC.value = "#000000";
+
+        settings.open=true;
+      }
       function closeSettings(){
         const settings = document.getElementById("settings");
         settings.open=false;
@@ -352,7 +381,7 @@
     </div> -->
     <div id= "images">
       <div id="group1"> 
-        <button id="img1"><img src="fillerImage1.jpg" width="300px" height="150px"></button>
+        <button id="img1" onclick=changeVersion8()><img src="fillerImage1.jpg" width="300px" height="150px"></button>
         <button id="img2" onclick=changeVersion7()><img src="fillerImage2.jpg" width="300px" height="150px"></button>
       </div>
       <div id = "group2">
