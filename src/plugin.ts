@@ -2,9 +2,9 @@ import {button1, button2} from './button.ts';
 import {dropdown, pageNav} from './dropdown.ts';
 import { nav1, nav2 } from './nav.ts';
 import { calender } from './calender.ts';
-import { paymentDetails } from './form.ts';
+import { addressDetails, paymentDetails } from './form.ts';
 
-penpot.ui.open("Penpot plugin starter template", `?theme=${penpot.theme}`);
+penpot.ui.open("Website Components Plugin", `?theme=${penpot.theme}`);
 
 penpot.ui.onMessage<Map<string,string>>((message) => {
   console.log("plugin");
@@ -59,265 +59,371 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
     }
   }
   if(message.get("data-version")=="8"){
+    if(fillColor && iconColor && textColor){
+    paymentDetails(width,height,fillColor,iconColor,textColor);
+    }
+  }
+  if(message.get("data-version")=="9"){
     // if(fillColor && iconColor && textColor){
-    // paymentDetails(width,height,fillColor,iconColor,textColor);
+    //   addressDetails(width,height,fillColor,iconColor,textColor);
     // }
+    const containerBox = penpot.createRectangle();
+    containerBox.x = penpot.viewport.center.x;
+    containerBox.y = penpot.viewport.center.y;
+    containerBox.resize(1400,1700);
+    containerBox.fills = [{fillColor:'#FFFFFF'}];
 
-     const containerBox = penpot.createRectangle();
-     containerBox.x = penpot.viewport.center.x;
-     containerBox.y = penpot.viewport.center.y;
-     containerBox.resize(930,1250);
-     containerBox.fills = [{fillColor: '#FFFFFF'}];
-
-     const title = penpot.createText("Address Details");
-     if(title){
-      title.x = penpot.viewport.center.x+50; 
-      title.y = penpot.viewport.center.y+60;
+    const title = penpot.createText('Employee Info');
+    if(title){
+      title.x = penpot.viewport.center.x + 70;
+      title.y = penpot.viewport.center.y + 100;
       title.fontSize = '75';
       title.fontFamily = 'Sour Gummy';
-     }
+    }
 
-     const bar = penpot.createRectangle();
-     bar.x = penpot.viewport.center.x+50;
-     bar.y = penpot.viewport.center.y+200;
-     bar.resize(830,10);
-     bar.fills = [{fillColor: '#b1b2b5', fillOpacity: .25}];
+    const bar = penpot.createRectangle();
+    bar.x = penpot.viewport.center.x + 70;
+    bar.y = penpot.viewport.center.y + 230;
+    bar.resize(1230,10);
+    bar.fills = [{fillColor: '#b1b2b5', fillOpacity:.25}];
 
-     const firstName = penpot.createText("FIRST NAME");
-     if(firstName){
-      firstName.x = penpot.viewport.center.x +50;
-      firstName.y = penpot.viewport.center.y +300;
+    const firstName = penpot.createText('FIRST NAME');
+    if(firstName){
+      firstName.x = penpot.viewport.center.x +70;
+      firstName.y = penpot.viewport.center.y + 300;
       firstName.fontSize = '30';
       firstName.fontFamily = 'Sour Gummy';
-     }
+    }
 
-     const firstNameBox = penpot.createRectangle();
-     firstNameBox.x = penpot.viewport.center.x+50;
-     firstNameBox.y = penpot.viewport.center.y+350;
-     firstNameBox.resize(350,80);
-     firstNameBox.borderRadius= 10;
-     firstNameBox.fills = [{fillColor: '#FFFFFF'}];
-     firstNameBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
-     firstNameBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+    const firstNameBox = penpot.createRectangle();
+    firstNameBox.x = penpot.viewport.center.x + 70;
+    firstNameBox.y = penpot.viewport.center.y + 355;
+    firstNameBox.resize(350,80);
+    firstNameBox.borderRadius=10;
+    firstNameBox.fills = [{fillColor: '#FFFFFF'}];
+    firstNameBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
+    firstNameBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-     const firstNameSubText = penpot.createText("First Name");
-     if(firstNameSubText){
-      firstNameSubText.x = penpot.viewport.center.x +65;
-      firstNameSubText.y = penpot.viewport.center.y +365;
+    const firstNameSubText = penpot.createText('First Name');
+    if(firstNameSubText){
+      firstNameSubText.x = penpot.viewport.center.x +80;
+      firstNameSubText.y = penpot.viewport.center.y+375;
       firstNameSubText.fontSize = '30';
       firstNameSubText.fontFamily = 'Sour Gummy';
-      firstNameSubText.fills = [{fillColor:"#e0e0e0"}];
-     }
+      firstNameSubText.fills = [{fillColor: '#e0e0e0'}];
+    }
 
-    const lastName = penpot.createText("LAST NAME");
-     if(lastName){
-      lastName.x = penpot.viewport.center.x +480;
-      lastName.y = penpot.viewport.center.y +300;
+    const middleName = penpot.createText('MIDDLE NAME');
+    if(middleName){
+      middleName.x = penpot.viewport.center.x +520;
+      middleName.y = penpot.viewport.center.y + 300;
+      middleName.fontSize = '30';
+      middleName.fontFamily = 'Sour Gummy';
+    }
+
+    const middleNameBox = penpot.createRectangle();
+    middleNameBox.x = penpot.viewport.center.x + 520;
+    middleNameBox.y = penpot.viewport.center.y + 355;
+    middleNameBox.resize(350,80);
+    middleNameBox.borderRadius = 10;
+    middleNameBox.fills = [{fillColor: '#FFFFFF'}];
+    middleNameBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
+    middleNameBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    const middleNameSubText = penpot.createText('Middle Name');
+    if(middleNameSubText){
+      middleNameSubText.x = penpot.viewport.center.x +530;
+      middleNameSubText.y = penpot.viewport.center.y+375;
+      middleNameSubText.fontSize = '30';
+      middleNameSubText.fontFamily = 'Sour Gummy';
+      middleNameSubText.fills = [{fillColor: '#e0e0e0'}];
+    }
+
+    const lastName = penpot.createText('LAST NAME');
+    if(lastName){
+      lastName.x = penpot.viewport.center.x +960;
+      lastName.y = penpot.viewport.center.y + 300;
       lastName.fontSize = '30';
       lastName.fontFamily = 'Sour Gummy';
-     }
+    }
 
-     const lastNameBox = penpot.createRectangle();
-     lastNameBox.x = penpot.viewport.center.x+480;
-     lastNameBox.y = penpot.viewport.center.y+350;
-     lastNameBox.resize(350,80);
-     lastNameBox.borderRadius = 10;
-     lastNameBox.fills = [{fillColor: '#FFFFFF'}];
-     lastNameBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
-     lastNameBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+    const lastNameBox = penpot.createRectangle();
+    lastNameBox.x = penpot.viewport.center.x + 960;
+    lastNameBox.y = penpot.viewport.center.y + 355;
+    lastNameBox.resize(350,80);
+    lastNameBox.borderRadius = 10; 
+    lastNameBox.fills = [{fillColor: '#FFFFFF'}];
+    lastNameBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
+    lastNameBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-     const lastNameSubText = penpot.createText("Last Name");
-     if(lastNameSubText){
-      lastNameSubText.x = penpot.viewport.center.x +495;
-      lastNameSubText.y = penpot.viewport.center.y +365;
+    const lastNameSubText = penpot.createText('Last Name');
+    if(lastNameSubText){
+      lastNameSubText.x = penpot.viewport.center.x +970;
+      lastNameSubText.y = penpot.viewport.center.y+375;
       lastNameSubText.fontSize = '30';
       lastNameSubText.fontFamily = 'Sour Gummy';
-      lastNameSubText.fills = [{fillColor:"#e0e0e0"}];
-     }
+      lastNameSubText.fills = [{fillColor: '#e0e0e0'}];
+    }
 
-     const address1 = penpot.createText("ADDRESS 1");
-     if(address1){
-      address1.x = penpot.viewport.center.x +50;
-      address1.y = penpot.viewport.center.y +470;
-      address1.fontSize = '30';
-      address1.fontFamily = 'Sour Gummy';
-     }
+    const email = penpot.createText('EMAIL');
+    if(email){
+      email.x = penpot.viewport.center.x + 70;
+      email.y = penpot.viewport.center.y + 480;
+      email.fontSize = '30';
+      email.fontFamily = 'Sour Gummy';
+    }
 
-     const address1Box = penpot.createRectangle();
-     address1Box.x = penpot.viewport.center.x+50;
-     address1Box.y = penpot.viewport.center.y+520;
-     address1Box.resize(780,80);
-     address1Box.borderRadius= 10;
-     address1Box.fills = [{fillColor: '#FFFFFF'}];
-     address1Box.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
-     address1Box.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+    const emailBox = penpot.createRectangle();
+    emailBox.x = penpot.viewport.center.x+70;
+    emailBox.y = penpot.viewport.center.y+525;
+    emailBox.resize(1230,80);
+    emailBox.borderRadius =10;
+    emailBox.fills = [{fillColor: '#FFFFFF'}];
+    emailBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
+    emailBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-     const address1SubText = penpot.createText("123 Sample Street");
-     if(address1SubText){
-      address1SubText.x = penpot.viewport.center.x +65;
-      address1SubText.y = penpot.viewport.center.y +535; 
-      address1SubText.fontSize = '30';
-      address1SubText.fontFamily = 'Sour Gummy';
-      address1SubText.fills = [{fillColor:"#e0e0e0"}];
-     }
+    const emailSubText = penpot.createText("sample@gmail.com");
+    if(emailSubText){
+      emailSubText.x = penpot.viewport.center.x + 85;
+      emailSubText.y = penpot.viewport.center.y + 540;
+      emailSubText.fontSize = '30';
+      emailSubText.fontFamily = 'Sour Gummy';
+      emailSubText.fills = [{fillColor: '#e0e0e0'}];
+    }
 
-     const address2 = penpot.createText("ADDRESS 2");
-     if(address2){
-      address2.x = penpot.viewport.center.x +50;
-      address2.y = penpot.viewport.center.y +640;
-      address2.fontSize = '30';
-      address2.fontFamily = 'Sour Gummy';
-     }
+    const phone = penpot.createText('PHONE NUMBER');
+    if(phone){
+      phone.x = penpot.viewport.center.x + 70;
+      phone.y = penpot.viewport.center.y + 650;
+      phone.fontSize = '30';
+      phone.fontFamily = 'Sour Gummy';
+    }
 
-     const address2Box = penpot.createRectangle();
-     address2Box.x = penpot.viewport.center.x+50;
-     address2Box.y = penpot.viewport.center.y+690;
-     address2Box.resize(780,80);
-     address2Box.borderRadius= 10;
-     address2Box.fills = [{fillColor: '#FFFFFF'}];
-     address2Box.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
-     address2Box.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+    const phoneBox = penpot.createRectangle();
+    phoneBox.x = penpot.viewport.center.x+70;
+    phoneBox.y = penpot.viewport.center.y+695;
+    phoneBox.resize(1230,80);
+    phoneBox.borderRadius =10;
+    phoneBox.fills = [{fillColor: '#FFFFFF'}];
+    phoneBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
+    phoneBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-     const address2SubText = penpot.createText("456 Example Dr");
-     if(address2SubText){
-      address2SubText.x = penpot.viewport.center.x +65;
-      address2SubText.y = penpot.viewport.center.y +705; 
-      address2SubText.fontSize = '30';
-      address2SubText.fontFamily = 'Sour Gummy';
-      address2SubText.fills = [{fillColor:"#e0e0e0"}];
-     }
+    const phoneSubText = penpot.createText("123-456-7890");
+    if(phoneSubText){
+      phoneSubText.x = penpot.viewport.center.x + 85; 
+      phoneSubText.y = penpot.viewport.center.y + 710;
+      phoneSubText.fontSize = '30';
+      phoneSubText.fontFamily = 'Sour Gummy';
+      phoneSubText.fills = [{fillColor: '#e0e0e0'}]; 
+    }
 
-    const city = penpot.createText("CITY");
-     if(city){
-      city.x = penpot.viewport.center.x +50;
-      city.y = penpot.viewport.center.y +810;
-      city.fontSize = '30';
-      city.fontFamily = 'Sour Gummy';
-     }
+    const birthday = penpot.createText('BIRTHDAY');
+    if(birthday){
+      birthday.x = penpot.viewport.center.x + 70;
+      birthday.y = penpot.viewport.center.y + 820;
+      birthday.fontFamily = 'Sour Gummy';
+      birthday.fontSize = '30';
+    }
+    
+    const birthdayBox = penpot.createRectangle();
+    birthdayBox.x = penpot.viewport.center.x+70;
+    birthdayBox.y = penpot.viewport.center.y+865;
+    birthdayBox.resize(400,80);
+    birthdayBox.borderRadius =10;
+    birthdayBox.fills = [{fillColor: '#FFFFFF'}];
+    birthdayBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
+    birthdayBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-     const cityBox = penpot.createRectangle();
-     cityBox.x = penpot.viewport.center.x+50;
-     cityBox.y = penpot.viewport.center.y+860;
-     cityBox.resize(450,80);
-     cityBox.borderRadius= 10;
-     cityBox.fills = [{fillColor: '#FFFFFF'}];
-     cityBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
-     cityBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+    const birthdaySubText = penpot.createText("00/00/0000");
+    if(birthdaySubText){
+      birthdaySubText.x = penpot.viewport.center.x + 85; 
+      birthdaySubText.y = penpot.viewport.center.y + 880;
+      birthdaySubText.fontSize = '30';
+      birthdaySubText.fontFamily = 'Sour Gummy';
+      birthdaySubText.fills = [{fillColor: '#e0e0e0'}]; 
+    }
 
-     const citySubText = penpot.createText("Test City");
-     if(citySubText){
-      citySubText.x = penpot.viewport.center.x +65;
-      citySubText.y = penpot.viewport.center.y +875; 
-      citySubText.fontSize = '30';
-      citySubText.fontFamily = 'Sour Gummy';
-      citySubText.fills = [{fillColor:"#e0e0e0"}];
-     }
+    const gender = penpot.createText('Gender');
+    if(gender){
+      gender.x = penpot.viewport.center.x + 570;
+      gender.y = penpot.viewport.center.y + 820;
+      gender.fontFamily = 'Sour Gummy';
+      gender.fontSize = '30';
+    }
+    
+    const genderBox = penpot.createRectangle();
+    genderBox.x = penpot.viewport.center.x+570;
+    genderBox.y = penpot.viewport.center.y+865;
+    genderBox.resize(220,80);
+    genderBox.borderRadius =10;
+    genderBox.fills = [{fillColor: '#FFFFFF'}];
+    genderBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
+    genderBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-    const state = penpot.createText("STATE");
-     if(state){
-      state.x = penpot.viewport.center.x +615;
-      state.y = penpot.viewport.center.y +810;
-      state.fontSize = '30';
-      state.fontFamily = 'Sour Gummy';
-     }
+    const genderSubText = penpot.createText("Gender");
+    if(genderSubText){
+      genderSubText.x = penpot.viewport.center.x + 585; 
+      genderSubText.y = penpot.viewport.center.y + 880;
+      genderSubText.fontSize = '30';
+      genderSubText.fontFamily = 'Sour Gummy';
+      genderSubText.fills = [{fillColor: '#e0e0e0'}]; 
+    }
 
-     const stateBox = penpot.createRectangle();
-     stateBox.x = penpot.viewport.center.x+615;
-     stateBox.y = penpot.viewport.center.y+860;
-     stateBox.resize(220,80);
-     stateBox.borderRadius= 10;
-     stateBox.fills = [{fillColor: '#FFFFFF'}];
-     stateBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
-     stateBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+    const ssn = penpot.createText('SSN');
+    if(ssn){
+      ssn.x = penpot.viewport.center.x + 890;
+      ssn.y = penpot.viewport.center.y + 820;
+      ssn.fontFamily = 'Sour Gummy';
+      ssn.fontSize = '30';
+    }
+    
+    const ssnBox = penpot.createRectangle();
+    ssnBox.x = penpot.viewport.center.x+900;
+    ssnBox.y = penpot.viewport.center.y+865;
+    ssnBox.resize(400,80);
+    ssnBox.borderRadius =10;
+    ssnBox.fills = [{fillColor: '#FFFFFF'}];
+    ssnBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
+    ssnBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-     const stateSubText = penpot.createText("EX");
-     if(stateSubText){
-      stateSubText.x = penpot.viewport.center.x +630;
-      stateSubText.y = penpot.viewport.center.y +875;  
-      stateSubText.fontSize = '30';
-      stateSubText.fontFamily = 'Sour Gummy';
-      stateSubText.fills = [{fillColor:"#e0e0e0"}];
-     }
+    const ssnSubText = penpot.createText("000000");
+    if(ssnSubText){
+      ssnSubText.x = penpot.viewport.center.x + 905; 
+      ssnSubText.y = penpot.viewport.center.y + 880;
+      ssnSubText.fontSize = '30';
+      ssnSubText.fontFamily = 'Sour Gummy';
+      ssnSubText.fills = [{fillColor: '#e0e0e0'}]; 
+    }
 
-     const stateArrow = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
-     if(stateArrow){
-      stateArrow.x = penpot.viewport.center.x +760;
-      stateArrow.y = penpot.viewport.center.y+870;
-      stateArrow.resize(60,60);
-     }
+    const position = penpot.createText('POSITION');
+    if(position){
+      position.x = penpot.viewport.center.x + 70;
+      position.y = penpot.viewport.center.y + 990;
+      position.fontFamily = 'Sour Gummy';
+      position.fontSize = '30';
+    }
+    
+    const positionBox = penpot.createRectangle();
+    positionBox.x = penpot.viewport.center.x+70;
+    positionBox.y = penpot.viewport.center.y+1035;
+    positionBox.resize(400,80);
+    positionBox.borderRadius =10;
+    positionBox.fills = [{fillColor: '#FFFFFF'}];
+    positionBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
+    positionBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-    const zipCode = penpot.createText("ZIP CODE");
-     if(zipCode){
-      zipCode.x = penpot.viewport.center.x +50;
-      zipCode.y = penpot.viewport.center.y + 980;
-      zipCode.fontSize = '30';
-      zipCode.fontFamily = 'Sour Gummy';
-     }
+    const positionSubText = penpot.createText("Job Position");
+    if(positionSubText){
+      positionSubText.x = penpot.viewport.center.x + 85; 
+      positionSubText.y = penpot.viewport.center.y + 1050;
+      positionSubText.fontSize = '30';
+      positionSubText.fontFamily = 'Sour Gummy';
+      positionSubText.fills = [{fillColor: '#e0e0e0'}]; 
+    }
 
-     const zipCodeBox = penpot.createRectangle();
-     zipCodeBox.x = penpot.viewport.center.x+50;
-     zipCodeBox.y = penpot.viewport.center.y+1030;
-     zipCodeBox.resize(400,80);
-     zipCodeBox.borderRadius= 10;
-     zipCodeBox.fills = [{fillColor: '#FFFFFF'}];
-     zipCodeBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
-     zipCodeBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+    const employmentType = penpot.createText('EMPLOYMENT TYPE');
+    if(employmentType){
+      employmentType.x = penpot.viewport.center.x + 570;
+      employmentType.y = penpot.viewport.center.y + 990;
+      employmentType.fontFamily = 'Sour Gummy';
+      employmentType.fontSize = '30';
+    }
+    
+    const employmentTypeBox = penpot.createRectangle();
+    employmentTypeBox.x = penpot.viewport.center.x+570;
+    employmentTypeBox.y = penpot.viewport.center.y+1035;
+    employmentTypeBox.resize(320,80);
+    employmentTypeBox.borderRadius =10;
+    employmentTypeBox.fills = [{fillColor: '#FFFFFF'}];
+    employmentTypeBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
+    employmentTypeBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-     const zipCodeSubText = penpot.createText("000000");
-     if(zipCodeSubText){
-      zipCodeSubText.x = penpot.viewport.center.x +65;
-      zipCodeSubText.y = penpot.viewport.center.y +1045; 
-      zipCodeSubText.fontSize = '30';
-      zipCodeSubText.fontFamily = 'Sour Gummy';
-      zipCodeSubText.fills = [{fillColor:"#e0e0e0"}];
-     }
+    const employmentTypeSubText = penpot.createText("Full-Time");
+    if(employmentTypeSubText){
+      employmentTypeSubText.x = penpot.viewport.center.x + 585; 
+      employmentTypeSubText.y = penpot.viewport.center.y + 1050;
+      employmentTypeSubText.fontSize = '30';
+      employmentTypeSubText.fontFamily = 'Sour Gummy';
+      employmentTypeSubText.fills = [{fillColor: '#e0e0e0'}]; 
+    }
 
-     const country = penpot.createText("COUNTRY");
-     if(country){
-      country.x = penpot.viewport.center.x +535;
-      country.y = penpot.viewport.center.y + 980;
-      country.fontSize = '30';
-      country.fontFamily = 'Sour Gummy';
-     }
+    const status = penpot.createText('STATUS');
+    if(status){
+      status.x = penpot.viewport.center.x + 970;
+      status.y = penpot.viewport.center.y + 990;
+      status.fontFamily = 'Sour Gummy';
+      status.fontSize = '30';
+    }
 
-     const countryBox = penpot.createRectangle();
-     countryBox.x = penpot.viewport.center.x+535;
-     countryBox.y = penpot.viewport.center.y+1030;
-     countryBox.resize(300,80);
-     countryBox.borderRadius= 10;
-     countryBox.fills = [{fillColor: '#FFFFFF'}];
-     countryBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
-     countryBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+    const statusBox = penpot.createRectangle();
+    statusBox.x = penpot.viewport.center.x+970;
+    statusBox.y = penpot.viewport.center.y+1035;
+    statusBox.resize(320,80);
+    statusBox.borderRadius =10;
+    statusBox.fills = [{fillColor: '#FFFFFF'}];
+    statusBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
+    statusBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-     const countrySubText = penpot.createText("Trial");
-     if(countrySubText){
-      countrySubText.x = penpot.viewport.center.x +550;
-      countrySubText.y = penpot.viewport.center.y + 1045; 
-      countrySubText.fontSize = '30';
-      countrySubText.fontFamily = 'Sour Gummy';
-      countrySubText.fills = [{fillColor:"#e0e0e0"}];
-     }
+    const statusSubText = penpot.createText("Active");
+    if(statusSubText){
+      statusSubText.x = penpot.viewport.center.x + 985; 
+      statusSubText.y = penpot.viewport.center.y + 1050;
+      statusSubText.fontSize = '30';
+      statusSubText.fontFamily = 'Sour Gummy';
+      statusSubText.fills = [{fillColor: '#e0e0e0'}]; 
+    }
 
-     const countryArrow = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
-     if(countryArrow){
-      countryArrow.x = penpot.viewport.center.x +760;
-      countryArrow.y = penpot.viewport.center.y+1040;
-      countryArrow.resize(60,60);
-     }
+    const dateOfHire = penpot.createText('DATE OF HIRE');
+    if(dateOfHire){
+      dateOfHire.x = penpot.viewport.center.x + 70;
+      dateOfHire.y = penpot.viewport.center.y + 1160;
+      dateOfHire.fontFamily = 'Sour Gummy';
+      dateOfHire.fontSize = '30';
+    }
+    
+    const dateOfHireBox = penpot.createRectangle();
+    dateOfHireBox.x = penpot.viewport.center.x+70;
+    dateOfHireBox.y = penpot.viewport.center.y+1205;
+    dateOfHireBox.resize(550,80);
+    dateOfHireBox.borderRadius =10;
+    dateOfHireBox.fills = [{fillColor: '#FFFFFF'}];
+    dateOfHireBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
+    dateOfHireBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
- 
+    const dateOfHireSubText = penpot.createText("00/00/0000");
+    if(dateOfHireSubText){
+      dateOfHireSubText.x = penpot.viewport.center.x + 85; 
+      dateOfHireSubText.y = penpot.viewport.center.y + 1220;
+      dateOfHireSubText.fontSize = '30';
+      dateOfHireSubText.fontFamily = 'Sour Gummy';
+      dateOfHireSubText.fills = [{fillColor: '#e0e0e0'}]; 
+    }
 
+    const termDate = penpot.createText('TERMINATION DATE');
+    if(termDate){
+      termDate.x = penpot.viewport.center.x + 740;
+      termDate.y = penpot.viewport.center.y + 1160;
+      termDate.fontFamily = 'Sour Gummy';
+      termDate.fontSize = '30';
+    }
+    
+    const termDateBox = penpot.createRectangle();
+    termDateBox.x = penpot.viewport.center.x+740;
+    termDateBox.y = penpot.viewport.center.y+1205;
+    termDateBox.resize(550,80);
+    termDateBox.borderRadius =10;
+    termDateBox.fills = [{fillColor: '#FFFFFF'}];
+    termDateBox.strokes = [{strokeColor: '#000000', strokeOpacity: .5, strokeWidth:1}];
+    termDateBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-
-
-
-
-
-
-
-
-
-
+    const termDateSubText = penpot.createText("00/00/0000");
+    if(termDateSubText){
+      termDateSubText.x = penpot.viewport.center.x + 755; 
+      termDateSubText.y = penpot.viewport.center.y + 1220;
+      termDateSubText.fontSize = '30';
+      termDateSubText.fontFamily = 'Sour Gummy';
+      termDateSubText.fills = [{fillColor: '#e0e0e0'}]; 
+    }
 
 
   }
