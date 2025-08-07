@@ -527,3 +527,673 @@ export function addressDetails(width:number, height:number, fillColor:string, ic
       addressDetailsGroup.name = "Address Details";
     }
 }
+
+export function employeeInfo(width:number, height:number, fillColor:string, iconColor:string, textColor:string){
+    var contentList = [];
+    const containerBox = penpot.createRectangle();
+    containerBox.x = penpot.viewport.center.x;
+    containerBox.y = penpot.viewport.center.y;
+    containerBox.resize(width,height); //(1400,1460)
+    containerBox.fills = [{fillColor:fillColor}];
+    containerBox.name = "Employee Info Box";
+    contentList.push(containerBox);
+
+    const title = penpot.createText('Employee Info');
+    if(title){
+      title.x = penpot.viewport.center.x + width/20;
+      title.y = penpot.viewport.center.y + height/14.6;
+      title.fontSize = String(width/18.66);
+      title.fontFamily = 'Sour Gummy';
+      title.name = "Employee Info Title";
+      contentList.push(title);
+    }
+
+    const bar = penpot.createRectangle();
+    bar.x = penpot.viewport.center.x + width/20;
+    bar.y = penpot.viewport.center.y + height/6.347; 
+    bar.resize(width/1.138,height/146);
+    bar.fills = [{fillColor: iconColor, fillOpacity:.25}];
+    bar.name = "Divider";
+    contentList.push(bar);
+
+
+    var component_dimensions = [
+      {"textX": width/20, "textY":height/4.86, "boxX":width/20, "boxY":height/4.11, "boxWidth":width/4, "boxHeight":height/18.25, "subtextX": width/17.5, "subtextY":height/3.893, "calenderX": 0, "calenderY": 0, "calenderWidth": 0, "calenderHeight": 0, "arrowX": 0, "arrowY": 0, "arrowWidth": 0 , "arrowHeight": 0, "name": "First Name", "subtext": "First Name"},
+      {"textX": width/2.69, "textY":height/4.86, "boxX":width/2.69, "boxY":height/4.11, "boxWidth":width/4, "boxHeight":height/18.25, "subtextX": width/2.641, "subtextY":height/3.893, "calenderX": 0, "calenderY": 0, "calenderWidth": 0, "calenderHeight": 0, "arrowX": 0, "arrowY": 0, "arrowWidth": 0 , "arrowHeight": 0, "name": "Middle Name", "subtext": "Middle Name"},
+      {"textX": width/1.458, "textY":height/4.866, "boxX":width/1.458, "boxY":height/4.11, "boxWidth":width/4, "boxHeight":height/18.25, "subtextX": width/1.44, "subtextY":height/3.893, "calenderX": 0, "calenderY": 0, "calenderWidth": 0, "calenderHeight": 0, "arrowX": 0, "arrowY": 0, "arrowWidth": 0 , "arrowHeight": 0, "name": "Last Name", "subtext": "Last Name"},
+      {"textX": width/20, "textY":height/3.0416, "boxX":width/20, "boxY":height/2.78, "boxWidth":width/1.138, "boxHeight":height/18.25, "subtextX": width/16.47, "subtextY":height/2.7, "calenderX": 0, "calenderY": 0, "calenderWidth": 0, "calenderHeight": 0, "arrowX": 0, "arrowY": 0, "arrowWidth": 0 , "arrowHeight": 0, "name": "Email", "subtext": "sample@gmail.com"},
+      {"textX": width/20, "textY":height/2.246, "boxX":width/20, "boxY":height/2.1, "boxWidth":width/1.138, "boxHeight":height/18.25, "subtextX": width/16.47, "subtextY":height/2.056, "calenderX": 0, "calenderY": 0, "calenderWidth": 0, "calenderHeight": 0, "arrowX": 0, "arrowY": 0, "arrowWidth": 0 , "arrowHeight": 0, "name": "Phone", "subtext": "123-456-7890"},
+      {"textX": width/20, "textY":height/1.78, "boxX":width/20, "boxY":height/1.68, "boxWidth":width/3.5, "boxHeight":height/18.25, "subtextX": width/16.47, "subtextY":height/1.659, "calenderX": width/3.58, "calenderY": height/1.668, "calenderWidth": width/28, "calenderHeight": height/24.33, "arrowX": 0, "arrowY": 0, "arrowWidth": 0 , "arrowHeight": 0,"name": "Birthday", "subtext":"00/00/0000"},
+      {"textX": width/2.456, "textY":height/1.78, "boxX":width/2.456, "boxY":height/1.687, "boxWidth":width/6.36, "boxHeight":height/18.25, "subtextX": width/2.39, "subtextY":height/1.659, "calenderX": 0, "calenderY": 0, "calenderWidth": 0, "calenderHeight": 0, "arrowX": width/1.971, "arrowY": height/1.697, "arrowWidth": width/17.5, "arrowHeight": height/16.22, "name": "Gender", "subtext":"Gender"},
+      {"textX": width/1.56, "textY":height/1.78, "boxX":width/1.546, "boxY":height/1.687, "boxWidth":width/3.5, "boxHeight":height/18.25, "subtextX": width/1.5217, "subtextY":height/1.659, "calenderX": 0, "calenderY": 0, "calenderWidth": 0, "calenderHeight": 0, "arrowX": 0, "arrowY": 0, "arrowWidth": 0 , "arrowHeight": 0, "name": "SSN", "subtext":"ssn"},
+      {"textX": width/20, "textY":height/1.47, "boxX":width/20, "boxY":height/1.41, "boxWidth":width/3.5, "boxHeight":height/18.25, "subtextX": width/16.47, "subtextY":height/1.39, "calenderX": 0, "calenderY": 0, "calenderWidth": 0, "calenderHeight": 0, "arrowX": 0, "arrowY": 0, "arrowWidth": 0 , "arrowHeight": 0, "name": "Position", "subtext":"Job Position"},
+      {"textX": width/2.456, "textY":height/1.47, "boxX":width/2.456, "boxY":height/1.41, "boxWidth":width/4.375, "boxHeight":height/18.25, "subtextX": width/2.393, "subtextY":height/1.39, "calenderX": 0, "calenderY": 0, "calenderWidth": 0, "calenderHeight": 0, "arrowX": width/1.75, "arrowY": height/1.417, "arrowWidth": width/17.5, "arrowHeight": height/16.22, "name": "Employment Type", "subtext":"Full-Time"},
+      {"textX": width/1.435, "textY":height/1.47, "boxX":width/1.435, "boxY":height/1.41, "boxWidth":width/4.375, "boxHeight":height/18.25, "subtextX": width/1.414, "subtextY":height/1.39, "calenderX": 0, "calenderY": 0, "calenderWidth": 0, "calenderHeight": 0, "arrowX": width/1.16, "arrowY": height/1.417, "arrowWidth": width/17.5, "arrowHeight": height/16.22, "name": "Status", "subtext":"Active"},
+      {"textX": width/20, "textY":height/1.258, "boxX":width/20, "boxY":height/1.211, "boxWidth":width/2.545, "boxHeight":height/18.25, "subtextX": width/16.47, "subtextY":height/1.196, "calenderX": width/2.59, "calenderY": height/1.206, "calenderWidth": width/28, "calenderHeight": height/24.33, "arrowX": 0, "arrowY": 0, "arrowWidth": 0 , "arrowHeight": 0, "name": "Date of Hire", "subtext":"00/00/0000"},
+      {"textX": width/1.879, "textY":height/1.258, "boxX":width/1.879, "boxY":height/1.2116, "boxWidth":width/2.54, "boxHeight":height/18.25, "subtextX": width/1.84, "subtextY":height/1.196, "calenderX": width/1.15, "calenderY": height/1.206, "calenderWidth": width/28, "calenderHeight": height/24.33, "arrowX": 0, "arrowY": 0, "arrowWidth": 0 , "arrowHeight": 0, "name": "Termination Date", "subtext": "00/00/000"},
+    ];
+    for(let i=0;i<component_dimensions.length;i++){
+      var parts = [];
+      const text = penpot.createText((component_dimensions[i]["name"]).toUpperCase());
+      if(text){
+        text.x = penpot.viewport.center.x +component_dimensions[i]["textX"];
+        text.y = penpot.viewport.center.y + component_dimensions[i]["textY"];
+        text.fontSize = String(width/46.66);
+        text.fontFamily = 'Sour Gummy';
+        text.fills = [{fillColor:textColor}];
+        parts.push(text);
+      }
+
+      const box = penpot.createRectangle();
+      box.x = penpot.viewport.center.x + component_dimensions[i]["boxX"];
+      box.y = penpot.viewport.center.y + component_dimensions[i]["boxY"];
+      box.resize(component_dimensions[i]["boxWidth"],component_dimensions[i]["boxHeight"]);
+      box.borderRadius=10;
+      box.fills = [{fillColor: fillColor}];
+      box.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+      box.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+      parts.push(box);
+
+      const subText = penpot.createText(component_dimensions[i]["subtext"]);
+      if(subText){
+        subText.x = penpot.viewport.center.x +component_dimensions[i]["subtextX"];
+        subText.y = penpot.viewport.center.y+component_dimensions[i]["subtextY"];
+        subText.fontSize = String(width/46.66);
+        subText.fontFamily = 'Sour Gummy';
+        subText.fills = [{fillColor: textColor, fillOpacity:.25}];
+        parts.push(subText);
+      }
+      const iconColorString = "'"+iconColor+"'";
+      if(component_dimensions[i]["name"] == "Birthday"||component_dimensions[i]["name"] == "Date of Hire"||component_dimensions[i]["name"] == "Termination Date"){
+        const calenderString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+ ' class="bi bi-calendar4" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/></svg>';
+        const calender = penpot.createShapeFromSvg(calenderString);
+          if(calender){
+            calender.x = penpot.viewport.center.x + component_dimensions[i]["calenderX"];
+            calender.y = penpot.viewport.center.y + component_dimensions[i]["calenderY"];
+            calender.resize(component_dimensions[i]["calenderWidth"],component_dimensions[i]["calenderHeight"]);
+            parts.push(calender);
+          }
+      }
+      if(component_dimensions[i]["name"] == "Gender"||component_dimensions[i]["name"] == "Employment Type"||component_dimensions[i]["name"] == "Status"){
+        const arrowString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>';
+        const arrow = penpot.createShapeFromSvg(arrowString);
+        if(arrow){
+          arrow.x = penpot.viewport.center.x + component_dimensions[i]["arrowX"];
+          arrow.y = penpot.viewport.center.y + component_dimensions[i]["arrowY"];
+          arrow.resize(component_dimensions[i]["arrowWidth"],component_dimensions[i]["arrowHeight"]);
+          parts.push(arrow);
+        }
+      }
+
+      penpot.selection = parts;
+      const group = penpot.group(penpot.selection);
+      if(group){
+        group.name = component_dimensions[i]["name"];
+        contentList.push(group);
+      }
+    }
+   
+  
+    penpot.selection = contentList;
+    const employeeInfo = penpot.group(penpot.selection);
+    if(employeeInfo){
+      employeeInfo.name = "Employee Info"
+    }
+
+
+    // var contentList = [];
+    // const containerBox = penpot.createRectangle();
+    // containerBox.x = penpot.viewport.center.x;
+    // containerBox.y = penpot.viewport.center.y;
+    // containerBox.resize(width,height); //(1400,1460)
+    // containerBox.fills = [{fillColor:fillColor}];
+    // containerBox.name = "Employee Info Box";
+    // contentList.push(containerBox);
+
+    // const title = penpot.createText('Employee Info');
+    // if(title){
+    //   title.x = penpot.viewport.center.x + width/20;
+    //   title.y = penpot.viewport.center.y + height/14.6;
+    //   title.fontSize = String(width/18.66);
+    //   title.fontFamily = 'Sour Gummy';
+    //   title.name = "Employee Info Title";
+    //   contentList.push(title);
+    // }
+
+    // const bar = penpot.createRectangle();
+    // bar.x = penpot.viewport.center.x + width/20;
+    // bar.y = penpot.viewport.center.y + height/6.347; 
+    // bar.resize(width/1.138,height/146);
+    // bar.fills = [{fillColor: iconColor, fillOpacity:.25}];
+    // bar.name = "Divider";
+    // contentList.push(bar);
+
+    // const firstName = penpot.createText('FIRST NAME');
+    // if(firstName){
+    //   firstName.x = penpot.viewport.center.x +width/20;
+    //   firstName.y = penpot.viewport.center.y + height/4.86;
+    //   firstName.fontSize = String(width/46.66);
+    //   firstName.fontFamily = 'Sour Gummy';
+    //   firstName.fills = [{fillColor:textColor}];
+    // }
+
+    // const firstNameBox = penpot.createRectangle();
+    // firstNameBox.x = penpot.viewport.center.x + width/20;
+    // firstNameBox.y = penpot.viewport.center.y + height/4.11;
+    // firstNameBox.resize(width/4,height/18.25);
+    // firstNameBox.borderRadius=10;
+    // firstNameBox.fills = [{fillColor: fillColor}];
+    // firstNameBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    // firstNameBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const firstNameSubText = penpot.createText('First Name');
+    // if(firstNameSubText){
+    //   firstNameSubText.x = penpot.viewport.center.x +width/17.5;
+    //   firstNameSubText.y = penpot.viewport.center.y+height/3.893;
+    //   firstNameSubText.fontSize = String(width/46.66);
+    //   firstNameSubText.fontFamily = 'Sour Gummy';
+    //   firstNameSubText.fills = [{fillColor: textColor, fillOpacity:.25}];
+    // }
+
+    // if(firstName && firstNameSubText){
+    //   penpot.selection = [firstName,firstNameBox,firstNameSubText];
+    //   const firstNameGroup = penpot.group(penpot.selection);
+    //   if(firstNameGroup){
+    //     firstNameGroup.name = "First Name";
+    //     contentList.push(firstNameGroup);
+    //   }
+    // }
+
+    // const middleName = penpot.createText('MIDDLE NAME');
+    // if(middleName){
+    //   middleName.x = penpot.viewport.center.x +width/2.69;
+    //   middleName.y = penpot.viewport.center.y + height/4.86;
+    //   middleName.fontSize = String(width/46.66);
+    //   middleName.fontFamily = 'Sour Gummy';
+    //   middleName.fills = [{fillColor:textColor}];
+    // }
+
+    // const middleNameBox = penpot.createRectangle();
+    // middleNameBox.x = penpot.viewport.center.x + width/2.69;
+    // middleNameBox.y = penpot.viewport.center.y + height/4.11;
+    // middleNameBox.resize(width/4,height/18.25);
+    // middleNameBox.borderRadius = 10;
+    // middleNameBox.fills = [{fillColor: fillColor}];
+    // middleNameBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    // middleNameBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const middleNameSubText = penpot.createText('Middle Name');
+    // if(middleNameSubText){
+    //   middleNameSubText.x = penpot.viewport.center.x +width/2.641;
+    //   middleNameSubText.y = penpot.viewport.center.y+height/3.893;
+    //   middleNameSubText.fontSize = String(width/46.66);
+    //   middleNameSubText.fontFamily = 'Sour Gummy';
+    //   middleNameSubText.fills = [{fillColor: textColor, fillOpacity:.25}];
+    // }
+
+    // if(middleName && middleNameSubText){
+    //   penpot.selection = [middleName,middleNameBox,middleNameSubText];
+    //   const middleNameGroup = penpot.group(penpot.selection);
+    //   if(middleNameGroup){
+    //     middleNameGroup.name = "Middle Name";
+    //     contentList.push(middleNameGroup);
+    //   }
+    // }
+
+    // const lastName = penpot.createText('LAST NAME');
+    // if(lastName){
+    //   lastName.x = penpot.viewport.center.x +width/1.458;
+    //   lastName.y = penpot.viewport.center.y + height/4.866;
+    //   lastName.fontSize = String(width/46.66);
+    //   lastName.fontFamily = 'Sour Gummy';
+    //   lastName.fills = [{fillColor:textColor}];
+    // }
+
+    // const lastNameBox = penpot.createRectangle();
+    // lastNameBox.x = penpot.viewport.center.x + width/1.458;
+    // lastNameBox.y = penpot.viewport.center.y + height/4.11;
+    // lastNameBox.resize(width/4,height/18.25);
+    // lastNameBox.borderRadius = 10; 
+    // lastNameBox.fills = [{fillColor: fillColor}];
+    // lastNameBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    // lastNameBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const lastNameSubText = penpot.createText('Last Name');
+    // if(lastNameSubText){
+    //   lastNameSubText.x = penpot.viewport.center.x +width/1.44;
+    //   lastNameSubText.y = penpot.viewport.center.y+height/3.893;
+    //   lastNameSubText.fontSize = String(width/46.66);
+    //   lastNameSubText.fontFamily = 'Sour Gummy';
+    //   lastNameSubText.fills = [{fillColor: textColor, fillOpacity:.25}];
+    // }
+
+    // if(lastName && lastNameSubText){
+    //   penpot.selection = [lastName,lastNameBox,lastNameSubText];
+    //   const lastNameGroup = penpot.group(penpot.selection);
+    //   if(lastNameGroup){
+    //     lastNameGroup.name = "Last Name";
+    //     contentList.push(lastNameGroup);
+    //   }
+    // }
+
+    // const email = penpot.createText('EMAIL');
+    // if(email){
+    //   email.x = penpot.viewport.center.x + width/20;
+    //   email.y = penpot.viewport.center.y + height/3.0416;
+    //   email.fontSize = String(width/46.66);
+    //   email.fontFamily = 'Sour Gummy';
+    //   email.fills = [{fillColor:textColor}];
+    // }
+
+    // const emailBox = penpot.createRectangle();
+    // emailBox.x = penpot.viewport.center.x+width/20;
+    // emailBox.y = penpot.viewport.center.y+height/2.78;
+    // emailBox.resize(width/1.138,height/18.25);
+    // emailBox.borderRadius = 10;
+    // emailBox.fills = [{fillColor: fillColor}];
+    // emailBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    // emailBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const emailSubText = penpot.createText("sample@gmail.com");
+    // if(emailSubText){
+    //   emailSubText.x = penpot.viewport.center.x + width/16.47;
+    //   emailSubText.y = penpot.viewport.center.y + height/2.7;
+    //   emailSubText.fontSize = String(width/46.66);
+    //   emailSubText.fontFamily = 'Sour Gummy';
+    //   emailSubText.fills = [{fillColor: textColor, fillOpacity:.25}];
+    // }
+
+    // if(email && emailSubText){
+    //   penpot.selection = [email,emailBox,emailSubText];
+    //   const emailGroup = penpot.group(penpot.selection);
+    //   if(emailGroup){
+    //     emailGroup.name = "Email";
+    //     contentList.push(emailGroup);
+    //   }
+    // }
+
+    // const phone = penpot.createText('PHONE NUMBER');
+    // if(phone){
+    //   phone.x = penpot.viewport.center.x + width/20;
+    //   phone.y = penpot.viewport.center.y + height/2.246;
+    //   phone.fontSize = String(width/46.66);
+    //   phone.fontFamily = 'Sour Gummy';
+    //   phone.fills = [{fillColor:textColor}];
+    // }
+
+    // const phoneBox = penpot.createRectangle();
+    // phoneBox.x = penpot.viewport.center.x+width/20;
+    // phoneBox.y = penpot.viewport.center.y+height/2.1;
+    // phoneBox.resize(width/1.138,height/18.25);
+    // phoneBox.borderRadius =10;
+    // phoneBox.fills = [{fillColor: fillColor}];
+    // phoneBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    // phoneBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const phoneSubText = penpot.createText("123-456-7890");
+    // if(phoneSubText){
+    //   phoneSubText.x = penpot.viewport.center.x + width/16.47; 
+    //   phoneSubText.y = penpot.viewport.center.y + height/2.056;
+    //   phoneSubText.fontSize = String(width/46.66);
+    //   phoneSubText.fontFamily = 'Sour Gummy';
+    //   phoneSubText.fills = [{fillColor: textColor, fillOpacity:.25}]; 
+    // }
+
+    //   if(phone && phoneSubText){
+    //   penpot.selection = [phone,phoneBox,phoneSubText];
+    //   const phoneGroup = penpot.group(penpot.selection);
+    //   if(phoneGroup){
+    //     phoneGroup.name = "Phone";
+    //     contentList.push(phoneGroup);
+    //   }
+    // }
+
+    // const birthday = penpot.createText('BIRTHDAY');
+    // if(birthday){
+    //   birthday.x = penpot.viewport.center.x + width/20;
+    //   birthday.y = penpot.viewport.center.y + height/1.78;
+    //   birthday.fontFamily = 'Sour Gummy';
+    //   birthday.fontSize = String(width/46.66);
+    //   birthday.fills = [{fillColor:textColor}];
+    // }
+    
+    // const birthdayBox = penpot.createRectangle();
+    // birthdayBox.x = penpot.viewport.center.x+width/20;
+    // birthdayBox.y = penpot.viewport.center.y+height/1.68;
+    // birthdayBox.resize(width/3.5,height/18.25);
+    // birthdayBox.borderRadius =10;
+    // birthdayBox.fills = [{fillColor: fillColor}];
+    // birthdayBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    // birthdayBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const birthdaySubText = penpot.createText("00/00/0000");
+    // if(birthdaySubText){
+    //   birthdaySubText.x = penpot.viewport.center.x + width/16.47; 
+    //   birthdaySubText.y = penpot.viewport.center.y + height/1.659;
+    //   birthdaySubText.fontSize = String(width/46.66);
+    //   birthdaySubText.fontFamily = 'Sour Gummy';
+    //   birthdaySubText.fills = [{fillColor: textColor, fillOpacity:.25}]; 
+    // }
+
+    // const iconColorString = "'"+iconColor+"'";
+    // const birthdayCalenderString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+ ' class="bi bi-calendar4" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/></svg>';
+    // // const birthdayCalender = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#e0e0e0" class="bi bi-calendar4" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/></svg>');
+    // const birthdayCalender = penpot.createShapeFromSvg(birthdayCalenderString);
+    // if(birthdayCalender){
+    //   birthdayCalender.x = penpot.viewport.center.x + width/3.58;
+    //   birthdayCalender.y = penpot.viewport.center.y + height/1.668;
+    //   birthdayCalender.resize(width/28,height/24.33);
+    // }
+
+    //  if(birthday && birthdaySubText && birthdayCalender){
+    //   penpot.selection = [birthday,birthdayBox,birthdaySubText, birthdayCalender];
+    //   const birthdayGroup = penpot.group(penpot.selection);
+    //   if(birthdayGroup){
+    //     birthdayGroup.name = "Birthday";
+    //     contentList.push(birthdayGroup);
+    //   }
+    // }
+
+    // const gender = penpot.createText('Gender');
+    // if(gender){
+    //   gender.x = penpot.viewport.center.x + width/2.456;
+    //   gender.y = penpot.viewport.center.y + height/1.78;
+    //   gender.fontFamily = 'Sour Gummy';
+    //   gender.fontSize = String(width/46.66);
+    //   gender.fills = [{fillColor:textColor}];
+    // }
+    
+    // const genderBox = penpot.createRectangle();
+    // genderBox.x = penpot.viewport.center.x+width/2.456;
+    // genderBox.y = penpot.viewport.center.y+height/1.687;
+    // genderBox.resize(width/6.36,height/18.25);
+    // genderBox.borderRadius =10;
+    // genderBox.fills = [{fillColor: fillColor}];
+    // genderBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    // genderBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const genderSubText = penpot.createText("Gender");
+    // if(genderSubText){
+    //   genderSubText.x = penpot.viewport.center.x + width/2.39; 
+    //   genderSubText.y = penpot.viewport.center.y + height/1.659;
+    //   genderSubText.fontSize = String(width/46.66);
+    //   genderSubText.fontFamily = 'Sour Gummy';
+    //   genderSubText.fills = [{fillColor: textColor, fillOpacity:.25}]; 
+    // }
+
+    // const genderArrowString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>';
+    // // const genderArrow = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#e0e0e0" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+    // const genderArrow = penpot.createShapeFromSvg(genderArrowString);
+    // if(genderArrow){
+    //   genderArrow.x = penpot.viewport.center.x + width/1.971;
+    //   genderArrow.y = penpot.viewport.center.y + height/1.697;
+    //   genderArrow.resize(width/17.5,height/16.22);
+    // }
+
+    // if(gender && genderSubText && genderArrow){
+    //   penpot.selection = [gender,genderBox,genderSubText, genderArrow];
+    //   const genderGroup = penpot.group(penpot.selection);
+    //   if(genderGroup){
+    //     genderGroup.name = "Gender";
+    //     contentList.push(genderGroup);
+    //   }
+    // }
+
+    // const ssn = penpot.createText('SSN');
+    // if(ssn){
+    //   ssn.x = penpot.viewport.center.x + width/1.56;
+    //   ssn.y = penpot.viewport.center.y + height/1.78;
+    //   ssn.fontFamily = 'Sour Gummy';
+    //   ssn.fontSize = String(width/46.66);
+    //   ssn.fills = [{fillColor:textColor}];
+    // }
+    
+    // const ssnBox = penpot.createRectangle();
+    // ssnBox.x = penpot.viewport.center.x+width/1.546;
+    // ssnBox.y = penpot.viewport.center.y+height/1.687;
+    // ssnBox.resize(width/3.5,height/18.25);
+    // ssnBox.borderRadius =10;
+    // ssnBox.fills = [{fillColor: fillColor}];
+    // ssnBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    // ssnBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const ssnSubText = penpot.createText("000000");
+    // if(ssnSubText){
+    //   ssnSubText.x = penpot.viewport.center.x + width/1.5217; 
+    //   ssnSubText.y = penpot.viewport.center.y + height/1.659;
+    //   ssnSubText.fontSize = String(width/46.66);
+    //   ssnSubText.fontFamily = 'Sour Gummy';
+    //   ssnSubText.fills = [{fillColor: textColor, fillOpacity:.25}]; 
+    // }
+
+    // if(ssn && ssnSubText){
+    //   penpot.selection = [ssn,ssnBox,ssnSubText];
+    //   const ssnGroup = penpot.group(penpot.selection);
+    //   if(ssnGroup){
+    //     ssnGroup.name = "SSN";
+    //     contentList.push(ssnGroup);
+    //   }
+    // }
+
+    // const position = penpot.createText('POSITION');
+    // if(position){
+    //   position.x = penpot.viewport.center.x + width/20;
+    //   position.y = penpot.viewport.center.y + height/1.47;
+    //   position.fontFamily = 'Sour Gummy';
+    //   position.fontSize = String(width/46.66);
+    //   position.fills = [{fillColor:textColor}];
+    // }
+    
+    // const positionBox = penpot.createRectangle();
+    // positionBox.x = penpot.viewport.center.x+width/20;
+    // positionBox.y = penpot.viewport.center.y+height/1.41;
+    // positionBox.resize(width/3.5,height/18.25);
+    // positionBox.borderRadius =10;
+    // positionBox.fills = [{fillColor: fillColor}];
+    // positionBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    // positionBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const positionSubText = penpot.createText("Job Position");
+    // if(positionSubText){
+    //   positionSubText.x = penpot.viewport.center.x + width/16.47; 
+    //   positionSubText.y = penpot.viewport.center.y + height/1.39;
+    //   positionSubText.fontSize = String(width/46.66);
+    //   positionSubText.fontFamily = 'Sour Gummy';
+    //   positionSubText.fills = [{fillColor: textColor, fillOpacity:.25}]; 
+    // }
+
+    // if(position && positionSubText){
+    //   penpot.selection = [position,positionBox,positionSubText];
+    //   const positionGroup = penpot.group(penpot.selection);
+    //   if(positionGroup){
+    //     positionGroup.name = "Position";
+    //     contentList.push(positionGroup);
+    //   }
+    // }
+
+    // const employmentType = penpot.createText('EMPLOYMENT TYPE');
+    // if(employmentType){
+    //   employmentType.x = penpot.viewport.center.x + width/2.456;
+    //   employmentType.y = penpot.viewport.center.y + height/1.47;
+    //   employmentType.fontFamily = 'Sour Gummy';
+    //   employmentType.fontSize = String(width/46.66);
+    //   employmentType.fills = [{fillColor:textColor}];
+    // }
+    
+    // const employmentTypeBox = penpot.createRectangle();
+    // employmentTypeBox.x = penpot.viewport.center.x+width/2.456;
+    // employmentTypeBox.y = penpot.viewport.center.y+height/1.41;
+    // employmentTypeBox.resize(width/4.375,height/18.25);
+    // employmentTypeBox.borderRadius =10;
+    // employmentTypeBox.fills = [{fillColor: fillColor}];
+    // employmentTypeBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    // employmentTypeBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const employmentTypeSubText = penpot.createText("Full-Time");
+    // if(employmentTypeSubText){
+    //   employmentTypeSubText.x = penpot.viewport.center.x + width/2.393; 
+    //   employmentTypeSubText.y = penpot.viewport.center.y + height/1.39;
+    //   employmentTypeSubText.fontSize = String(width/46.66);
+    //   employmentTypeSubText.fontFamily = 'Sour Gummy';
+    //   employmentTypeSubText.fills = [{fillColor: textColor, fillOpacity:.25}]; 
+    // }
+
+    // const employmentTypeArrowString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>';
+    // // const employmentTypeArrow = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#e0e0e0" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+    // const employmentTypeArrow = penpot.createShapeFromSvg(employmentTypeArrowString);
+    // if(employmentTypeArrow){
+    //   employmentTypeArrow.x = penpot.viewport.center.x + width/1.75;
+    //   employmentTypeArrow.y = penpot.viewport.center.y + height/1.417;
+    //   employmentTypeArrow.resize(width/17.5,height/16.22);
+    // }
+
+    // if(employmentType && employmentTypeSubText && employmentTypeArrow){
+    //   penpot.selection = [employmentType,employmentTypeBox,employmentTypeSubText, employmentTypeArrow];
+    //   const employmentTypeGroup = penpot.group(penpot.selection);
+    //   if(employmentTypeGroup){
+    //     employmentTypeGroup.name = "Employment Type";
+    //     contentList.push(employmentTypeGroup);
+    //   }
+    // }
+
+    // const status = penpot.createText('STATUS');
+    // if(status){
+    //   status.x = penpot.viewport.center.x + width/1.435;
+    //   status.y = penpot.viewport.center.y + height/1.47;
+    //   status.fontFamily = 'Sour Gummy';
+    //   status.fontSize = String(width/46.66);
+    //   status.fills = [{fillColor:textColor}];
+    // }
+
+    // const statusBox = penpot.createRectangle();
+    // statusBox.x = penpot.viewport.center.x+width/1.435;
+    // statusBox.y = penpot.viewport.center.y+height/1.41;
+    // statusBox.resize(width/4.375,height/18.25);
+    // statusBox.borderRadius =10;
+    // statusBox.fills = [{fillColor: fillColor}];
+    // statusBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    // statusBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const statusSubText = penpot.createText("Active");
+    // if(statusSubText){
+    //   statusSubText.x = penpot.viewport.center.x + width/1.414; 
+    //   statusSubText.y = penpot.viewport.center.y + height/1.39;
+    //   statusSubText.fontSize = String(width/46.66);
+    //   statusSubText.fontFamily = 'Sour Gummy';
+    //   statusSubText.fills = [{fillColor: textColor, fillOpacity:.25}]; 
+    // }
+
+    // const statusArrowString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>';
+    // // const statusArrow = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#e0e0e0" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+    // const statusArrow = penpot.createShapeFromSvg(statusArrowString);
+    // if(statusArrow){
+    //   statusArrow.x = penpot.viewport.center.x + width/1.16;
+    //   statusArrow.y = penpot.viewport.center.y + height/1.417;
+    //   statusArrow.resize(width/17.5,height/16.22);
+    // }
+
+    // if(status && statusSubText && statusArrow){
+    //   penpot.selection = [status,statusBox,statusSubText, statusArrow];
+    //   const statusGroup = penpot.group(penpot.selection);
+    //   if(statusGroup){
+    //     statusGroup.name = "Status";
+    //     contentList.push(statusGroup);
+    //   }
+    // }
+
+    // const dateOfHire = penpot.createText('DATE OF HIRE');
+    // if(dateOfHire){
+    //   dateOfHire.x = penpot.viewport.center.x + width/20;
+    //   dateOfHire.y = penpot.viewport.center.y + height/1.258;
+    //   dateOfHire.fontFamily = 'Sour Gummy';
+    //   dateOfHire.fontSize = String(width/46.66);
+    //   dateOfHire.fills = [{fillColor:textColor}];
+    // }
+    
+    // const dateOfHireBox = penpot.createRectangle();
+    // dateOfHireBox.x = penpot.viewport.center.x+width/20;
+    // dateOfHireBox.y = penpot.viewport.center.y+height/1.211;
+    // dateOfHireBox.resize(width/2.545,height/18.25);
+    // dateOfHireBox.borderRadius =10;
+    // dateOfHireBox.fills = [{fillColor: fillColor}];
+    // dateOfHireBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    // dateOfHireBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const dateOfHireSubText = penpot.createText("00/00/0000");
+    // if(dateOfHireSubText){
+    //   dateOfHireSubText.x = penpot.viewport.center.x + width/16.47; 
+    //   dateOfHireSubText.y = penpot.viewport.center.y + height/1.196;
+    //   dateOfHireSubText.fontSize = String(width/46.66);
+    //   dateOfHireSubText.fontFamily = 'Sour Gummy';
+    //   dateOfHireSubText.fills = [{fillColor: textColor, fillOpacity:.25}]; 
+    // }
+
+    // const dateOfHireCalenderString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-calendar4" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/></svg>';
+    // // const dateOfHireCalender = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#e0e0e0" class="bi bi-calendar4" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/></svg>');
+    // const dateOfHireCalender = penpot.createShapeFromSvg(dateOfHireCalenderString);
+    // if(dateOfHireCalender){
+    //   dateOfHireCalender.x = penpot.viewport.center.x + width/2.59;
+    //   dateOfHireCalender.y = penpot.viewport.center.y + height/1.206;
+    //   dateOfHireCalender.resize(width/28,height/24.33);
+    // }
+
+    // if(dateOfHire && dateOfHireSubText && dateOfHireCalender){
+    //   penpot.selection = [dateOfHire,dateOfHireBox,dateOfHireSubText, dateOfHireCalender];
+    //   const dateOfHireGroup = penpot.group(penpot.selection);
+    //   if(dateOfHireGroup){
+    //     dateOfHireGroup.name = "Date of Hire";
+    //     contentList.push(dateOfHireGroup);
+    //   }
+    // }
+
+    // const termDate = penpot.createText('TERMINATION DATE');
+    // if(termDate){
+    //   termDate.x = penpot.viewport.center.x + width/1.879;
+    //   termDate.y = penpot.viewport.center.y + height/1.258;
+    //   termDate.fontFamily = 'Sour Gummy';
+    //   termDate.fontSize = String(width/46.66);
+    //   termDate.fills = [{fillColor:textColor}];
+    // }
+    
+    // const termDateBox = penpot.createRectangle();
+    // termDateBox.x = penpot.viewport.center.x+width/1.879;
+    // termDateBox.y = penpot.viewport.center.y+height/1.2116;
+    // termDateBox.resize(width/2.54,height/18.25);
+    // termDateBox.borderRadius =10;
+    // termDateBox.fills = [{fillColor: fillColor}];
+    // termDateBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    // termDateBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const termDateSubText = penpot.createText("00/00/0000");
+    // if(termDateSubText){
+    //   termDateSubText.x = penpot.viewport.center.x + width/1.84; 
+    //   termDateSubText.y = penpot.viewport.center.y + height/1.196;
+    //   termDateSubText.fontSize = String(width/46.66);
+    //   termDateSubText.fontFamily = 'Sour Gummy';
+    //   termDateSubText.fills = [{fillColor: textColor, fillOpacity:.25}]; 
+    // }
+
+    // const termDateCalenderString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-calendar4" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/></svg>';
+    // // const termDateCalender = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#e0e0e0" class="bi bi-calendar4" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/></svg>');
+    // const termDateCalender = penpot.createShapeFromSvg(termDateCalenderString);
+    // if(termDateCalender){
+    //   termDateCalender.x = penpot.viewport.center.x + width/1.15;
+    //   termDateCalender.y = penpot.viewport.center.y + height/1.206;
+    //   termDateCalender.resize(width/28,height/24.33);
+    // }
+
+    // if(termDate && termDateSubText && termDateCalender){
+    //   penpot.selection = [termDate,termDateBox,termDateSubText, termDateCalender];
+    //   const termDateGroup = penpot.group(penpot.selection);
+    //   if(termDateGroup){
+    //     termDateGroup.name = "Termination Date";
+    //     contentList.push(termDateGroup);
+    //   }
+    // }
+
+    // penpot.selection = contentList;
+    // const employeeInfo = penpot.group(penpot.selection);
+    // if(employeeInfo){
+    //   employeeInfo.name = "Employee Info"
+    // }
+}

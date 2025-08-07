@@ -18,8 +18,9 @@
         var img7 = document.getElementById("img7");
         var img8 = document.getElementById("img8");
         var img9 = document.getElementById("img9");
+        var img10 = document.getElementById("img10");
 
-        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9];
+        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10];
         for(let i=0; i<images.length;i++){
           if(changeVar.includes(i)){
             images[i].style.display = "inline";
@@ -40,281 +41,468 @@
         closeSettings();
       }
       function changeImage3(){
-        changeVar = [2,3];
+        changeVar = [2,3,4];
         declareVariables();
         closeSettings();
       }
       function changeImage4(){
-        changeVar = [4,5,6,7,8];
+        changeVar = [5,6,7,8,9];
         declareVariables();
         closeSettings();
       }
 
       let buttonVersion = "1";
+      function assignIds(){
+        var settings = document.getElementById("settings");
+        var itemsDiv = document.getElementById("itemsDiv");
+        var heightDiv = document.getElementById("heightDiv");
+        var textcolorDiv = document.getElementById("textcolorDiv");
+        var borderRadiusDiv = document.getElementById("borderRadiusDiv");
+        var iconDiv = document.getElementById("iconDiv");
+        var w = document.getElementById("width");
+        var i = document.getElementById("items");
+        var b = document.getElementById("radius");
+        var h = document.getElementById("height");
+        var fillC = document.getElementById("fillcolor");
+        var iconC = document.getElementById("iconcolor");
+        var textC = document.getElementById("textcolor");
+
+        var ids = {
+            "settings":settings,
+            "itemsDiv":itemsDiv,
+            "heightDiv":heightDiv,
+            "textcolorDiv":textcolorDiv,
+            "borderRadiusDiv":borderRadiusDiv,
+            "iconDiv":iconDiv,
+            "width":w,
+            "items":i,
+            "radius":b,
+            "height":h,
+            "fillColor":fillC,
+            "iconColor":iconC,
+            "textColor":textC
+          }
+      
+        return ids;
+      }
       function buttonStyle1changeVersion(){
         buttonVersion = "1";
         document.getElementById("title").innerHTML = "Button Style 1";
-        const settings = document.getElementById("settings");
+        var ids = assignIds();
+        ids["itemsDiv"].style.display = "none";
+        ids["heightDiv"].style.display = "block";
+        ids["textcolorDiv"].style.display = "none";
+        ids["borderRadiusDiv"].style.display = "block";
+        ids["iconDiv"].style.display = "none";
+        ids["width"].placeholder = '200';
+        ids["radius"].placeholder = '40';
+        ids["height"].placeholder = '100';
+        ids["fillColor"].value = "#800000";
+        ids["iconColor"].value = "#FFFFFF";
+        ids["settings"].open=true;
+        // const settings = document.getElementById("settings");
 
-        var itemsDiv = document.getElementById("itemsDiv");
-        itemsDiv.style.display = "none";
-        var heightDiv = document.getElementById("heightDiv");
-        heightDiv.style.display = "block";
-        var textcolorDiv = document.getElementById("textcolorDiv");
-        textcolorDiv.style.display = "none";
-        var borderRadiusDiv = document.getElementById("borderRadiusDiv");
-        borderRadiusDiv.style.display = "block";
-        var iconDiv = document.getElementById("iconDiv");
-        iconDiv.style.display = "none";
+        // var itemsDiv = document.getElementById("itemsDiv");
+        // itemsDiv.style.display = "none";
+        // var heightDiv = document.getElementById("heightDiv");
+        // heightDiv.style.display = "block";
+        // var textcolorDiv = document.getElementById("textcolorDiv");
+        // textcolorDiv.style.display = "none";
+        // var borderRadiusDiv = document.getElementById("borderRadiusDiv");
+        // borderRadiusDiv.style.display = "block";
+        // var iconDiv = document.getElementById("iconDiv");
+        // iconDiv.style.display = "none";
 
-        var w = document.getElementById("width");
-        w.placeholder = '200';
-        var b = document.getElementById("radius");
-        b.placeholder = '40';
-        var h = document.getElementById("height");
-        h.placeholder = '100';
-        var fillC = document.getElementById("fillcolor");
-        fillC.value = "#800000";
-        var iconC = document.getElementById("iconcolor");
-        iconC.value = "#FFFFFF";
+        // var w = document.getElementById("width");
+        // w.placeholder = '200';
+        // var b = document.getElementById("radius");
+        // b.placeholder = '40';
+        // var h = document.getElementById("height");
+        // h.placeholder = '100';
+        // var fillC = document.getElementById("fillcolor");
+        // fillC.value = "#800000";
+        // var iconC = document.getElementById("iconcolor");
+        // iconC.value = "#FFFFFF";
 
-        settings.open=true;
+        // settings.open=true;
       }
       function buttonStyle2changeVersion(){
         buttonVersion = "2";
         document.getElementById("title").innerHTML = "Button Style 2";
-        const settings = document.getElementById("settings");
+        var ids = assignIds();
+        ids["itemsDiv"].style.display = "none";
+        ids["heightDiv"].style.display = "block";
+        ids["textcolorDiv"].style.display = "none";
+        ids["borderRadiusDiv"].style.display = "block";
+        ids["iconDiv"].style.display = "none";
+        ids["width"].placeholder = '100';
+        ids["radius"].placeholder = '100';
+        ids["height"].placeholder = '100';
+        ids["fillColor"].value = "#800000";
+        ids["iconColor"].value = "#FFFFFF";
+        ids["settings"].open=true;
 
-        var itemsDiv = document.getElementById("itemsDiv");
-        itemsDiv.style.display = "none";
-        var heightDiv = document.getElementById("heightDiv");
-        heightDiv.style.display = "block";
-        var textcolorDiv = document.getElementById("textcolorDiv");
-        textcolorDiv.style.display = "none";
-        var borderRadiusDiv = document.getElementById("borderRadiusDiv");
-        borderRadiusDiv.style.display = "block";
-        var iconDiv = document.getElementById("iconDiv");
-        iconDiv.style.display = "none";
+        // const settings = document.getElementById("settings");
 
-        var w = document.getElementById("width");
-        w.placeholder = '100';
-        var b = document.getElementById("radius");
-        b.placeholder = '100';
-        var h = document.getElementById("height");
-        h.placeholder = '100';
-        var fillC = document.getElementById("fillcolor");
-        fillC.value = "#800000";
-        var iconC = document.getElementById("iconcolor");
-        iconC.value = "#FFFFFF";
+        // var itemsDiv = document.getElementById("itemsDiv");
+        // itemsDiv.style.display = "none";
+        // var heightDiv = document.getElementById("heightDiv");
+        // heightDiv.style.display = "block";
+        // var textcolorDiv = document.getElementById("textcolorDiv");
+        // textcolorDiv.style.display = "none";
+        // var borderRadiusDiv = document.getElementById("borderRadiusDiv");
+        // borderRadiusDiv.style.display = "block";
+        // var iconDiv = document.getElementById("iconDiv");
+        // iconDiv.style.display = "none";
 
-        settings.open=true;
+        // var w = document.getElementById("width");
+        // w.placeholder = '100';
+        // var b = document.getElementById("radius");
+        // b.placeholder = '100';
+        // var h = document.getElementById("height");
+        // h.placeholder = '100';
+        // var fillC = document.getElementById("fillcolor");
+        // fillC.value = "#800000";
+        // var iconC = document.getElementById("iconcolor");
+        // iconC.value = "#FFFFFF";
+
+        // settings.open=true;
       }
       function dropDownchangeVersion(){
         buttonVersion = "3";
         document.getElementById("title").innerHTML = "Dropdown";
-        const settings = document.getElementById("settings");
+        var ids = assignIds();
 
-        var itemsDiv = document.getElementById("itemsDiv");
-        itemsDiv.style.display = "block";
-        var heightDiv = document.getElementById("heightDiv");
-        heightDiv.style.display = "none";
-        var textcolorDiv = document.getElementById("textcolorDiv");
-        textcolorDiv.style.display = "none";
-        var borderRadiusDiv = document.getElementById("borderRadiusDiv");
-        borderRadiusDiv.style.display = "none";
-        var iconDiv = document.getElementById("iconDiv");
-        iconDiv.style.display = "none";
+        ids["itemsDiv"].style.display = "block";
+        ids["heightDiv"].style.display = "none";
+        ids["textcolorDiv"].style.display = "none";
+        ids["borderRadiusDiv"].style.display = "none";
+        ids["iconDiv"].style.display = "none";
+        ids["width"].placeholder = '800';
+        ids["items"].placeholder = '7 ';
+        ids["fillColor"].value = "#FFFFFF";
+        ids["iconColor"].value = "#666666";
+        ids["textColor"].value = "#800000";
+        ids["settings"].open=true;
+        // const settings = document.getElementById("settings");
 
-        var w = document.getElementById("width");
-        w.placeholder = '800';
-        var i = document.getElementById("items");
-        i.placeholder = '7 ';
-        var fillC = document.getElementById("fillcolor");
-        fillC.value = "#FFFFFF";
-        var iconC = document.getElementById("iconcolor");
-        iconC.value = "#666666";
-        var textC = document.getElementById("textcolor");
-        textC.value = "#800000";
+        // var itemsDiv = document.getElementById("itemsDiv");
+        // itemsDiv.style.display = "block";
+        // var heightDiv = document.getElementById("heightDiv");
+        // heightDiv.style.display = "none";
+        // var textcolorDiv = document.getElementById("textcolorDiv");
+        // textcolorDiv.style.display = "none";
+        // var borderRadiusDiv = document.getElementById("borderRadiusDiv");
+        // borderRadiusDiv.style.display = "none";
+        // var iconDiv = document.getElementById("iconDiv");
+        // iconDiv.style.display = "none";
 
-        settings.open=true;
+        // var w = document.getElementById("width");
+        // w.placeholder = '800';
+        // var i = document.getElementById("items");
+        // i.placeholder = '7 ';
+        // var fillC = document.getElementById("fillcolor");
+        // fillC.value = "#FFFFFF";
+        // var iconC = document.getElementById("iconcolor");
+        // iconC.value = "#666666";
+        // var textC = document.getElementById("textcolor");
+        // textC.value = "#800000";
+
+        // settings.open=true;
       }
        function nav1changeVersion(){
         buttonVersion = "4";
         document.getElementById("title").innerHTML = "Navigation Bar Style 1";
-        const settings = document.getElementById("settings");
+        var ids = assignIds();
+        ids["itemsDiv"].style.display = "none";
+        ids["heightDiv"].style.display = "block";
+        ids["textcolorDiv"].style.display = "block";
+        ids["borderRadiusDiv"].style.display = "none";
+        ids["iconDiv"].style.display = "block";
+        ids["width"].placeholder = '2200';
+        ids["height"].placeholder = '200';
+        ids["fillColor"].value = "#FFFFFF";
+        ids["iconColor"].value = "#666666";
+        ids["textColor"].value = "#800000";
+        ids["settings"].open=true;
 
-        var itemsDiv = document.getElementById("itemsDiv");
-        itemsDiv.style.display = "none";
-        var heightDiv = document.getElementById("heightDiv");
-        heightDiv.style.display = "block";
-        var textcolorDiv = document.getElementById("textcolorDiv");
-        textcolorDiv.style.display = "block";
-        var borderRadiusDiv = document.getElementById("borderRadiusDiv");
-        borderRadiusDiv.style.display = "none";
-        var iconDiv = document.getElementById("iconDiv");
-        iconDiv.style.display = "block";
+        // const settings = document.getElementById("settings");
 
-        var w = document.getElementById("width");
-        w.placeholder = '2200';
-        var h = document.getElementById("height");
-        h.placeholder = '200';
-        var fillC = document.getElementById("fillcolor");
-        fillC.value = "#FFFFFF";
-        var iconC = document.getElementById("iconcolor");
-        iconC.value = "#666666";
-        var textC = document.getElementById("textcolor");
-        textC.value = "#800000";
+        // var itemsDiv = document.getElementById("itemsDiv");
+        // itemsDiv.style.display = "none";
+        // var heightDiv = document.getElementById("heightDiv");
+        // heightDiv.style.display = "block";
+        // var textcolorDiv = document.getElementById("textcolorDiv");
+        // textcolorDiv.style.display = "block";
+        // var borderRadiusDiv = document.getElementById("borderRadiusDiv");
+        // borderRadiusDiv.style.display = "none";
+        // var iconDiv = document.getElementById("iconDiv");
+        // iconDiv.style.display = "block";
 
-        settings.open=true;
+        // var w = document.getElementById("width");
+        // w.placeholder = '2200';
+        // var h = document.getElementById("height");
+        // h.placeholder = '200';
+        // var fillC = document.getElementById("fillcolor");
+        // fillC.value = "#FFFFFF";
+        // var iconC = document.getElementById("iconcolor");
+        // iconC.value = "#666666";
+        // var textC = document.getElementById("textcolor");
+        // textC.value = "#800000";
+
+        // settings.open=true;
       }
        function nav2changeVersion(){
         buttonVersion = "5";
         document.getElementById("title").innerHTML = "Navigation Bar Style 2";
-        const settings = document.getElementById("settings");
+        var ids = assignIds();
+        ids["itemsDiv"].style.display = "block";
+        ids["heightDiv"].style.display = "block";
+        ids["textcolorDiv"].style.display = "block";
+        ids["borderRadiusDiv"].style.display = "none";
+        ids["iconDiv"].style.display = "block";
+        ids["width"].placeholder = '800';
+        ids["height"].placeholder = '2100';
+        ids["items"].placeholder = '3';
+        ids["fillColor"].value = "#FFFFFF";
+        ids["iconColor"].value = "#666666";
+        ids["textColor"].value = "#800000";
+        ids["settings"].open=true;
+        // const settings = document.getElementById("settings");
 
-        var itemsDiv = document.getElementById("itemsDiv");
-        itemsDiv.style.display = "block";
-        var heightDiv = document.getElementById("heightDiv");
-        heightDiv.style.display = "block";
-        var textcolorDiv = document.getElementById("textcolorDiv");
-        textcolorDiv.style.display = "block";
-        var borderRadiusDiv = document.getElementById("borderRadiusDiv");
-        borderRadiusDiv.style.display = "none";
-        var iconDiv = document.getElementById("iconDiv");
-        iconDiv.style.display = "block";
+        // var itemsDiv = document.getElementById("itemsDiv");
+        // itemsDiv.style.display = "block";
+        // var heightDiv = document.getElementById("heightDiv");
+        // heightDiv.style.display = "block";
+        // var textcolorDiv = document.getElementById("textcolorDiv");
+        // textcolorDiv.style.display = "block";
+        // var borderRadiusDiv = document.getElementById("borderRadiusDiv");
+        // borderRadiusDiv.style.display = "none";
+        // var iconDiv = document.getElementById("iconDiv");
+        // iconDiv.style.display = "block";
 
-        var w = document.getElementById("width");
-        w.placeholder = '800';
-        var h = document.getElementById("height");
-        h.placeholder = '2100';
-        var i = document.getElementById("items");
-        i.placeholder = '3 ';
-        var fillC = document.getElementById("fillcolor");
-        fillC.value = "#FFFFFF";
-        var iconC = document.getElementById("iconcolor");
-        iconC.value = "#666666";
-        var textC = document.getElementById("textcolor");
-        textC.value = "#800000";
+        // var w = document.getElementById("width");
+        // w.placeholder = '800';
+        // var h = document.getElementById("height");
+        // h.placeholder = '2100';
+        // var i = document.getElementById("items");
+        // i.placeholder = '3 ';
+        // var fillC = document.getElementById("fillcolor");
+        // fillC.value = "#FFFFFF";
+        // var iconC = document.getElementById("iconcolor");
+        // iconC.value = "#666666";
+        // var textC = document.getElementById("textcolor");
+        // textC.value = "#800000";
 
-        settings.open=true;
+        // settings.open=true;
       }
       function calenderchangeVersion(){
         buttonVersion = "6";
         document.getElementById("title").innerHTML = "Calender";
-        const settings = document.getElementById("settings");
+        var ids = assignIds();
+        ids["itemsDiv"].style.display = "none";
+        ids["heightDiv"].style.display = "block";
+        ids["textcolorDiv"].style.display = "block";
+        ids["borderRadiusDiv"].style.display = "none";
+        ids["iconDiv"].style.display = "none";
+        ids["width"].placeholder = '2850';
+        ids["height"].placeholder = '675';
+        ids["fillColor"].value = "#FFFFFF";
+        ids["iconColor"].value = "#666666";
+        ids["textColor"].value = "#800000";
+        ids["settings"].open=true;
+        // const settings = document.getElementById("settings");
 
-        var itemsDiv = document.getElementById("itemsDiv");
-        itemsDiv.style.display = "none";
-        var heightDiv = document.getElementById("heightDiv");
-        heightDiv.style.display = "block";
-        var textcolorDiv = document.getElementById("textcolorDiv");
-        textcolorDiv.style.display = "block";
-        var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
-        borderRadiusDiv.style.display = "none";
-        var iconDiv = document.getElementById("iconDiv");
-        iconDiv.style.display = "none";
+        // var itemsDiv = document.getElementById("itemsDiv");
+        // itemsDiv.style.display = "none";
+        // var heightDiv = document.getElementById("heightDiv");
+        // heightDiv.style.display = "block";
+        // var textcolorDiv = document.getElementById("textcolorDiv");
+        // textcolorDiv.style.display = "block";
+        // var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
+        // borderRadiusDiv.style.display = "none";
+        // var iconDiv = document.getElementById("iconDiv");
+        // iconDiv.style.display = "none";
 
-        var w = document.getElementById("width");
-        w.placeholder = '2850';
-        var h = document.getElementById("height");
-        h.placeholder = '675';
-        var fillC = document.getElementById("fillcolor");
-        fillC.value = "#FFFFFF";
-        var iconC = document.getElementById("iconcolor");
-        iconC.value = "#666666";
-        var textC = document.getElementById("textcolor");
-        textC.value = "#800000";
+        // var w = document.getElementById("width");
+        // w.placeholder = '2850';
+        // var h = document.getElementById("height");
+        // h.placeholder = '675';
+        // var fillC = document.getElementById("fillcolor");
+        // fillC.value = "#FFFFFF";
+        // var iconC = document.getElementById("iconcolor");
+        // iconC.value = "#666666";
+        // var textC = document.getElementById("textcolor");
+        // textC.value = "#800000";
         
-        settings.open=true;
+        // settings.open=true;
       }
        function pageNavchangeVersion(){
         buttonVersion = "7";
         document.getElementById("title").innerHTML = "Page Navigation";
-        const settings = document.getElementById("settings");
+        var ids = assignIds();
+        ids["itemsDiv"].style.display = "block";
+        ids["heightDiv"].style.display = "block";
+        ids["textcolorDiv"].style.display = "block";
+        ids["borderRadiusDiv"].style.display = "none";
+        ids["iconDiv"].style.display = "none";
+        ids["width"].placeholder = '100';
+        ids["height"].placeholder = '100';
+        ids["items"].placeholder = '5';
+        ids["fillColor"].value = "#800000";
+        ids["iconColor"].value = "#FFFFFF";
+        ids["textColor"].value = "#000000";
+        ids["settings"].open=true;
+        // const settings = document.getElementById("settings");
 
-        var itemsDiv = document.getElementById("itemsDiv");
-        itemsDiv.style.display = "block";
-        var heightDiv = document.getElementById("heightDiv");
-        heightDiv.style.display = "block";
-        var textcolorDiv = document.getElementById("textcolorDiv");
-        textcolorDiv.style.display = "block";
-        var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
-        borderRadiusDiv.style.display = "none";
-        var iconDiv = document.getElementById("iconDiv");
-        iconDiv.style.display = "none";
+        // var itemsDiv = document.getElementById("itemsDiv");
+        // itemsDiv.style.display = "block";
+        // var heightDiv = document.getElementById("heightDiv");
+        // heightDiv.style.display = "block";
+        // var textcolorDiv = document.getElementById("textcolorDiv");
+        // textcolorDiv.style.display = "block";
+        // var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
+        // borderRadiusDiv.style.display = "none";
+        // var iconDiv = document.getElementById("iconDiv");
+        // iconDiv.style.display = "none";
 
-        var w = document.getElementById("width");
-        w.placeholder = '100';
-        var h = document.getElementById("height");
-        h.placeholder = '100';
-        var i = document.getElementById("items");
-        i.placeholder = '5';
-        var fillC = document.getElementById("fillcolor");
-        fillC.value = "#800000";
-        var iconC = document.getElementById("iconcolor");
-        iconC.value = "#FFFFFF";
-        var textC = document.getElementById("textcolor");
-        textC.value = "#000000";
+        // var w = document.getElementById("width");
+        // w.placeholder = '100';
+        // var h = document.getElementById("height");
+        // h.placeholder = '100';
+        // var i = document.getElementById("items");
+        // i.placeholder = '5';
+        // var fillC = document.getElementById("fillcolor");
+        // fillC.value = "#800000";
+        // var iconC = document.getElementById("iconcolor");
+        // iconC.value = "#FFFFFF";
+        // var textC = document.getElementById("textcolor");
+        // textC.value = "#000000";
 
-        settings.open=true;
+        // settings.open=true;
       }
       function form1changeVersion(){
         buttonVersion = "8";
         document.getElementById("title").innerHTML = "Payment Details Card";
-        const settings = document.getElementById("settings");
+        var ids = assignIds();
+        ids["itemsDiv"].style.display = "none";
+        ids["heightDiv"].style.display = "block";
+        ids["textcolorDiv"].style.display = "block";
+        ids["borderRadiusDiv"].style.display = "none";
+        ids["iconDiv"].style.display = "none";
+        ids["width"].placeholder = '950';
+        ids["height"].placeholder = '600';
+        ids["fillColor"].value = "#FFFFFF";
+        ids["iconColor"].value = "#666666";
+        ids["textColor"].value = "#000000";
+        ids["settings"].open=true;
+        // const settings = document.getElementById("settings");
 
-        var itemsDiv = document.getElementById("itemsDiv");
-        itemsDiv.style.display = "none";
-        var heightDiv = document.getElementById("heightDiv");
-        heightDiv.style.display = "block";
-        var textcolorDiv = document.getElementById("textcolorDiv");
-        textcolorDiv.style.display = "block";
-        var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
-        borderRadiusDiv.style.display = "none";
-        var iconDiv = document.getElementById("iconDiv");
-        iconDiv.style.display = "none";
+        // var itemsDiv = document.getElementById("itemsDiv");
+        // itemsDiv.style.display = "none";
+        // var heightDiv = document.getElementById("heightDiv");
+        // heightDiv.style.display = "block";
+        // var textcolorDiv = document.getElementById("textcolorDiv");
+        // textcolorDiv.style.display = "block";
+        // var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
+        // borderRadiusDiv.style.display = "none";
+        // var iconDiv = document.getElementById("iconDiv");
+        // iconDiv.style.display = "none";
 
-        var w = document.getElementById("width");
-        w.placeholder = '950';
-        var h = document.getElementById("height");
-        h.placeholder = '600';
-        var fillC = document.getElementById("fillcolor");
-        fillC.value = "#FFFFFF";
-        var iconC = document.getElementById("iconcolor");
-        iconC.value = "#666666";
-        var textC = document.getElementById("textcolor");
-        textC.value = "#000000";
+        // var w = document.getElementById("width");
+        // w.placeholder = '950';
+        // var h = document.getElementById("height");
+        // h.placeholder = '600';
+        // var fillC = document.getElementById("fillcolor");
+        // fillC.value = "#FFFFFF";
+        // var iconC = document.getElementById("iconcolor");
+        // iconC.value = "#666666";
+        // var textC = document.getElementById("textcolor");
+        // textC.value = "#000000";
 
-        settings.open=true;
+        // settings.open=true;
       }
       function form2changeVersion(){
         buttonVersion = "9";
         document.getElementById("title").innerHTML = "Address Details Card";
-        const settings = document.getElementById("settings");
+        var ids = assignIds();
+        ids["itemsDiv"].style.display = "none";
+        ids["heightDiv"].style.display = "block";
+        ids["textcolorDiv"].style.display = "block";
+        ids["borderRadiusDiv"].style.display = "none";
+        ids["iconDiv"].style.display = "none";
+        ids["width"].placeholder = '930';
+        ids["height"].placeholder = '1250';
+        ids["fillColor"].value = "#FFFFFF";
+        ids["iconColor"].value = "#666666";
+        ids["textColor"].value = "#000000";
+        ids["settings"].open=true;
+        // const settings = document.getElementById("settings");
 
-        var itemsDiv = document.getElementById("itemsDiv");
-        itemsDiv.style.display = "none";
-        var heightDiv = document.getElementById("heightDiv");
-        heightDiv.style.display = "block";
-        var textcolorDiv = document.getElementById("textcolorDiv");
-        textcolorDiv.style.display = "block";
-        var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
-        borderRadiusDiv.style.display = "none";
-        var iconDiv = document.getElementById("iconDiv");
-        iconDiv.style.display = "none";
+        // var itemsDiv = document.getElementById("itemsDiv");
+        // itemsDiv.style.display = "none";
+        // var heightDiv = document.getElementById("heightDiv");
+        // heightDiv.style.display = "block";
+        // var textcolorDiv = document.getElementById("textcolorDiv");
+        // textcolorDiv.style.display = "block";
+        // var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
+        // borderRadiusDiv.style.display = "none";
+        // var iconDiv = document.getElementById("iconDiv");
+        // iconDiv.style.display = "none";
 
-        var w = document.getElementById("width");
-        w.placeholder = '930';
-        var h = document.getElementById("height");
-        h.placeholder = '1250';
-        var fillC = document.getElementById("fillcolor");
-        fillC.value = "#FFFFFF";
-        var iconC = document.getElementById("iconcolor");
-        iconC.value = "#666666";
-        var textC = document.getElementById("textcolor");
-        textC.value = "#000000";
+        // var w = document.getElementById("width");
+        // w.placeholder = '930';
+        // var h = document.getElementById("height");
+        // h.placeholder = '1250';
+        // var fillC = document.getElementById("fillcolor");
+        // fillC.value = "#FFFFFF";
+        // var iconC = document.getElementById("iconcolor");
+        // iconC.value = "#666666";
+        // var textC = document.getElementById("textcolor");
+        // textC.value = "#000000";
 
-        settings.open=true;
+        // settings.open=true;
+      }
+      function form3changeVersion(){
+        buttonVersion = "10";
+        document.getElementById("title").innerHTML = "Employee Info Card";
+        var ids = assignIds();
+        ids["itemsDiv"].style.display = "none";
+        ids["heightDiv"].style.display = "block";
+        ids["textcolorDiv"].style.display = "block";
+        ids["borderRadiusDiv"].style.display = "none";
+        ids["iconDiv"].style.display = "none";
+        ids["width"].placeholder = '1400';
+        ids["height"].placeholder = '1460';
+        ids["fillColor"].value = "#FFFFFF";
+        ids["iconColor"].value = "#666666";
+        ids["textColor"].value = "#000000";
+        ids["settings"].open=true;
+        // const settings = document.getElementById("settings");
+
+        // var itemsDiv = document.getElementById("itemsDiv");
+        // itemsDiv.style.display = "none";
+        // var heightDiv = document.getElementById("heightDiv");
+        // heightDiv.style.display = "block";
+        // var textcolorDiv = document.getElementById("textcolorDiv");
+        // textcolorDiv.style.display = "block";
+        // var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
+        // borderRadiusDiv.style.display = "none";
+        // var iconDiv = document.getElementById("iconDiv");
+        // iconDiv.style.display = "none";
+
+        // var w = document.getElementById("width");
+        // w.placeholder = '1400';
+        // var h = document.getElementById("height");
+        // h.placeholder = '1460';
+        // var fillC = document.getElementById("fillcolor");
+        // fillC.value = "#FFFFFF";
+        // var iconC = document.getElementById("iconcolor");
+        // iconC.value = "#666666";
+        // var textC = document.getElementById("textcolor");
+        // textC.value = "#000000";
+
+        // settings.open=true;
       }
       function closeSettings(){
         const settings = document.getElementById("settings");
@@ -391,8 +579,8 @@
 
     <div id= "images">
       <div id="group1"> 
-        <button id="img1" onclick=nav1changeVersion()><img src="nav1.png" width="490px" height="50px"></button>
-        <button id="img2" onclick=nav2changeVersion()><img src="nav2.png" width="200px" height="650px"></button>
+        <button id="img1" onclick=nav1changeVersion()><img src="nav1.png" width="200px" height="200px"></button> <!--490,50-->
+        <button id="img2" onclick=nav2changeVersion()><img src="nav2.png" width="200px" height="200px"></button> <!--200,650-->
       </div>
       <div id = "group2">
       </div>
@@ -433,18 +621,20 @@
         <button id = "close" onclick = closeSettings()>Close</button>
       </dialog>
       <div id = "group3">
-        <button id="img3" onclick=form1changeVersion()><img src="paymentDetails.png" width="400px" height="300px"> </button>
+        <button id="img3" onclick=form1changeVersion()><img src="paymentDetails.png" width="200px" height="200px"> </button> <!--400,300-->
         <br>
-        <button id="img4" onclick=form2changeVersion()><img src="addressDetails.png" width="400px" height="500px"></button>
+        <button id="img4" onclick=form2changeVersion()><img src="addressDetails.png" width="200px" height="200px"></button> <!--400,500-->
+        <br>
+        <button id="img5" onclick=form3changeVersion()><img src="employeeInfo.png" width="200px" height="200px"></button> <!--400,500-->
       </div>
       <div id = "group4">
-        <button id="img5" onclick = pageNavchangeVersion()><img src="pageNav.png" width="500px" height="100px"></button>
+        <button id="img6" onclick = pageNavchangeVersion()><img src="pageNav.png" width="200px" height="200px"></button> <!--500,100-->
         <br>
-        <button id="img6" onclick = calenderchangeVersion()><img src="calender.png" width="300px" height="100px"></button>
-        <button id="img7" onclick = dropDownchangeVersion()><img src="dropDown.png" width="300px" height="100px"></button>
+        <button id="img7" onclick = calenderchangeVersion()><img src="calender.png" width="200px" height="200px"></button> <!--300,100-->
+        <button id="img8" onclick = dropDownchangeVersion()><img src="dropDown.png" width="200px" height="200px"></button> <!--300,100-->
         <br>
-        <button id="img8" onclick = buttonStyle1changeVersion()><img src="buttonStyle1.png" width="200px" height="100px"></button>
-        <button id="img9" onclick = buttonStyle2changeVersion()><img src="buttonStyle2.png" width="100px" height="100px"> </button>
+        <button id="img9" onclick = buttonStyle1changeVersion()><img src="buttonStyle1.png" width="200px" height="200px"></button> <!--200,100-->
+        <button id="img10" onclick = buttonStyle2changeVersion()><img src="buttonStyle2.png" width="200px" height="200px"> </button> <!--100,100-->
       </div>
     </div>
 
