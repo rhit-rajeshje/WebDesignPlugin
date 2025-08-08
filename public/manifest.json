@@ -1,6 +1,6 @@
 {
   "name": "Web Design Plugin",
   "code": "plugin.js",
-  "description": "This is a starter plugin for Penpot",
+  "description": "This penpot is meant to help make website components for UI mockups",
   "permissions": ["content:read", "content:write"]
 }

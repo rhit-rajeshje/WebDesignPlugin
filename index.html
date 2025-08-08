@@ -19,8 +19,9 @@
         var img8 = document.getElementById("img8");
         var img9 = document.getElementById("img9");
         var img10 = document.getElementById("img10");
+        var img11 = document.getElementById("img11");
 
-        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10];
+        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11];
         for(let i=0; i<images.length;i++){
           if(changeVar.includes(i)){
             images[i].style.display = "inline";
@@ -36,7 +37,7 @@
         closeSettings()
       }
       function changeImage2(){
-        changeVar = [];
+        changeVar = [10];
         declareVariables();
         closeSettings();
       }
@@ -334,7 +335,7 @@
         // iconC.value = "#666666";
         // var textC = document.getElementById("textcolor");
         // textC.value = "#800000";
-        
+         
         // settings.open=true;
       }
        function pageNavchangeVersion(){
@@ -504,6 +505,23 @@
 
         // settings.open=true;
       }
+      function cardDisplaychangeVersion(){
+        buttonVersion = "11";
+        document.getElementById("title").innerHTML = "Card Display";
+        var ids = assignIds();
+        ids["itemsDiv"].style.display = "block";
+        ids["heightDiv"].style.display = "block";
+        ids["textcolorDiv"].style.display = "block";
+        ids["borderRadiusDiv"].style.display = "none";
+        ids["iconDiv"].style.display = "none";
+        ids["width"].placeholder = '1750';
+        ids["height"].placeholder = '2500';
+        ids["fillColor"].value = "#FFFFFF";
+        ids["iconColor"].value = "#800000";
+        ids["textColor"].value = "#666666";
+        ids["settings"].open=true;
+      }
+
       function closeSettings(){
         const settings = document.getElementById("settings");
         settings.open=false;
@@ -579,10 +597,11 @@
 
     <div id= "images">
       <div id="group1"> 
-        <button id="img1" onclick=nav1changeVersion()><img src="nav1.png" width="200px" height="200px"></button> <!--490,50-->
-        <button id="img2" onclick=nav2changeVersion()><img src="nav2.png" width="200px" height="200px"></button> <!--200,650-->
+        <div><button id="img1" onclick=nav1changeVersion()><img src="nav1.png" width="490px" height="50px"></button> <!--490,50--></div>
+        <div><button id="img2" onclick=nav2changeVersion()><img src="nav2.png" width="200px" height="650px"></button> <!--200,650--></div>
       </div>
       <div id = "group2">
+        <div><button id="img11" onclick=cardDisplaychangeVersion()><img src="cardDisplay.png" width="200px" height="200px"></button> <!--200,400--></div>
       </div>
        <dialog id="settings" close>
         <h2 id = "title">Settings</h2>
@@ -621,20 +640,16 @@
         <button id = "close" onclick = closeSettings()>Close</button>
       </dialog>
       <div id = "group3">
-        <button id="img3" onclick=form1changeVersion()><img src="paymentDetails.png" width="200px" height="200px"> </button> <!--400,300-->
-        <br>
-        <button id="img4" onclick=form2changeVersion()><img src="addressDetails.png" width="200px" height="200px"></button> <!--400,500-->
-        <br>
-        <button id="img5" onclick=form3changeVersion()><img src="employeeInfo.png" width="200px" height="200px"></button> <!--400,500-->
+        <div><button id="img3" onclick=form1changeVersion()><img src="paymentDetails.png" width="200px" height="200px"> </button> <!--400,300--></div>
+        <div><button id="img4" onclick=form2changeVersion()><img src="addressDetails.png" width="200px" height="200px"></button> <!--400,500--></div>
+        <div><button id="img5" onclick=form3changeVersion()><img src="employeeInfo.png" width="200px" height="200px"></button> <!--400,500--></div>
       </div>
       <div id = "group4">
-        <button id="img6" onclick = pageNavchangeVersion()><img src="pageNav.png" width="200px" height="200px"></button> <!--500,100-->
-        <br>
-        <button id="img7" onclick = calenderchangeVersion()><img src="calender.png" width="200px" height="200px"></button> <!--300,100-->
-        <button id="img8" onclick = dropDownchangeVersion()><img src="dropDown.png" width="200px" height="200px"></button> <!--300,100-->
-        <br>
-        <button id="img9" onclick = buttonStyle1changeVersion()><img src="buttonStyle1.png" width="200px" height="200px"></button> <!--200,100-->
-        <button id="img10" onclick = buttonStyle2changeVersion()><img src="buttonStyle2.png" width="200px" height="200px"> </button> <!--100,100-->
+        <div><button id="img6" onclick = pageNavchangeVersion()><img src="pageNav.png" width="200px" height="200px"></button> <!--500,100--></div>
+        <div><button id="img7" onclick = calenderchangeVersion()><img src="calender.png" width="200px" height="200px"></button> <!--300,100--></div>
+        <div><button id="img8" onclick = dropDownchangeVersion()><img src="dropDown.png" width="200px" height="200px"></button> <!--300,100--></div>
+        <div><button id="img9" onclick = buttonStyle1changeVersion()><img src="buttonStyle1.png" width="200px" height="200px"></button> <!--200,100--></div>
+        <div><button id="img10" onclick = buttonStyle2changeVersion()><img src="buttonStyle2.png" width="200px" height="200px"> </button> <!--100,100--></div>
       </div>
     </div>
 

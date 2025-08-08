@@ -26,79 +26,48 @@ export function paymentDetails(width:number, height:number, fillColor:string, ic
     bar.name = "Divider";
     contentList.push(bar);
 
-    const cardHolder = penpot.createText("CARD HOLDER");
-    if(cardHolder){
-    cardHolder.x = penpot.viewport.center.x +width/19;
-    cardHolder.y = penpot.viewport.center.y +height/2.4;
-    cardHolder.fontFamily = 'Sour Gummy';
-    cardHolder.fontSize = String(width/31.66);
-    cardHolder.fills = [{fillColor: textColor}];}
+    var component_dimensions = [
+        {"textX":width/19, "textY":height/2.4, "boxX":width/19,"boxY":height/2,"boxWidth":width/2.53,"boxHeight":height/8.57,"subtextX":width/14.61,"subtextY":height/1.9, "name":"Card Holder", "subtext":"Card Holder"},
+        {"textX":width/1.9, "textY":height/2.4, "boxX":width/1.9,"boxY":height/2,"boxWidth":width/6.3,"boxHeight":height/8.57,"subtextX":width/1.86,"subtextY":height/1.9, "name":"Expiration Date", "subtext":"MM"},
+        {"textX":width/1.9, "textY":height/2.4, "boxX":width/1.26,"boxY":height/2,"boxWidth":width/6.33,"boxHeight":height/8.57,"subtextX":width/1.25,"subtextY":height/1.9, "name":" ", "subtext":"YY"},
+        {"textX":width/19, "textY":height/1.5, "boxX":width/19,"boxY":height/1.33,"boxWidth":width/1.809,"boxHeight":height/8.57,"subtextX":width/14.61,"subtextY":height/1.29, "name":"Card Number", "subtext":"1234 1234 1234 1234"},
+        {"textX":width/1.461, "textY":height/1.5, "boxX":width/1.461,"boxY":height/1.33,"boxWidth":width/4.75,"boxHeight":height/8.57,"subtextX":width/1.428,"subtextY":height/1.29, "name":"CVC", "subtext":"000"},
+    ];
 
-    const cardHolderBox = penpot.createRectangle();
-    cardHolderBox.x = penpot.viewport.center.x + width/19;
-    cardHolderBox.y = penpot.viewport.center.y + height/2;
-    cardHolderBox.resize(width/2.53,height/8.57);
-    cardHolderBox.fills = [{fillColor: fillColor}];
-    cardHolderBox.strokes = [{strokeColor: iconColor,strokeWidth: 1, strokeOpacity:.5}];
-    cardHolderBox.borderRadius = width/95;
-    cardHolderBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+    for(let i=0;i<component_dimensions.length;i++){
+        const text = penpot.createText(component_dimensions[i]["name"].toUpperCase());
+        if(text){
+        text.x = penpot.viewport.center.x +component_dimensions[i]["textX"];
+        text.y = penpot.viewport.center.y +component_dimensions[i]["textY"];
+        text.fontFamily = 'Sour Gummy';
+        text.fontSize = String(width/31.66);
+        text.fills = [{fillColor: textColor}];}
 
-    const cardHolderSubtext = penpot.createText("Card Holder"); 
-    if(cardHolderSubtext){
-    cardHolderSubtext.x = penpot.viewport.center.x +width/14.61;
-    cardHolderSubtext.y = penpot.viewport.center.y +height/1.9;
-    cardHolderSubtext.fontSize = String(width/31.66);
-    cardHolderSubtext.fontFamily = 'Sour Gummy'; 
-    cardHolderSubtext.fills = [{fillColor: textColor, fillOpacity:.25}];}
+        const box = penpot.createRectangle();
+        box.x = penpot.viewport.center.x + component_dimensions[i]["boxX"];
+        box.y = penpot.viewport.center.y + component_dimensions[i]["boxY"];
+        box.resize(component_dimensions[i]["boxWidth"],component_dimensions[i]["boxHeight"]);
+        box.fills = [{fillColor: fillColor}];
+        box.strokes = [{strokeColor: iconColor,strokeWidth: 1, strokeOpacity:.5}];
+        box.borderRadius = width/95;
+        box.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-    if(cardHolder && cardHolderSubtext){
-      penpot.selection = [cardHolder, cardHolderBox, cardHolderSubtext];
-      const cardHolderGroup = penpot.group(penpot.selection);
-      if(cardHolderGroup){
-        cardHolderGroup.name = "Card Holder";
-        contentList.push(cardHolderGroup);}}
+        const subtext = penpot.createText(component_dimensions[i]["subtext"]); 
+        if(subtext){
+        subtext.x = penpot.viewport.center.x +component_dimensions[i]["subtextX"];
+        subtext.y = penpot.viewport.center.y +component_dimensions[i]["subtextY"];
+        subtext.fontSize = String(width/31.66);
+        subtext.fontFamily = 'Sour Gummy'; 
+        subtext.fills = [{fillColor: textColor, fillOpacity:.25}];}
 
-    const expirationDate = penpot.createText("EXPIRATION DATE");
-    if(expirationDate){
-    expirationDate.x = penpot.viewport.center.x +width/1.9;
-    expirationDate.y = penpot.viewport.center.y +height/2.4;
-    expirationDate.fontFamily = 'Sour Gummy';
-    expirationDate.fontSize = String(width/31.66);
-    expirationDate.fills = [{fillColor:textColor}];}
+        if(text && subtext){
+        penpot.selection = [text, box, subtext];
+        const group = penpot.group(penpot.selection);
+        if(group){
+            group.name = component_dimensions[i]["name"];
+            contentList.push(group);}}
+    }
 
-    const expirationDateBox = penpot.createRectangle();
-    expirationDateBox.x = penpot.viewport.center.x + width/1.9;
-    expirationDateBox.y = penpot.viewport.center.y + height/2; 
-    expirationDateBox.resize(width/6.3,height/8.57);
-    expirationDateBox.fills = [{fillColor: fillColor}];
-    expirationDateBox.strokes = [{strokeColor: iconColor,strokeWidth: 1, strokeOpacity:.5}];
-    expirationDateBox.borderRadius = width/95;
-    expirationDateBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
-
-    const expirationDateSubtext = penpot.createText("MM");
-    if(expirationDateSubtext){
-    expirationDateSubtext.x = penpot.viewport.center.x +width/1.86;
-    expirationDateSubtext.y = penpot.viewport.center.y +height/1.9;
-    expirationDateSubtext.fontSize = String(width/31.66);
-    expirationDateSubtext.fontFamily = 'Sour Gummy';
-    expirationDateSubtext.fills = [{fillColor: textColor, fillOpacity:.25}];}
-
-    const expirationDateBox2 = penpot.createRectangle();
-    expirationDateBox2.x = penpot.viewport.center.x + width/1.26;
-    expirationDateBox2.y = penpot.viewport.center.y + height/2; 
-    expirationDateBox2.resize(width/6.33,height/8.57);
-    expirationDateBox2.fills = [{fillColor: fillColor}];
-    expirationDateBox2.strokes = [{strokeColor: iconColor,strokeWidth: 1, strokeOpacity:.5}];
-    expirationDateBox2.borderRadius = width/95;
-    expirationDateBox2.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
-
-    const expirationDateSubtext2 = penpot.createText("YY");
-    if(expirationDateSubtext2){
-    expirationDateSubtext2.x = penpot.viewport.center.x +width/1.25;
-    expirationDateSubtext2.y = penpot.viewport.center.y +height/1.9;
-    expirationDateSubtext2.fontSize = String(width/31.66);
-    expirationDateSubtext2.fontFamily = 'Sour Gummy';
-    expirationDateSubtext2.fills = [{fillColor: textColor, fillOpacity:.25}]; }
 
     const dash = penpot.createRectangle();
     dash.x = penpot.viewport.center.x + width/1.37;
@@ -107,77 +76,161 @@ export function paymentDetails(width:number, height:number, fillColor:string, ic
     dash.borderRadius = width/95;
     dash.rotate(45);
     dash.fills = [{fillColor: iconColor}];
+    contentList.push(dash);
 
-    if(expirationDate && expirationDateSubtext && expirationDateSubtext2){
-      penpot.selection = [expirationDate, expirationDateBox, expirationDateBox2, expirationDateSubtext, expirationDateSubtext2, dash];
-      const expirationDateGroup = penpot.group(penpot.selection);
-      if(expirationDateGroup){
-        expirationDateGroup.name = "Expiration Date";
-        contentList.push(expirationDateGroup);}}
 
-    const cardNumber = penpot.createText("CARD NUMBER");
-    if(cardNumber){
-    cardNumber.x = penpot.viewport.center.x +width/19;
-    cardNumber.y = penpot.viewport.center.y +height/1.5;
-    cardNumber.fontFamily = 'Sour Gummy';
-    cardNumber.fontSize = String(width/31.66);
-    cardNumber.fills = [{fillColor:textColor}];}
+    // const cardHolder = penpot.createText("CARD HOLDER");
+    // if(cardHolder){
+    // cardHolder.x = penpot.viewport.center.x +width/19;
+    // cardHolder.y = penpot.viewport.center.y +height/2.4;
+    // cardHolder.fontFamily = 'Sour Gummy';
+    // cardHolder.fontSize = String(width/31.66);
+    // cardHolder.fills = [{fillColor: textColor}];}
 
-    const cardNumberBox = penpot.createRectangle();
-    cardNumberBox.x = penpot.viewport.center.x + width/19;
-    cardNumberBox.y = penpot.viewport.center.y + height/1.33;
-    cardNumberBox.resize(width/1.809,height/8.57);
-    cardNumberBox.fills = [{fillColor: fillColor}];
-    cardNumberBox.strokes = [{strokeColor: iconColor,strokeWidth: 1, strokeOpacity:.5}];
-    cardNumberBox.borderRadius = width/95;
-    cardNumberBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+    // const cardHolderBox = penpot.createRectangle();
+    // cardHolderBox.x = penpot.viewport.center.x + width/19;
+    // cardHolderBox.y = penpot.viewport.center.y + height/2;
+    // cardHolderBox.resize(width/2.53,height/8.57);
+    // cardHolderBox.fills = [{fillColor: fillColor}];
+    // cardHolderBox.strokes = [{strokeColor: iconColor,strokeWidth: 1, strokeOpacity:.5}];
+    // cardHolderBox.borderRadius = width/95;
+    // cardHolderBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-    const cardNumberSubtext = penpot.createText("1234 1234 1234 1234");
-    if(cardNumberSubtext){
-    cardNumberSubtext.x = penpot.viewport.center.x +width/14.61;
-    cardNumberSubtext.y = penpot.viewport.center.y +height/1.29;
-    cardNumberSubtext.fontSize = String(width/31.66);
-    cardNumberSubtext.fontFamily = 'Sour Gummy'; 
-    cardNumberSubtext.fills = [{fillColor: textColor, fillOpacity:.25}]; }
+    // const cardHolderSubtext = penpot.createText("Card Holder"); 
+    // if(cardHolderSubtext){
+    // cardHolderSubtext.x = penpot.viewport.center.x +width/14.61;
+    // cardHolderSubtext.y = penpot.viewport.center.y +height/1.9;
+    // cardHolderSubtext.fontSize = String(width/31.66);
+    // cardHolderSubtext.fontFamily = 'Sour Gummy'; 
+    // cardHolderSubtext.fills = [{fillColor: textColor, fillOpacity:.25}];}
 
-    if(cardNumber && cardNumberSubtext){
-      penpot.selection = [cardNumber, cardNumberBox, cardNumberSubtext];
-      const cardNumberGroup = penpot.group(penpot.selection);
-      if(cardNumberGroup){
-        cardNumberGroup.name = "Card Number";
-        contentList.push(cardNumberGroup);}}
+    // if(cardHolder && cardHolderSubtext){
+    //   penpot.selection = [cardHolder, cardHolderBox, cardHolderSubtext];
+    //   const cardHolderGroup = penpot.group(penpot.selection);
+    //   if(cardHolderGroup){
+    //     cardHolderGroup.name = "Card Holder";
+    //     contentList.push(cardHolderGroup);}}
 
-    const cvc = penpot.createText("CVC");
-    if(cvc){
-    cvc.x = penpot.viewport.center.x +width/1.461;
-    cvc.y = penpot.viewport.center.y +height/1.5;
-    cvc.fontFamily = 'Sour Gummy';
-    cvc.fontSize = String(width/31.66);
-    cvc.fills = [{fillColor: textColor}];}
+    // const expirationDate = penpot.createText("EXPIRATION DATE");
+    // if(expirationDate){
+    // expirationDate.x = penpot.viewport.center.x +width/1.9;
+    // expirationDate.y = penpot.viewport.center.y +height/2.4;
+    // expirationDate.fontFamily = 'Sour Gummy';
+    // expirationDate.fontSize = String(width/31.66);
+    // expirationDate.fills = [{fillColor:textColor}];}
 
-    const cvcBox = penpot.createRectangle();
-    cvcBox.x = penpot.viewport.center.x + width/1.461;
-    cvcBox.y = penpot.viewport.center.y + height/1.33; 
-    cvcBox.resize(width/4.75,height/8.57);
-    cvcBox.fills = [{fillColor: fillColor}];
-    cvcBox.strokes = [{strokeColor: iconColor,strokeWidth: 1, strokeOpacity:.5}];
-    cvcBox.borderRadius = width/95;
-    cvcBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+    // const expirationDateBox = penpot.createRectangle();
+    // expirationDateBox.x = penpot.viewport.center.x + width/1.9;
+    // expirationDateBox.y = penpot.viewport.center.y + height/2; 
+    // expirationDateBox.resize(width/6.3,height/8.57);
+    // expirationDateBox.fills = [{fillColor: fillColor}];
+    // expirationDateBox.strokes = [{strokeColor: iconColor,strokeWidth: 1, strokeOpacity:.5}];
+    // expirationDateBox.borderRadius = width/95;
+    // expirationDateBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-    const cvcSubtext = penpot.createText("000");
-    if(cvcSubtext){
-    cvcSubtext.x = penpot.viewport.center.x +width/1.428;
-    cvcSubtext.y = penpot.viewport.center.y +height/1.29;
-    cvcSubtext.fontSize = String(width/31.66);
-    cvcSubtext.fontFamily = 'Sour Gummy'; 
-    cvcSubtext.fills = [{fillColor: textColor, fillOpacity:.25}]; }
+    // const expirationDateSubtext = penpot.createText("MM");
+    // if(expirationDateSubtext){
+    // expirationDateSubtext.x = penpot.viewport.center.x +width/1.86;
+    // expirationDateSubtext.y = penpot.viewport.center.y +height/1.9;
+    // expirationDateSubtext.fontSize = String(width/31.66);
+    // expirationDateSubtext.fontFamily = 'Sour Gummy';
+    // expirationDateSubtext.fills = [{fillColor: textColor, fillOpacity:.25}];}
 
-    if(cvc && cvcSubtext){
-      penpot.selection = [cvc, cvcBox, cvcSubtext];
-      const cvcGroup = penpot.group(penpot.selection);
-      if(cvcGroup){
-        cvcGroup.name = "CVC";
-        contentList.push(cvcGroup);}}
+    // const expirationDateBox2 = penpot.createRectangle();
+    // expirationDateBox2.x = penpot.viewport.center.x + width/1.26;
+    // expirationDateBox2.y = penpot.viewport.center.y + height/2; 
+    // expirationDateBox2.resize(width/6.33,height/8.57);
+    // expirationDateBox2.fills = [{fillColor: fillColor}];
+    // expirationDateBox2.strokes = [{strokeColor: iconColor,strokeWidth: 1, strokeOpacity:.5}];
+    // expirationDateBox2.borderRadius = width/95;
+    // expirationDateBox2.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const expirationDateSubtext2 = penpot.createText("YY");
+    // if(expirationDateSubtext2){
+    // expirationDateSubtext2.x = penpot.viewport.center.x +width/1.25;
+    // expirationDateSubtext2.y = penpot.viewport.center.y +height/1.9;
+    // expirationDateSubtext2.fontSize = String(width/31.66);
+    // expirationDateSubtext2.fontFamily = 'Sour Gummy';
+    // expirationDateSubtext2.fills = [{fillColor: textColor, fillOpacity:.25}]; }
+
+    // const dash = penpot.createRectangle();
+    // dash.x = penpot.viewport.center.x + width/1.37;
+    // dash.y = penpot.viewport.center.y + height/2;
+    // dash.resize(width/63.33,height/9.23);
+    // dash.borderRadius = width/95;
+    // dash.rotate(45);
+    // dash.fills = [{fillColor: iconColor}];
+
+    // if(expirationDate && expirationDateSubtext && expirationDateSubtext2){
+    //   penpot.selection = [expirationDate, expirationDateBox, expirationDateBox2, expirationDateSubtext, expirationDateSubtext2, dash];
+    //   const expirationDateGroup = penpot.group(penpot.selection);
+    //   if(expirationDateGroup){
+    //     expirationDateGroup.name = "Expiration Date";
+    //     contentList.push(expirationDateGroup);}}
+
+    // const cardNumber = penpot.createText("CARD NUMBER");
+    // if(cardNumber){
+    // cardNumber.x = penpot.viewport.center.x +width/19;
+    // cardNumber.y = penpot.viewport.center.y +height/1.5;
+    // cardNumber.fontFamily = 'Sour Gummy';
+    // cardNumber.fontSize = String(width/31.66);
+    // cardNumber.fills = [{fillColor:textColor}];}
+
+    // const cardNumberBox = penpot.createRectangle();
+    // cardNumberBox.x = penpot.viewport.center.x + width/19;
+    // cardNumberBox.y = penpot.viewport.center.y + height/1.33;
+    // cardNumberBox.resize(width/1.809,height/8.57);
+    // cardNumberBox.fills = [{fillColor: fillColor}];
+    // cardNumberBox.strokes = [{strokeColor: iconColor,strokeWidth: 1, strokeOpacity:.5}];
+    // cardNumberBox.borderRadius = width/95;
+    // cardNumberBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const cardNumberSubtext = penpot.createText("1234 1234 1234 1234");
+    // if(cardNumberSubtext){
+    // cardNumberSubtext.x = penpot.viewport.center.x +width/14.61;
+    // cardNumberSubtext.y = penpot.viewport.center.y +height/1.29;
+    // cardNumberSubtext.fontSize = String(width/31.66);
+    // cardNumberSubtext.fontFamily = 'Sour Gummy'; 
+    // cardNumberSubtext.fills = [{fillColor: textColor, fillOpacity:.25}]; }
+
+    // if(cardNumber && cardNumberSubtext){
+    //   penpot.selection = [cardNumber, cardNumberBox, cardNumberSubtext];
+    //   const cardNumberGroup = penpot.group(penpot.selection);
+    //   if(cardNumberGroup){
+    //     cardNumberGroup.name = "Card Number";
+    //     contentList.push(cardNumberGroup);}}
+
+    // const cvc = penpot.createText("CVC");
+    // if(cvc){
+    // cvc.x = penpot.viewport.center.x +width/1.461;
+    // cvc.y = penpot.viewport.center.y +height/1.5;
+    // cvc.fontFamily = 'Sour Gummy';
+    // cvc.fontSize = String(width/31.66);
+    // cvc.fills = [{fillColor: textColor}];}
+
+    // const cvcBox = penpot.createRectangle();
+    // cvcBox.x = penpot.viewport.center.x + width/1.461;
+    // cvcBox.y = penpot.viewport.center.y + height/1.33; 
+    // cvcBox.resize(width/4.75,height/8.57);
+    // cvcBox.fills = [{fillColor: fillColor}];
+    // cvcBox.strokes = [{strokeColor: iconColor,strokeWidth: 1, strokeOpacity:.5}];
+    // cvcBox.borderRadius = width/95;
+    // cvcBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    // const cvcSubtext = penpot.createText("000");
+    // if(cvcSubtext){
+    // cvcSubtext.x = penpot.viewport.center.x +width/1.428;
+    // cvcSubtext.y = penpot.viewport.center.y +height/1.29;
+    // cvcSubtext.fontSize = String(width/31.66);
+    // cvcSubtext.fontFamily = 'Sour Gummy'; 
+    // cvcSubtext.fills = [{fillColor: textColor, fillOpacity:.25}]; }
+
+    // if(cvc && cvcSubtext){
+    //   penpot.selection = [cvc, cvcBox, cvcSubtext];
+    //   const cvcGroup = penpot.group(penpot.selection);
+    //   if(cvcGroup){
+    //     cvcGroup.name = "CVC";
+    //     contentList.push(cvcGroup);}}
 
     penpot.selection = contentList;
     const paymentDetails = penpot.group(penpot.selection);
@@ -214,312 +267,377 @@ export function addressDetails(width:number, height:number, fillColor:string, ic
      bar.name = "Divider";
      contentList.push(bar);
 
-     const firstName = penpot.createText("FIRST NAME");
-     if(firstName){
-      firstName.x = penpot.viewport.center.x +width/18.6;
-      firstName.y = penpot.viewport.center.y +height/4.16;
-      firstName.fontSize = String(width/31);
-      firstName.fontFamily = 'Sour Gummy';
-      firstName.fills = [{fillColor: textColor}];
-     }
+     var component_dimensions = [
+        {"textX":width/18.6,"textY":height/4.16,"boxX":width/18.6,"boxY":height/3.57,"boxWidth":width/2.65,"boxHeight":height/15.625,"subtextX":width/14.3,"subtextY":height/3.42, "arrowX":0,"arrowY":0,"arrowWidth":0,"arrowHeight":0,"name":"First Name", "subtext":"First Name"},
+        {"textX":width/1.93,"textY":height/4.15,"boxX":width/1.93,"boxY":height/3.57,"boxWidth":width/2.657,"boxHeight":height/15.6,"subtextX":width/1.87,"subtextY":height/3.42, "arrowX":0,"arrowY":0,"arrowWidth":0,"arrowHeight":0,"name":"Last Name", "subtext":"Last Name"},
+        {"textX":width/18.6,"textY":height/2.659,"boxX":width/18.6,"boxY":height/2.4,"boxWidth":width/1.19,"boxHeight":height/15.625,"subtextX":width/14.3,"subtextY":height/2.33, "arrowX":0,"arrowY":0,"arrowWidth":0,"arrowHeight":0,"name":"Address 1", "subtext":"123 Sample Street"},
+        {"textX":width/18.6,"textY":height/1.95,"boxX":width/18.6,"boxY":height/1.811,"boxWidth":width/1.19,"boxHeight":height/15.625,"subtextX":width/14.3,"subtextY":height/1.77, "arrowX":0,"arrowY":0,"arrowWidth":0,"arrowHeight":0,"name":"Address 2", "subtext":"456 Example Dr"},
+        {"textX":width/18.6,"textY":height/1.54,"boxX":width/18.6,"boxY":height/1.453,"boxWidth":width/2.06,"boxHeight":height/15.625,"subtextX":width/14.3,"subtextY":height/1.428,  "arrowX":0,"arrowY":0,"arrowWidth":0,"arrowHeight":0, "name":"City", "subtext":"Test City"},
+        {"textX":width/1.512,"textY":height/1.54,"boxX":width/1.512,"boxY":height/1.453,"boxWidth":width/4.22,"boxHeight":height/15.625,"subtextX":width/1.47,"subtextY":height/1.428, "arrowX":width/1.223,"arrowY":height/1.436,"arrowWidth":width/15.5,"arrowHeight":height/20.83, "name":"State", "subtext":"EX"},
+        {"textX":width/18.6,"textY":height/1.2755,"boxX":width/18.6,"boxY":height/1.213,"boxWidth":width/2.325,"boxHeight":height/15.625,"subtextX":width/14.3,"subtextY":height/1.196,  "arrowX":0,"arrowY":0,"arrowWidth":0,"arrowHeight":0, "name":"Zip Code", "subtext":"000000"},
+        {"textX":width/1.738,"textY":height/1.2755,"boxX":width/1.738,"boxY":height/1.213,"boxWidth":width/3.1,"boxHeight":height/15.625,"subtextX":width/1.69,"subtextY":height/1.196, "arrowX":width/1.22,"arrowY":height/1.2,"arrowWidth":width/15.5,"arrowHeight":height/20.83, "name":"Country", "subtext":"Country"},
+     ];
 
-     const firstNameBox = penpot.createRectangle();
-     firstNameBox.x = penpot.viewport.center.x+width/18.6;
-     firstNameBox.y = penpot.viewport.center.y+height/3.57;
-     firstNameBox.resize(width/2.65,height/15.625);
-     firstNameBox.borderRadius= width/93;
-     firstNameBox.fills = [{fillColor: fillColor}];
-     firstNameBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
-     firstNameBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+     for(let i=0;i<component_dimensions.length;i++){
+        var parts = [];
+         const text = penpot.createText(component_dimensions[i]["name"].toUpperCase());
+        if(text){
+            text.x = penpot.viewport.center.x +component_dimensions[i]["textX"];
+            text.y = penpot.viewport.center.y +component_dimensions[i]["textY"];
+            text.fontSize = String(width/31);
+            text.fontFamily = 'Sour Gummy';
+            text.fills = [{fillColor:textColor}];
+            parts.push(text);
+        }
 
-     const firstNameSubText = penpot.createText("First Name");
-     if(firstNameSubText){
-      firstNameSubText.x = penpot.viewport.center.x +width/14.3;
-      firstNameSubText.y = penpot.viewport.center.y +height/3.42;
-      firstNameSubText.fontSize = String(width/31);
-      firstNameSubText.fontFamily = 'Sour Gummy';
-      firstNameSubText.fills = [{fillColor:textColor, fillOpacity:.25}];
-     }
+        const box = penpot.createRectangle();
+        box.x = penpot.viewport.center.x+component_dimensions[i]["boxX"];
+        box.y = penpot.viewport.center.y+component_dimensions[i]["boxY"];
+        box.resize(component_dimensions[i]["boxWidth"],component_dimensions[i]["boxHeight"]);
+        box.borderRadius= width/93;
+        box.fills = [{fillColor: fillColor}];
+        box.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+        box.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+        parts.push(box);
 
-     if(firstName && firstNameSubText){
-      penpot.selection = [firstName, firstNameBox, firstNameSubText];
-      const firstNameGroup = penpot.group(penpot.selection);
-      if(firstNameGroup){
-        firstNameGroup.name = "First Name";
-        contentList.push(firstNameGroup);
-      }
-     }
+        const subtext = penpot.createText(component_dimensions[i]["subtext"]);
+        if(subtext){
+            subtext.x = penpot.viewport.center.x +component_dimensions[i]["subtextX"];
+            subtext.y = penpot.viewport.center.y + component_dimensions[i]["subtextY"]; 
+            subtext.fontSize = String(width/31);
+            subtext.fontFamily = 'Sour Gummy';
+            subtext.fills = [{fillColor:textColor, fillOpacity:.25}];
+            parts.push(subtext);
+        }
 
-    const lastName = penpot.createText("LAST NAME");
-     if(lastName){
-      lastName.x = penpot.viewport.center.x +width/1.93;
-      lastName.y = penpot.viewport.center.y +height/4.15;
-      lastName.fontSize = String(width/31);
-      lastName.fontFamily = 'Sour Gummy';
-      lastName.fills = [{fillColor: textColor}];
-     }
+        if(component_dimensions[i]["name"]=="State"||component_dimensions[i]["name"]=="Country"){
+            const iconColorString="'"+iconColor+"'";
+            const arrowString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>';
+            //  const countryArrow = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#e0e0e0" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+            const arrow = penpot.createShapeFromSvg(arrowString);
+            if(arrow){
+                arrow.x = penpot.viewport.center.x +component_dimensions[i]["arrowX"];
+                arrow.y = penpot.viewport.center.y+component_dimensions[i]["arrowY"];
+                arrow.resize(component_dimensions[i]["arrowWidth"],component_dimensions[i]["arrowHeight"]);
+                parts.push(arrow);
+            }
+        }
 
-     const lastNameBox = penpot.createRectangle();
-     lastNameBox.x = penpot.viewport.center.x+width/1.93;
-     lastNameBox.y = penpot.viewport.center.y+height/3.57;
-     lastNameBox.resize(width/2.657,height/15.6);
-     lastNameBox.borderRadius = width/93;
-     lastNameBox.fills = [{fillColor: fillColor}];
-     lastNameBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
-     lastNameBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
-
-     const lastNameSubText = penpot.createText("Last Name");
-     if(lastNameSubText){
-      lastNameSubText.x = penpot.viewport.center.x +width/1.87;
-      lastNameSubText.y = penpot.viewport.center.y +height/3.42;
-      lastNameSubText.fontSize = String(width/31);
-      lastNameSubText.fontFamily = 'Sour Gummy';
-      lastNameSubText.fills = [{fillColor:textColor, fillOpacity: .25}];
-     }
-
-     if(lastName && lastNameSubText){
-      penpot.selection = [lastName, lastNameBox, lastNameSubText];
-      const lastNameGroup = penpot.group(penpot.selection);
-      if(lastNameGroup){
-        lastNameGroup.name = "Last Name";
-        contentList.push(lastNameGroup);
-      }
-     }
-
-     const address1 = penpot.createText("ADDRESS 1");
-     if(address1){
-      address1.x = penpot.viewport.center.x +width/18.6;
-      address1.y = penpot.viewport.center.y +height/2.659;
-      address1.fontSize = String(width/31);
-      address1.fontFamily = 'Sour Gummy';
-      address1.fills = [{fillColor: textColor}];
-     }
-
-     const address1Box = penpot.createRectangle();
-     address1Box.x = penpot.viewport.center.x+width/18.6;
-     address1Box.y = penpot.viewport.center.y+height/2.4;
-     address1Box.resize(width/1.19,height/15.625);
-     address1Box.borderRadius= width/93;
-     address1Box.fills = [{fillColor: fillColor}];
-     address1Box.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
-     address1Box.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
-
-     const address1SubText = penpot.createText("123 Sample Street");
-     if(address1SubText){
-      address1SubText.x = penpot.viewport.center.x +width/14.3;
-      address1SubText.y = penpot.viewport.center.y +height/2.33; 
-      address1SubText.fontSize = String(width/31);
-      address1SubText.fontFamily = 'Sour Gummy';
-      address1SubText.fills = [{fillColor:textColor, fillOpacity:.25}];
-     }
-
-     if(address1 && address1SubText){
-      penpot.selection = [address1, address1Box, address1SubText];
-      const address1Group = penpot.group(penpot.selection);
-      if(address1Group){
-        address1Group.name = "Address 1";
-        contentList.push(address1Group);
-      }
-     }
-
-     const address2 = penpot.createText("ADDRESS 2");
-     if(address2){
-      address2.x = penpot.viewport.center.x +width/18.6;
-      address2.y = penpot.viewport.center.y +height/1.95;
-      address2.fontSize = String(width/31);
-      address2.fontFamily = 'Sour Gummy';
-      address2.fills = [{fillColor:textColor}];
-     }
-
-     const address2Box = penpot.createRectangle();
-     address2Box.x = penpot.viewport.center.x+width/18.6;
-     address2Box.y = penpot.viewport.center.y+height/1.811;
-     address2Box.resize(width/1.19,height/15.625);
-     address2Box.borderRadius= width/93;
-     address2Box.fills = [{fillColor: fillColor}];
-     address2Box.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
-     address2Box.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
-
-     const address2SubText = penpot.createText("456 Example Dr");
-     if(address2SubText){
-      address2SubText.x = penpot.viewport.center.x +width/14.3;
-      address2SubText.y = penpot.viewport.center.y +height/1.77; 
-      address2SubText.fontSize = String(width/31);
-      address2SubText.fontFamily = 'Sour Gummy';
-      address2SubText.fills = [{fillColor:textColor, fillOpacity:.25}];
-     }
-
-    if(address2 && address2SubText){
-      penpot.selection = [address2, address2Box, address2SubText];
-      const address2Group = penpot.group(penpot.selection);
-      if(address2Group){
-        address2Group.name = "Address 2";
-        contentList.push(address2Group);
-      }
-     }
-
-    const city = penpot.createText("CITY");
-     if(city){
-      city.x = penpot.viewport.center.x +width/18.6;
-      city.y = penpot.viewport.center.y +height/1.54;
-      city.fontSize = String(width/31);
-      city.fontFamily = 'Sour Gummy';
-      city.fills = [{fillColor:textColor}];
-     }
-
-     const cityBox = penpot.createRectangle();
-     cityBox.x = penpot.viewport.center.x+width/18.6;
-     cityBox.y = penpot.viewport.center.y+height/1.453;
-     cityBox.resize(width/2.06,height/15.625);
-     cityBox.borderRadius= width/93;
-     cityBox.fills = [{fillColor: fillColor}];
-     cityBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
-     cityBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
-
-     const citySubText = penpot.createText("Test City");
-     if(citySubText){
-      citySubText.x = penpot.viewport.center.x +width/14.3;
-      citySubText.y = penpot.viewport.center.y +height/1.428; 
-      citySubText.fontSize = String(width/31);
-      citySubText.fontFamily = 'Sour Gummy';
-      citySubText.fills = [{fillColor:textColor, fillOpacity:.25}];
-     }
-
-    if(city && citySubText){
-      penpot.selection = [city, cityBox, citySubText];
-      const cityGroup = penpot.group(penpot.selection);
-      if(cityGroup){
-        cityGroup.name = "City";
-        contentList.push(cityGroup);
-      }
-     }
-
-    const state = penpot.createText("STATE");
-     if(state){
-      state.x = penpot.viewport.center.x +width/1.512;
-      state.y = penpot.viewport.center.y +height/1.54;
-      state.fontSize = String(width/31);
-      state.fontFamily = 'Sour Gummy';
-      state.fills = [{fillColor: textColor}];
-     }
-
-     const stateBox = penpot.createRectangle();
-     stateBox.x = penpot.viewport.center.x+width/1.512;
-     stateBox.y = penpot.viewport.center.y+height/1.45;
-     stateBox.resize(width/4.22,height/15.625);
-     stateBox.borderRadius= width/93;
-     stateBox.fills = [{fillColor: fillColor}];
-     stateBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
-     stateBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
-
-     const stateSubText = penpot.createText("EX");
-     if(stateSubText){
-      stateSubText.x = penpot.viewport.center.x +width/1.47;
-      stateSubText.y = penpot.viewport.center.y +height/1.428;  
-      stateSubText.fontSize = String(width/31);
-      stateSubText.fontFamily = 'Sour Gummy';
-      stateSubText.fills = [{fillColor:textColor, fillOpacity:.25}];
-     }
-
-     const iconColorString = "'"+iconColor+"'";
-     const stateArrowString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>';
-    //  const stateArrow = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#e0e0e0" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
-    const stateArrow = penpot.createShapeFromSvg(stateArrowString);
-    if(stateArrow){
-      stateArrow.x = penpot.viewport.center.x +width/1.223;
-      stateArrow.y = penpot.viewport.center.y+height/1.436;
-      stateArrow.resize(width/15.5,height/20.83);
-     }
-
-    if(state && stateSubText && stateArrow){
-      penpot.selection = [state, stateBox, stateSubText, stateArrow];
-      const stateGroup = penpot.group(penpot.selection);
-      if(stateGroup){
-        stateGroup.name = "State";
-        contentList.push(stateGroup);
-      }
+        penpot.selection = parts;
+        const group = penpot.group(penpot.selection);
+        if(group){
+            group.name = component_dimensions[i]["name"];
+            contentList.push(group);
+        }
      }
      
-    const zipCode = penpot.createText("ZIP CODE");
-     if(zipCode){
-      zipCode.x = penpot.viewport.center.x +width/18.6;
-      zipCode.y = penpot.viewport.center.y + height/1.2755;
-      zipCode.fontSize = String(width/31);
-      zipCode.fontFamily = 'Sour Gummy';
-      zipCode.fills = [{fillColor:textColor}];
-     }
+      //  const firstName = penpot.createText("FIRST NAME");
+    //  if(firstName){
+    //   firstName.x = penpot.viewport.center.x +width/18.6;
+    //   firstName.y = penpot.viewport.center.y +height/4.16;
+    //   firstName.fontSize = String(width/31);
+    //   firstName.fontFamily = 'Sour Gummy';
+    //   firstName.fills = [{fillColor: textColor}];
+    //  }
 
-     const zipCodeBox = penpot.createRectangle();
-     zipCodeBox.x = penpot.viewport.center.x+width/18.6;
-     zipCodeBox.y = penpot.viewport.center.y+height/1.213;
-     zipCodeBox.resize(width/2.325,height/15.625);
-     zipCodeBox.borderRadius= width/93;
-     zipCodeBox.fills = [{fillColor: fillColor}];
-     zipCodeBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
-     zipCodeBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+    //  const firstNameBox = penpot.createRectangle();
+    //  firstNameBox.x = penpot.viewport.center.x+width/18.6;
+    //  firstNameBox.y = penpot.viewport.center.y+height/3.57;
+    //  firstNameBox.resize(width/2.65,height/15.625);
+    //  firstNameBox.borderRadius= width/93;
+    //  firstNameBox.fills = [{fillColor: fillColor}];
+    //  firstNameBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    //  firstNameBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-     const zipCodeSubText = penpot.createText("000000");
-     if(zipCodeSubText){
-      zipCodeSubText.x = penpot.viewport.center.x +width/14.3;
-      zipCodeSubText.y = penpot.viewport.center.y +height/1.196; 
-      zipCodeSubText.fontSize = String(width/31);
-      zipCodeSubText.fontFamily = 'Sour Gummy';
-      zipCodeSubText.fills = [{fillColor:textColor, fillOpacity:.25}];
-     }
+    //  const firstNameSubText = penpot.createText("First Name");
+    //  if(firstNameSubText){
+    //   firstNameSubText.x = penpot.viewport.center.x +width/14.3;
+    //   firstNameSubText.y = penpot.viewport.center.y +height/3.42;
+    //   firstNameSubText.fontSize = String(width/31);
+    //   firstNameSubText.fontFamily = 'Sour Gummy';
+    //   firstNameSubText.fills = [{fillColor:textColor, fillOpacity:.25}];
+    //  }
 
-    if(zipCode && zipCodeSubText){
-      penpot.selection = [zipCode, zipCodeBox, zipCodeSubText];
-      const zipCodeGroup = penpot.group(penpot.selection);
-      if(zipCodeGroup){
-        zipCodeGroup.name = "Zip Code";
-        contentList.push(zipCodeGroup);
-      }
-     }
+    //  if(firstName && firstNameSubText){
+    //   penpot.selection = [firstName, firstNameBox, firstNameSubText];
+    //   const firstNameGroup = penpot.group(penpot.selection);
+    //   if(firstNameGroup){
+    //     firstNameGroup.name = "First Name";
+    //     contentList.push(firstNameGroup);
+    //   }
+    //  }
 
-     const country = penpot.createText("COUNTRY");
-     if(country){
-      country.x = penpot.viewport.center.x +width/1.738;
-      country.y = penpot.viewport.center.y + height/1.2755;
-      country.fontSize = String(width/31);
-      country.fontFamily = 'Sour Gummy';
-      country.fills = [{fillColor:textColor}];
-     }
+    // const lastName = penpot.createText("LAST NAME");
+    //  if(lastName){
+    //   lastName.x = penpot.viewport.center.x +width/1.93;
+    //   lastName.y = penpot.viewport.center.y +height/4.15;
+    //   lastName.fontSize = String(width/31);
+    //   lastName.fontFamily = 'Sour Gummy';
+    //   lastName.fills = [{fillColor: textColor}];
+    //  }
 
-     const countryBox = penpot.createRectangle();
-     countryBox.x = penpot.viewport.center.x+width/1.738;
-     countryBox.y = penpot.viewport.center.y+height/1.213;
-     countryBox.resize(width/3.1,height/15.625);
-     countryBox.borderRadius= width/93;
-     countryBox.fills = [{fillColor: fillColor}];
-     countryBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
-     countryBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+    //  const lastNameBox = penpot.createRectangle();
+    //  lastNameBox.x = penpot.viewport.center.x+width/1.93;
+    //  lastNameBox.y = penpot.viewport.center.y+height/3.57;
+    //  lastNameBox.resize(width/2.657,height/15.6);
+    //  lastNameBox.borderRadius = width/93;
+    //  lastNameBox.fills = [{fillColor: fillColor}];
+    //  lastNameBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    //  lastNameBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
 
-     const countrySubText = penpot.createText("Trial");
-     if(countrySubText){
-      countrySubText.x = penpot.viewport.center.x +width/1.69;
-      countrySubText.y = penpot.viewport.center.y + height/1.196; 
-      countrySubText.fontSize = String(width/31);
-      countrySubText.fontFamily = 'Sour Gummy';
-      countrySubText.fills = [{fillColor:textColor, fillOpacity:.25}];
-     }
+    //  const lastNameSubText = penpot.createText("Last Name");
+    //  if(lastNameSubText){
+    //   lastNameSubText.x = penpot.viewport.center.x +width/1.87;
+    //   lastNameSubText.y = penpot.viewport.center.y +height/3.42;
+    //   lastNameSubText.fontSize = String(width/31);
+    //   lastNameSubText.fontFamily = 'Sour Gummy';
+    //   lastNameSubText.fills = [{fillColor:textColor, fillOpacity: .25}];
+    //  }
 
-     const countryArrowString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>';
-    //  const countryArrow = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#e0e0e0" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
-     const countryArrow = penpot.createShapeFromSvg(countryArrowString);
-    if(countryArrow){
-      countryArrow.x = penpot.viewport.center.x +width/1.22;
-      countryArrow.y = penpot.viewport.center.y+height/1.2;
-      countryArrow.resize(width/15.5,height/20.8);
-     }
+    //  if(lastName && lastNameSubText){
+    //   penpot.selection = [lastName, lastNameBox, lastNameSubText];
+    //   const lastNameGroup = penpot.group(penpot.selection);
+    //   if(lastNameGroup){
+    //     lastNameGroup.name = "Last Name";
+    //     contentList.push(lastNameGroup);
+    //   }
+    //  }
 
-    if(country && countrySubText && countryArrow){
-      penpot.selection = [country, countryBox, countrySubText, countryArrow];
-      const countryGroup = penpot.group(penpot.selection);
-      if(countryGroup){
-        countryGroup.name = "Country";
-        contentList.push(countryGroup);
-      }
-     }
+    //  const address1 = penpot.createText("ADDRESS 1");
+    //  if(address1){
+    //   address1.x = penpot.viewport.center.x +width/18.6;
+    //   address1.y = penpot.viewport.center.y +height/2.659;
+    //   address1.fontSize = String(width/31);
+    //   address1.fontFamily = 'Sour Gummy';
+    //   address1.fills = [{fillColor: textColor}];
+    //  }
+
+    //  const address1Box = penpot.createRectangle();
+    //  address1Box.x = penpot.viewport.center.x+width/18.6;
+    //  address1Box.y = penpot.viewport.center.y+height/2.4;
+    //  address1Box.resize(width/1.19,height/15.625);
+    //  address1Box.borderRadius= width/93;
+    //  address1Box.fills = [{fillColor: fillColor}];
+    //  address1Box.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    //  address1Box.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    //  const address1SubText = penpot.createText("123 Sample Street");
+    //  if(address1SubText){
+    //   address1SubText.x = penpot.viewport.center.x +width/14.3;
+    //   address1SubText.y = penpot.viewport.center.y +height/2.33; 
+    //   address1SubText.fontSize = String(width/31);
+    //   address1SubText.fontFamily = 'Sour Gummy';
+    //   address1SubText.fills = [{fillColor:textColor, fillOpacity:.25}];
+    //  }
+
+    //  if(address1 && address1SubText){
+    //   penpot.selection = [address1, address1Box, address1SubText];
+    //   const address1Group = penpot.group(penpot.selection);
+    //   if(address1Group){
+    //     address1Group.name = "Address 1";
+    //     contentList.push(address1Group);
+    //   }
+    //  }
+
+    //  const address2 = penpot.createText("ADDRESS 2");
+    //  if(address2){
+    //   address2.x = penpot.viewport.center.x +width/18.6;
+    //   address2.y = penpot.viewport.center.y +height/1.95;
+    //   address2.fontSize = String(width/31);
+    //   address2.fontFamily = 'Sour Gummy';
+    //   address2.fills = [{fillColor:textColor}];
+    //  }
+
+    //  const address2Box = penpot.createRectangle();
+    //  address2Box.x = penpot.viewport.center.x+width/18.6;
+    //  address2Box.y = penpot.viewport.center.y+height/1.811;
+    //  address2Box.resize(width/1.19,height/15.625);
+    //  address2Box.borderRadius= width/93;
+    //  address2Box.fills = [{fillColor: fillColor}];
+    //  address2Box.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    //  address2Box.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    //  const address2SubText = penpot.createText("456 Example Dr");
+    //  if(address2SubText){
+    //   address2SubText.x = penpot.viewport.center.x +width/14.3;
+    //   address2SubText.y = penpot.viewport.center.y +height/1.77; 
+    //   address2SubText.fontSize = String(width/31);
+    //   address2SubText.fontFamily = 'Sour Gummy';
+    //   address2SubText.fills = [{fillColor:textColor, fillOpacity:.25}];
+    //  }
+
+    // if(address2 && address2SubText){
+    //   penpot.selection = [address2, address2Box, address2SubText];
+    //   const address2Group = penpot.group(penpot.selection);
+    //   if(address2Group){
+    //     address2Group.name = "Address 2";
+    //     contentList.push(address2Group);
+    //   }
+    //  }
+
+    // const city = penpot.createText("CITY");
+    //  if(city){
+    //   city.x = penpot.viewport.center.x +width/18.6;
+    //   city.y = penpot.viewport.center.y +height/1.54;
+    //   city.fontSize = String(width/31);
+    //   city.fontFamily = 'Sour Gummy';
+    //   city.fills = [{fillColor:textColor}];
+    //  }
+
+    //  const cityBox = penpot.createRectangle();
+    //  cityBox.x = penpot.viewport.center.x+width/18.6;
+    //  cityBox.y = penpot.viewport.center.y+height/1.453;
+    //  cityBox.resize(width/2.06,height/15.625);
+    //  cityBox.borderRadius= width/93;
+    //  cityBox.fills = [{fillColor: fillColor}];
+    //  cityBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    //  cityBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    //  const citySubText = penpot.createText("Test City");
+    //  if(citySubText){
+    //   citySubText.x = penpot.viewport.center.x +width/14.3;
+    //   citySubText.y = penpot.viewport.center.y +height/1.428; 
+    //   citySubText.fontSize = String(width/31);
+    //   citySubText.fontFamily = 'Sour Gummy';
+    //   citySubText.fills = [{fillColor:textColor, fillOpacity:.25}];
+    //  }
+
+    // if(city && citySubText){
+    //   penpot.selection = [city, cityBox, citySubText];
+    //   const cityGroup = penpot.group(penpot.selection);
+    //   if(cityGroup){
+    //     cityGroup.name = "City";
+    //     contentList.push(cityGroup);
+    //   }
+    //  }
+
+    // const state = penpot.createText("STATE");
+    //  if(state){
+    //   state.x = penpot.viewport.center.x +width/1.512;
+    //   state.y = penpot.viewport.center.y +height/1.54;
+    //   state.fontSize = String(width/31);
+    //   state.fontFamily = 'Sour Gummy';
+    //   state.fills = [{fillColor: textColor}];
+    //  }
+
+    //  const stateBox = penpot.createRectangle();
+    //  stateBox.x = penpot.viewport.center.x+width/1.512;
+    //  stateBox.y = penpot.viewport.center.y+height/1.45;
+    //  stateBox.resize(width/4.22,height/15.625);
+    //  stateBox.borderRadius= width/93;
+    //  stateBox.fills = [{fillColor: fillColor}];
+    //  stateBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    //  stateBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    //  const stateSubText = penpot.createText("EX");
+    //  if(stateSubText){
+    //   stateSubText.x = penpot.viewport.center.x +width/1.47;
+    //   stateSubText.y = penpot.viewport.center.y +height/1.428;  
+    //   stateSubText.fontSize = String(width/31);
+    //   stateSubText.fontFamily = 'Sour Gummy';
+    //   stateSubText.fills = [{fillColor:textColor, fillOpacity:.25}];
+    //  }
+
+    //  const iconColorString = "'"+iconColor+"'";
+    //  const stateArrowString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>';
+    // //  const stateArrow = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#e0e0e0" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+    // const stateArrow = penpot.createShapeFromSvg(stateArrowString);
+    // if(stateArrow){
+    //   stateArrow.x = penpot.viewport.center.x +width/1.223;
+    //   stateArrow.y = penpot.viewport.center.y+height/1.436;
+    //   stateArrow.resize(width/15.5,height/20.83);
+    //  }
+
+    // if(state && stateSubText && stateArrow){
+    //   penpot.selection = [state, stateBox, stateSubText, stateArrow];
+    //   const stateGroup = penpot.group(penpot.selection);
+    //   if(stateGroup){
+    //     stateGroup.name = "State";
+    //     contentList.push(stateGroup);
+    //   }
+    //  }
+     
+    // const zipCode = penpot.createText("ZIP CODE");
+    //  if(zipCode){
+    //   zipCode.x = penpot.viewport.center.x +width/18.6;
+    //   zipCode.y = penpot.viewport.center.y + height/1.2755;
+    //   zipCode.fontSize = String(width/31);
+    //   zipCode.fontFamily = 'Sour Gummy';
+    //   zipCode.fills = [{fillColor:textColor}];
+    //  }
+
+    //  const zipCodeBox = penpot.createRectangle();
+    //  zipCodeBox.x = penpot.viewport.center.x+width/18.6;
+    //  zipCodeBox.y = penpot.viewport.center.y+height/1.213;
+    //  zipCodeBox.resize(width/2.325,height/15.625);
+    //  zipCodeBox.borderRadius= width/93;
+    //  zipCodeBox.fills = [{fillColor: fillColor}];
+    //  zipCodeBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    //  zipCodeBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    //  const zipCodeSubText = penpot.createText("000000");
+    //  if(zipCodeSubText){
+    //   zipCodeSubText.x = penpot.viewport.center.x +width/14.3;
+    //   zipCodeSubText.y = penpot.viewport.center.y +height/1.196; 
+    //   zipCodeSubText.fontSize = String(width/31);
+    //   zipCodeSubText.fontFamily = 'Sour Gummy';
+    //   zipCodeSubText.fills = [{fillColor:textColor, fillOpacity:.25}];
+    //  }
+
+    // if(zipCode && zipCodeSubText){
+    //   penpot.selection = [zipCode, zipCodeBox, zipCodeSubText];
+    //   const zipCodeGroup = penpot.group(penpot.selection);
+    //   if(zipCodeGroup){
+    //     zipCodeGroup.name = "Zip Code";
+    //     contentList.push(zipCodeGroup);
+    //   }
+    //  }
+
+    //  const country = penpot.createText("COUNTRY");
+    //  if(country){
+    //   country.x = penpot.viewport.center.x +width/1.738;
+    //   country.y = penpot.viewport.center.y + height/1.2755;
+    //   country.fontSize = String(width/31);
+    //   country.fontFamily = 'Sour Gummy';
+    //   country.fills = [{fillColor:textColor}];
+    //  }
+
+    //  const countryBox = penpot.createRectangle();
+    //  countryBox.x = penpot.viewport.center.x+width/1.738;
+    //  countryBox.y = penpot.viewport.center.y+height/1.213;
+    //  countryBox.resize(width/3.1,height/15.625);
+    //  countryBox.borderRadius= width/93;
+    //  countryBox.fills = [{fillColor: fillColor}];
+    //  countryBox.strokes = [{strokeColor: iconColor, strokeOpacity: .5, strokeWidth:1}];
+    //  countryBox.shadows = [{spread:0, blur: .8, offsetX: .85, offsetY: .85, style: 'drop-shadow'}];
+
+    //  const countrySubText = penpot.createText("Trial");
+    //  if(countrySubText){
+    //   countrySubText.x = penpot.viewport.center.x +width/1.69;
+    //   countrySubText.y = penpot.viewport.center.y + height/1.196; 
+    //   countrySubText.fontSize = String(width/31);
+    //   countrySubText.fontFamily = 'Sour Gummy';
+    //   countrySubText.fills = [{fillColor:textColor, fillOpacity:.25}];
+    //  }
+
+    //  const countryArrowString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>';
+    // //  const countryArrow = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#e0e0e0" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+    //  const countryArrow = penpot.createShapeFromSvg(countryArrowString);
+    // if(countryArrow){
+    //   countryArrow.x = penpot.viewport.center.x +width/1.22;
+    //   countryArrow.y = penpot.viewport.center.y+height/1.2;
+    //   countryArrow.resize(width/15.5,height/20.8);
+    //  }
+
+    // if(country && countrySubText && countryArrow){
+    //   penpot.selection = [country, countryBox, countrySubText, countryArrow];
+    //   const countryGroup = penpot.group(penpot.selection);
+    //   if(countryGroup){
+    //     countryGroup.name = "Country";
+    //     contentList.push(countryGroup);
+    //   }
+    //  }
+
     
     penpot.selection = contentList;
     const addressDetailsGroup = penpot.group(penpot.selection);

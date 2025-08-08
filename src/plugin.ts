@@ -3,6 +3,7 @@ import {dropdown, pageNav} from './dropdown.ts';
 import { nav1, nav2 } from './nav.ts';
 import { calender } from './calender.ts';
 import { addressDetails, employeeInfo, paymentDetails } from './form.ts';
+import { cardDisplay } from './display.ts';
 
 penpot.ui.open("Website Components Plugin", `?theme=${penpot.theme}`);
 
@@ -71,6 +72,11 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
   if(message.get("data-version")=="10"){
     if(fillColor && iconColor && textColor){
       employeeInfo(width,height,fillColor,iconColor,textColor);
+    }
+  }
+  if(message.get("data-version")=="11"){
+    if(fillColor&&iconColor&&textColor){
+    cardDisplay(width,height,fillColor,iconColor,textColor,items);
     }
   }
 });
