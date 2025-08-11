@@ -3,7 +3,7 @@ import {dropdown, pageNav} from './dropdown.ts';
 import { nav1, nav2 } from './nav.ts';
 import { calender } from './calender.ts';
 import { addressDetails, employeeInfo, paymentDetails } from './form.ts';
-import { cardDisplay } from './display.ts';
+import { cardDisplay, infoTile, testimonal } from './display.ts';
 
 penpot.ui.open("Website Components Plugin", `?theme=${penpot.theme}`);
 
@@ -79,6 +79,17 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
     cardDisplay(width,height,fillColor,iconColor,textColor,items);
     }
   }
+  if(message.get("data-version")=="12"){
+    if(fillColor&&iconColor&&textColor){
+      infoTile(width,height,fillColor,iconColor,textColor,items);
+    }
+  }
+  if(message.get("data-version")=="13"){
+    if(fillColor&&iconColor&&textColor){
+      testimonal(width,height,fillColor,iconColor,textColor);
+    }
+  }
+
 });
 
 // Update the theme in the iframe

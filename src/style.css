@@ -2,7 +2,6 @@
 
 body {
   line-height: 1.5;
-  padding: 10px;
 }
 button {
   background-color: white;
@@ -19,6 +18,127 @@ button {
   padding-bottom:30px;
   padding-left: 10px;
   padding-right:10px;
+}
+
+#group1, #group2, #group3, #group4{
+  display:flex;
+  justify-content: normal;
+  flex-wrap:wrap;
+}
+
+#button1, #image1{
+  width:430px;
+  height:40px;
+}
+#img1{
+  width:450px;
+  height:470px;
+}
+
+#button2, #image2{
+  width:145px;
+  height:460px;
+}
+#img2{
+  width:400px;
+  height:470px;
+}
+
+#button3, #image3{
+  width:270px;
+  height:200px;
+}
+#img3{
+  width:300px;
+  height:470px;
+}
+
+#button4, #image4{
+  width:270px;
+  height:370px;
+}
+#img4{
+  width:300px;
+  height:470px;
+}
+
+#button5, #image5{
+  width:270px;
+  height:370px;
+}
+#img5{
+  width:300px;
+  height:470px;
+}
+
+#button6, #image6{
+  width:250px;
+  height:60px;
+}
+#img6{
+  width:300px;
+  height:200px;
+}
+
+#button7, #image7{
+  width:250px;
+  height:100px;
+}
+#img7{
+  width:300px;
+  height:200px;
+}
+
+#button8, #image8{
+  width:250px;
+  height:100px;
+}
+#img8{
+  width:300px;
+  height:200px;
+}
+
+#button9, #image9{
+  width:250px;
+  height:150px;
+}
+#img9{
+  width:300px;
+  height:200px;
+}
+
+#button10, #image10{
+  width:200px;
+  height:200px;
+}
+#img10{
+  width:300px;
+  height:200px;
+}
+
+#button11, #image11{
+  width:550px;
+  height:350px;
+}
+#img11{
+  width:600px;
+  height:400px;
+}
+#button12, #image12{
+  width:600px;
+  height:200px;
+}
+#img12{
+  width:600px;
+  height:250px;
+}
+#button13, #image13{
+  width:500px;
+  height:200px;
+}
+#img13{
+  width:600px;
+  height:250px;
 }
 
 /* #images{

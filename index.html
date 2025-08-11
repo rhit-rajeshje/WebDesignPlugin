@@ -20,11 +20,13 @@
         var img9 = document.getElementById("img9");
         var img10 = document.getElementById("img10");
         var img11 = document.getElementById("img11");
+        var img12 = document.getElementById("img12");
+        var img13 = document.getElementById("img13");
 
-        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11];
+        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13];
         for(let i=0; i<images.length;i++){
           if(changeVar.includes(i)){
-            images[i].style.display = "inline";
+            images[i].style.display = "inline-block";
           }
           else{
             images[i].style.display="none";
@@ -37,7 +39,7 @@
         closeSettings()
       }
       function changeImage2(){
-        changeVar = [10];
+        changeVar = [10,11,12];
         declareVariables();
         closeSettings();
       }
@@ -521,6 +523,38 @@
         ids["textColor"].value = "#666666";
         ids["settings"].open=true;
       }
+       function infoTilechangeVersion(){
+        buttonVersion = "12";
+        document.getElementById("title").innerHTML = "Info Tiles";
+        var ids = assignIds();
+        ids["itemsDiv"].style.display = "block";
+        ids["heightDiv"].style.display = "block";
+        ids["textcolorDiv"].style.display = "block";
+        ids["borderRadiusDiv"].style.display = "none";
+        ids["iconDiv"].style.display = "none";
+        ids["width"].placeholder = '1680';
+        ids["height"].placeholder = '1020';
+        ids["fillColor"].value = "#FFFFFF";
+        ids["iconColor"].value = "#800000";
+        ids["textColor"].value = "#666666";
+        ids["settings"].open=true;
+      }
+      function testimonalchangeVersion(){
+        buttonVersion = "13";
+        document.getElementById("title").innerHTML = "Testimonal";
+        var ids = assignIds();
+        ids["itemsDiv"].style.display = "none";
+        ids["heightDiv"].style.display = "block";
+        ids["textcolorDiv"].style.display = "block";
+        ids["borderRadiusDiv"].style.display = "none";
+        ids["iconDiv"].style.display = "none";
+        ids["width"].placeholder = '6800';
+        ids["height"].placeholder = '2400';
+        ids["fillColor"].value = "#FFFFFF";
+        ids["iconColor"].value = "#800000";
+        ids["textColor"].value = "#666666";
+        ids["settings"].open=true;
+      }
 
       function closeSettings(){
         const settings = document.getElementById("settings");
@@ -597,11 +631,13 @@
 
     <div id= "images">
       <div id="group1"> 
-        <div><button id="img1" onclick=nav1changeVersion()><img src="nav1.png" width="490px" height="50px"></button> <!--490,50--></div>
-        <div><button id="img2" onclick=nav2changeVersion()><img src="nav2.png" width="200px" height="650px"></button> <!--200,650--></div>
+        <div id="img1" class="sizedImage"><button id="button1" onclick=nav1changeVersion()><img src="nav1.png" id="image1"></button> <!--490,50--></div>
+        <div id="img2" class="sizedImage"><button id="button2" onclick=nav2changeVersion()><img src="nav2.png" id="image2"></button> <!--200,650--></div>
       </div>
       <div id = "group2">
-        <div><button id="img11" onclick=cardDisplaychangeVersion()><img src="cardDisplay.png" width="200px" height="200px"></button> <!--200,400--></div>
+        <div id="img11" class="sizedImage"><button id="button11" onclick=cardDisplaychangeVersion()><img src="cardDisplay.png" id="image11"></button> <!--200,400--></div>
+        <div id="img12" class="sizedImage"><button id="button12" onclick=infoTilechangeVersion()><img src="infoTile.png" id="image12"></button> <!--600,200--></div>
+        <div id="img13" class="sizedImage"><button id="button13" onclick=testimonalchangeVersion()><img src="testimonal.png" id="image13"></button> <!--800,300--></div>
       </div>
        <dialog id="settings" close>
         <h2 id = "title">Settings</h2>
@@ -617,7 +653,7 @@
         <input type="color" id="iconcolor" name="iconcolor" value="#666666"></div>
         <div id="textcolorDiv"><label for="textcolor">Text Color (Enter Hex Code): </label>
         <input type="color" id="textcolor" name="textcolor" value="#800000"></div>
-        <div id="itemsDiv"><label for="items">Number of Items </label>
+        <div id="itemsDiv"><label for="items">Number of Items: </label>
         <input type="number" id="items" name="items" placeholder="7"></div>
        
         <div id = "iconDiv"> <br> <label for = "icons">-Icon Selection-</label>
@@ -640,16 +676,16 @@
         <button id = "close" onclick = closeSettings()>Close</button>
       </dialog>
       <div id = "group3">
-        <div><button id="img3" onclick=form1changeVersion()><img src="paymentDetails.png" width="200px" height="200px"> </button> <!--400,300--></div>
-        <div><button id="img4" onclick=form2changeVersion()><img src="addressDetails.png" width="200px" height="200px"></button> <!--400,500--></div>
-        <div><button id="img5" onclick=form3changeVersion()><img src="employeeInfo.png" width="200px" height="200px"></button> <!--400,500--></div>
+        <div id="img3" class="sizedImage"><button id="button3" onclick=form1changeVersion()><img src="paymentDetails.png" id="image3"> </button> <!--400,300--></div>
+        <div id="img4" class="sizedImage"><button id="button4" onclick=form2changeVersion()><img src="addressDetails.png" id="image4"></button> <!--400,500--></div>
+        <div id="img5" class="sizedImage"><button id="button5" onclick=form3changeVersion()><img src="employeeInfo.png" id="image5"></button> <!--400,500--></div>
       </div>
       <div id = "group4">
-        <div><button id="img6" onclick = pageNavchangeVersion()><img src="pageNav.png" width="200px" height="200px"></button> <!--500,100--></div>
-        <div><button id="img7" onclick = calenderchangeVersion()><img src="calender.png" width="200px" height="200px"></button> <!--300,100--></div>
-        <div><button id="img8" onclick = dropDownchangeVersion()><img src="dropDown.png" width="200px" height="200px"></button> <!--300,100--></div>
-        <div><button id="img9" onclick = buttonStyle1changeVersion()><img src="buttonStyle1.png" width="200px" height="200px"></button> <!--200,100--></div>
-        <div><button id="img10" onclick = buttonStyle2changeVersion()><img src="buttonStyle2.png" width="200px" height="200px"> </button> <!--100,100--></div>
+        <div id="img6" class="sizedImage"><button id="button6" onclick = pageNavchangeVersion()><img src="pageNav.png" id="image6"></button> <!--500,100--></div>
+        <div id="img7" class="sizedImage"><button id="button7" onclick = calenderchangeVersion()><img src="calender.png" id="image7"></button> <!--300,100--></div>
+        <div id="img8" class="sizedImage"><button id="button8" onclick = dropDownchangeVersion()><img src="dropDown.png" id="image8"></button> <!--300,100--></div>
+        <div id="img9" class="sizedImage"><button id="button9" onclick = buttonStyle1changeVersion()><img src="buttonStyle1.png" id="image9"></button> <!--200,100--></div>
+        <div id="img10" class="sizedImage"><button id="button10" onclick = buttonStyle2changeVersion()><img src="buttonStyle2.png" id="image10"> </button> <!--100,100--></div>
       </div>
     </div>
 
