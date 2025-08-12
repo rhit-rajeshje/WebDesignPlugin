@@ -22,8 +22,9 @@
         var img11 = document.getElementById("img11");
         var img12 = document.getElementById("img12");
         var img13 = document.getElementById("img13");
+        var img14 = document.getElementById("img14");
 
-        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13];
+        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14];
         for(let i=0; i<images.length;i++){
           if(changeVar.includes(i)){
             images[i].style.display = "inline-block";
@@ -44,7 +45,7 @@
         closeSettings();
       }
       function changeImage3(){
-        changeVar = [2,3,4];
+        changeVar = [2,3,4,13];
         declareVariables();
         closeSettings();
       }
@@ -70,491 +71,319 @@
         var iconC = document.getElementById("iconcolor");
         var textC = document.getElementById("textcolor");
 
-        var ids = {
-            "settings":settings,
-            "itemsDiv":itemsDiv,
-            "heightDiv":heightDiv,
-            "textcolorDiv":textcolorDiv,
-            "borderRadiusDiv":borderRadiusDiv,
-            "iconDiv":iconDiv,
-            "width":w,
-            "items":i,
-            "radius":b,
-            "height":h,
-            "fillColor":fillC,
-            "iconColor":iconC,
-            "textColor":textC
-          }
-      
+        // var ids = {
+        //     "settings":settings,
+        //     "itemsDiv":itemsDiv,
+        //     "heightDiv":heightDiv,
+        //     "textcolorDiv":textcolorDiv,
+        //     "borderRadiusDiv":borderRadiusDiv,
+        //     "iconDiv":iconDiv,
+        //     "width":w,
+        //     "items":i,
+        //     "radius":b,
+        //     "height":h,
+        //     "fillColor":fillC,
+        //     "iconColor":iconC,
+        //     "textColor":textC
+        //   }
+
+        var ids = new Map();
+        ids.set('settings',settings);
+        ids.set('itemsDivs',itemsDiv);
+        ids.set('heightDiv',heightDiv);
+        ids.set('textcolorDiv',textcolorDiv);
+        ids.set('borderRadiusDiv',borderRadiusDiv);
+        ids.set('iconDiv',iconDiv);
+        ids.set('width',w);
+        ids.set('items',i);
+        ids.set('radius',b);
+        ids.set('height',h);
+        ids.set('fillColor',fillC);
+        ids.set('iconColor',iconC);
+        ids.set('textColor',textC);      
         return ids;
       }
-      function buttonStyle1changeVersion(){
-        buttonVersion = "1";
-        document.getElementById("title").innerHTML = "Button Style 1";
-        var ids = assignIds();
-        ids["itemsDiv"].style.display = "none";
-        ids["heightDiv"].style.display = "block";
-        ids["textcolorDiv"].style.display = "none";
-        ids["borderRadiusDiv"].style.display = "block";
-        ids["iconDiv"].style.display = "none";
-        ids["width"].placeholder = '200';
-        ids["radius"].placeholder = '40';
-        ids["height"].placeholder = '100';
-        ids["fillColor"].value = "#800000";
-        ids["iconColor"].value = "#FFFFFF";
-        ids["settings"].open=true;
-        // const settings = document.getElementById("settings");
-
-        // var itemsDiv = document.getElementById("itemsDiv");
-        // itemsDiv.style.display = "none";
-        // var heightDiv = document.getElementById("heightDiv");
-        // heightDiv.style.display = "block";
-        // var textcolorDiv = document.getElementById("textcolorDiv");
-        // textcolorDiv.style.display = "none";
-        // var borderRadiusDiv = document.getElementById("borderRadiusDiv");
-        // borderRadiusDiv.style.display = "block";
-        // var iconDiv = document.getElementById("iconDiv");
-        // iconDiv.style.display = "none";
-
-        // var w = document.getElementById("width");
-        // w.placeholder = '200';
-        // var b = document.getElementById("radius");
-        // b.placeholder = '40';
-        // var h = document.getElementById("height");
-        // h.placeholder = '100';
-        // var fillC = document.getElementById("fillcolor");
-        // fillC.value = "#800000";
-        // var iconC = document.getElementById("iconcolor");
-        // iconC.value = "#FFFFFF";
-
-        // settings.open=true;
+      let idSettings = {
+        "1":[true,"none","block","none","block","none",'200','7','40','100','#800000','#FFFFFF','#666666',"Button Style 1"],
+        "2":[true,"none","block","none","block", "none",'100','7','100','100','#800000','#FFFFFF','#666666',"Button Style 2"],
+        "3":[true,"block","none","none","none", "none",'800','7','0','0','#FFFFFF','#666666','#800000',"Dropdown"],
+        "4":[true,"none","block","block","none", "block",'2200','7','0','200','#FFFFFF','#666666','#800000',"Navigation Bar Style 1"],
+        "5":[true,"block","block","block","none", "block",'800','3','0','2100','#FFFFFF','#666666','#800000',"Navigation Bar Style 2"],
+        "6":[true,"none","block","block","none", "none",'2850','0','0','675','#FFFFFF','#666666','#800000',"Calender"],
+        "7":[true,"block","block","block","none", "none",'100','5','0','100','#800000','#FFFFFF','#000000',"Page Navigation"],
+        "8":[true,"none","block","block","none", "none",'950','0','0','600','#FFFFFF','#666666','#000000',"Payment Details Card"],
+        "9":[true,"none","block","block","none", "none",'930','0','0','1250','#FFFFFF','#666666','#000000',"Address Details Card"],
+        "10":[true,"none","block","block","none", "none",'1400','0','0','1460','#FFFFFF','#666666','#000000',"Employee Info Card"],
+        "11":[true,"block","block","block","none", "none",'1750','3','0','2500','#FFFFFF','#800000','#666666',"Card Display"],
+        "12":[true,"block","block","block","none", "none",'1680','3','0','1020','#FFFFFF','#800000','#666666',"Info Tiles"],
+        "13":[true,"none","block","block","none", "none",'6800','0','0','2400','#FFFFFF','#800000','#666666',"Testimonial"],
+        "14":[true,"block","block","block","none", "none",'400','5','0','100','#FFFFFF','#800000','#666666',"Checkbox List"]
       }
-      function buttonStyle2changeVersion(){
-        buttonVersion = "2";
-        document.getElementById("title").innerHTML = "Button Style 2";
+      
+      function changeVersion(num){
+        const numString = String(num);
+        buttonVersion = numString;
+        var settingList = idSettings[numString];
         var ids = assignIds();
-        ids["itemsDiv"].style.display = "none";
-        ids["heightDiv"].style.display = "block";
-        ids["textcolorDiv"].style.display = "none";
-        ids["borderRadiusDiv"].style.display = "block";
-        ids["iconDiv"].style.display = "none";
-        ids["width"].placeholder = '100';
-        ids["radius"].placeholder = '100';
-        ids["height"].placeholder = '100';
-        ids["fillColor"].value = "#800000";
-        ids["iconColor"].value = "#FFFFFF";
-        ids["settings"].open=true;
-
-        // const settings = document.getElementById("settings");
-
-        // var itemsDiv = document.getElementById("itemsDiv");
-        // itemsDiv.style.display = "none";
-        // var heightDiv = document.getElementById("heightDiv");
-        // heightDiv.style.display = "block";
-        // var textcolorDiv = document.getElementById("textcolorDiv");
-        // textcolorDiv.style.display = "none";
-        // var borderRadiusDiv = document.getElementById("borderRadiusDiv");
-        // borderRadiusDiv.style.display = "block";
-        // var iconDiv = document.getElementById("iconDiv");
-        // iconDiv.style.display = "none";
-
-        // var w = document.getElementById("width");
-        // w.placeholder = '100';
-        // var b = document.getElementById("radius");
-        // b.placeholder = '100';
-        // var h = document.getElementById("height");
-        // h.placeholder = '100';
-        // var fillC = document.getElementById("fillcolor");
-        // fillC.value = "#800000";
-        // var iconC = document.getElementById("iconcolor");
-        // iconC.value = "#FFFFFF";
-
-        // settings.open=true;
+        var i=0;
+        for(let v of ids.values()){
+          if(i==0){
+            v.open = settingList[i];
+          }
+          else if(i>=1 && i<=5){
+            v.style.display = settingList[i];
+          }
+          else if(i>=6 && i<=9){
+            v.placeholder = settingList[i];
+          }
+          else if(i>=10 && i<=12){
+            v.value = settingList[i];
+          }
+          i++;
+        }
+        document.getElementById("title").innerHTML=settingList[13];
       }
-      function dropDownchangeVersion(){
-        buttonVersion = "3";
-        document.getElementById("title").innerHTML = "Dropdown";
-        var ids = assignIds();
 
-        ids["itemsDiv"].style.display = "block";
-        ids["heightDiv"].style.display = "none";
-        ids["textcolorDiv"].style.display = "none";
-        ids["borderRadiusDiv"].style.display = "none";
-        ids["iconDiv"].style.display = "none";
-        ids["width"].placeholder = '800';
-        ids["items"].placeholder = '7 ';
-        ids["fillColor"].value = "#FFFFFF";
-        ids["iconColor"].value = "#666666";
-        ids["textColor"].value = "#800000";
-        ids["settings"].open=true;
-        // const settings = document.getElementById("settings");
+      // function buttonStyle1changeVersion(){
+      //   buttonVersion = "1";
+      //   document.getElementById("title").innerHTML = "Button Style 1";
+      //   var ids = assignIds();
+      //   ids["itemsDiv"].style.display = "none";
+      //   ids["heightDiv"].style.display = "block";
+      //   ids["textcolorDiv"].style.display = "none";
+      //   ids["borderRadiusDiv"].style.display = "block";
+      //   ids["iconDiv"].style.display = "none";
+      //   ids["width"].placeholder = '200';
+      //   ids["radius"].placeholder = '40';
+      //   ids["height"].placeholder = '100';
+      //   ids["fillColor"].value = "#800000";
+      //   ids["iconColor"].value = "#FFFFFF";
+      //   ids["settings"].open=true;
+      // }
+     
+      // function buttonStyle2changeVersion(){
+      //   buttonVersion = "2";
+      //   document.getElementById("title").innerHTML = "Button Style 2";
+      //   var ids = assignIds();
+      //   ids["itemsDiv"].style.display = "none";
+      //   ids["heightDiv"].style.display = "block";
+      //   ids["textcolorDiv"].style.display = "none";
+      //   ids["borderRadiusDiv"].style.display = "block";
+      //   ids["iconDiv"].style.display = "none";
+      //   ids["width"].placeholder = '100';
+      //   ids["radius"].placeholder = '100';
+      //   ids["height"].placeholder = '100';
+      //   ids["fillColor"].value = "#800000";
+      //   ids["iconColor"].value = "#FFFFFF";
+      //   ids["settings"].open=true;
+      // }
+      
+      // function dropDownchangeVersion(){
+      //   buttonVersion = "3";
+      //   document.getElementById("title").innerHTML = "Dropdown";
+      //   var ids = assignIds();
 
-        // var itemsDiv = document.getElementById("itemsDiv");
-        // itemsDiv.style.display = "block";
-        // var heightDiv = document.getElementById("heightDiv");
-        // heightDiv.style.display = "none";
-        // var textcolorDiv = document.getElementById("textcolorDiv");
-        // textcolorDiv.style.display = "none";
-        // var borderRadiusDiv = document.getElementById("borderRadiusDiv");
-        // borderRadiusDiv.style.display = "none";
-        // var iconDiv = document.getElementById("iconDiv");
-        // iconDiv.style.display = "none";
+      //   ids["itemsDiv"].style.display = "block";
+      //   ids["heightDiv"].style.display = "none";
+      //   ids["textcolorDiv"].style.display = "none";
+      //   ids["borderRadiusDiv"].style.display = "none";
+      //   ids["iconDiv"].style.display = "none";
+      //   ids["width"].placeholder = '800';
+      //   ids["items"].placeholder = '7 ';
+      //   ids["fillColor"].value = "#FFFFFF";
+      //   ids["iconColor"].value = "#666666";
+      //   ids["textColor"].value = "#800000";
+      //   ids["settings"].open=true;
+      // }
+      
+      //  function nav1changeVersion(){
+      //   buttonVersion = "4";
+      //   document.getElementById("title").innerHTML = "Navigation Bar Style 1";
+      //   var ids = assignIds();
+      //   ids["itemsDiv"].style.display = "none";
+      //   ids["heightDiv"].style.display = "block";
+      //   ids["textcolorDiv"].style.display = "block";
+      //   ids["borderRadiusDiv"].style.display = "none";
+      //   ids["iconDiv"].style.display = "block";
+      //   ids["width"].placeholder = '2200';
+      //   ids["height"].placeholder = '200';
+      //   ids["fillColor"].value = "#FFFFFF";
+      //   ids["iconColor"].value = "#666666";
+      //   ids["textColor"].value = "#800000";
+      //   ids["settings"].open=true;
+      // }
+       
+      //  function nav2changeVersion(){
+      //   buttonVersion = "5";
+      //   document.getElementById("title").innerHTML = "Navigation Bar Style 2";
+      //   var ids = assignIds();
+      //   ids["itemsDiv"].style.display = "block";
+      //   ids["heightDiv"].style.display = "block";
+      //   ids["textcolorDiv"].style.display = "block";
+      //   ids["borderRadiusDiv"].style.display = "none";
+      //   ids["iconDiv"].style.display = "block";
+      //   ids["width"].placeholder = '800';
+      //   ids["height"].placeholder = '2100';
+      //   ids["items"].placeholder = '3';
+      //   ids["fillColor"].value = "#FFFFFF";
+      //   ids["iconColor"].value = "#666666";
+      //   ids["textColor"].value = "#800000";
+      //   ids["settings"].open=true;
+      // }
 
-        // var w = document.getElementById("width");
-        // w.placeholder = '800';
-        // var i = document.getElementById("items");
-        // i.placeholder = '7 ';
-        // var fillC = document.getElementById("fillcolor");
-        // fillC.value = "#FFFFFF";
-        // var iconC = document.getElementById("iconcolor");
-        // iconC.value = "#666666";
-        // var textC = document.getElementById("textcolor");
-        // textC.value = "#800000";
+      // function calenderchangeVersion(){
+      //   buttonVersion = "6";
+      //   document.getElementById("title").innerHTML = "Calender";
+      //   var ids = assignIds();
+      //   ids["itemsDiv"].style.display = "none";
+      //   ids["heightDiv"].style.display = "block";
+      //   ids["textcolorDiv"].style.display = "block";
+      //   ids["borderRadiusDiv"].style.display = "none";
+      //   ids["iconDiv"].style.display = "none";
+      //   ids["width"].placeholder = '2850';
+      //   ids["height"].placeholder = '675';
+      //   ids["fillColor"].value = "#FFFFFF";
+      //   ids["iconColor"].value = "#666666";
+      //   ids["textColor"].value = "#800000";
+      //   ids["settings"].open=true;
+      // }
 
-        // settings.open=true;
-      }
-       function nav1changeVersion(){
-        buttonVersion = "4";
-        document.getElementById("title").innerHTML = "Navigation Bar Style 1";
-        var ids = assignIds();
-        ids["itemsDiv"].style.display = "none";
-        ids["heightDiv"].style.display = "block";
-        ids["textcolorDiv"].style.display = "block";
-        ids["borderRadiusDiv"].style.display = "none";
-        ids["iconDiv"].style.display = "block";
-        ids["width"].placeholder = '2200';
-        ids["height"].placeholder = '200';
-        ids["fillColor"].value = "#FFFFFF";
-        ids["iconColor"].value = "#666666";
-        ids["textColor"].value = "#800000";
-        ids["settings"].open=true;
+      //  function pageNavchangeVersion(){
+      //   buttonVersion = "7";
+      //   document.getElementById("title").innerHTML = "Page Navigation";
+      //   var ids = assignIds();
+      //   ids["itemsDiv"].style.display = "block";
+      //   ids["heightDiv"].style.display = "block";
+      //   ids["textcolorDiv"].style.display = "block";
+      //   ids["borderRadiusDiv"].style.display = "none";
+      //   ids["iconDiv"].style.display = "none";
+      //   ids["width"].placeholder = '100';
+      //   ids["height"].placeholder = '100';
+      //   ids["items"].placeholder = '5';
+      //   ids["fillColor"].value = "#800000";
+      //   ids["iconColor"].value = "#FFFFFF";
+      //   ids["textColor"].value = "#000000";
+      //   ids["settings"].open=true;
+      // }
 
-        // const settings = document.getElementById("settings");
+      // function form1changeVersion(){
+      //   buttonVersion = "8";
+      //   document.getElementById("title").innerHTML = "Payment Details Card";
+      //   var ids = assignIds();
+      //   ids["itemsDiv"].style.display = "none";
+      //   ids["heightDiv"].style.display = "block";
+      //   ids["textcolorDiv"].style.display = "block";
+      //   ids["borderRadiusDiv"].style.display = "none";
+      //   ids["iconDiv"].style.display = "none";
+      //   ids["width"].placeholder = '950';
+      //   ids["height"].placeholder = '600';
+      //   ids["fillColor"].value = "#FFFFFF";
+      //   ids["iconColor"].value = "#666666";
+      //   ids["textColor"].value = "#000000";
+      //   ids["settings"].open=true;
+      // }
 
-        // var itemsDiv = document.getElementById("itemsDiv");
-        // itemsDiv.style.display = "none";
-        // var heightDiv = document.getElementById("heightDiv");
-        // heightDiv.style.display = "block";
-        // var textcolorDiv = document.getElementById("textcolorDiv");
-        // textcolorDiv.style.display = "block";
-        // var borderRadiusDiv = document.getElementById("borderRadiusDiv");
-        // borderRadiusDiv.style.display = "none";
-        // var iconDiv = document.getElementById("iconDiv");
-        // iconDiv.style.display = "block";
+      // function form2changeVersion(){
+      //   buttonVersion = "9";
+      //   document.getElementById("title").innerHTML = "Address Details Card";
+      //   var ids = assignIds();
+      //   ids["itemsDiv"].style.display = "none";
+      //   ids["heightDiv"].style.display = "block";
+      //   ids["textcolorDiv"].style.display = "block";
+      //   ids["borderRadiusDiv"].style.display = "none";
+      //   ids["iconDiv"].style.display = "none";
+      //   ids["width"].placeholder = '930';
+      //   ids["height"].placeholder = '1250';
+      //   ids["fillColor"].value = "#FFFFFF";
+      //   ids["iconColor"].value = "#666666";
+      //   ids["textColor"].value = "#000000";
+      //   ids["settings"].open=true;
+      // }
 
-        // var w = document.getElementById("width");
-        // w.placeholder = '2200';
-        // var h = document.getElementById("height");
-        // h.placeholder = '200';
-        // var fillC = document.getElementById("fillcolor");
-        // fillC.value = "#FFFFFF";
-        // var iconC = document.getElementById("iconcolor");
-        // iconC.value = "#666666";
-        // var textC = document.getElementById("textcolor");
-        // textC.value = "#800000";
+      // function form3changeVersion(){
+      //   buttonVersion = "10";
+      //   document.getElementById("title").innerHTML = "Employee Info Card";
+      //   var ids = assignIds();
+      //   ids["itemsDiv"].style.display = "none";
+      //   ids["heightDiv"].style.display = "block";
+      //   ids["textcolorDiv"].style.display = "block";
+      //   ids["borderRadiusDiv"].style.display = "none";
+      //   ids["iconDiv"].style.display = "none";
+      //   ids["width"].placeholder = '1400';
+      //   ids["height"].placeholder = '1460';
+      //   ids["fillColor"].value = "#FFFFFF";
+      //   ids["iconColor"].value = "#666666";
+      //   ids["textColor"].value = "#000000";
+      //   ids["settings"].open=true;
+      // }
 
-        // settings.open=true;
-      }
-       function nav2changeVersion(){
-        buttonVersion = "5";
-        document.getElementById("title").innerHTML = "Navigation Bar Style 2";
-        var ids = assignIds();
-        ids["itemsDiv"].style.display = "block";
-        ids["heightDiv"].style.display = "block";
-        ids["textcolorDiv"].style.display = "block";
-        ids["borderRadiusDiv"].style.display = "none";
-        ids["iconDiv"].style.display = "block";
-        ids["width"].placeholder = '800';
-        ids["height"].placeholder = '2100';
-        ids["items"].placeholder = '3';
-        ids["fillColor"].value = "#FFFFFF";
-        ids["iconColor"].value = "#666666";
-        ids["textColor"].value = "#800000";
-        ids["settings"].open=true;
-        // const settings = document.getElementById("settings");
+      // function cardDisplaychangeVersion(){
+      //   buttonVersion = "11";
+      //   document.getElementById("title").innerHTML = "Card Display";
+      //   var ids = assignIds();
+      //   ids["itemsDiv"].style.display = "block";
+      //   ids["heightDiv"].style.display = "block";
+      //   ids["textcolorDiv"].style.display = "block";
+      //   ids["borderRadiusDiv"].style.display = "none";
+      //   ids["iconDiv"].style.display = "none";
+      //   ids["width"].placeholder = '1750';
+      //   ids["height"].placeholder = '2500';
+      //   ids["fillColor"].value = "#FFFFFF";
+      //   ids["iconColor"].value = "#800000";
+      //   ids["textColor"].value = "#666666";
+      //   ids["settings"].open=true;
+      // }
 
-        // var itemsDiv = document.getElementById("itemsDiv");
-        // itemsDiv.style.display = "block";
-        // var heightDiv = document.getElementById("heightDiv");
-        // heightDiv.style.display = "block";
-        // var textcolorDiv = document.getElementById("textcolorDiv");
-        // textcolorDiv.style.display = "block";
-        // var borderRadiusDiv = document.getElementById("borderRadiusDiv");
-        // borderRadiusDiv.style.display = "none";
-        // var iconDiv = document.getElementById("iconDiv");
-        // iconDiv.style.display = "block";
+      //  function infoTilechangeVersion(){
+      //   buttonVersion = "12";
+      //   document.getElementById("title").innerHTML = "Info Tiles";
+      //   var ids = assignIds();
+      //   ids["itemsDiv"].style.display = "block";
+      //   ids["heightDiv"].style.display = "block";
+      //   ids["textcolorDiv"].style.display = "block";
+      //   ids["borderRadiusDiv"].style.display = "none";
+      //   ids["iconDiv"].style.display = "none";
+      //   ids["width"].placeholder = '1680';
+      //   ids["height"].placeholder = '1020';
+      //   ids["fillColor"].value = "#FFFFFF";
+      //   ids["iconColor"].value = "#800000";
+      //   ids["textColor"].value = "#666666";
+      //   ids["settings"].open=true;
+      // }
 
-        // var w = document.getElementById("width");
-        // w.placeholder = '800';
-        // var h = document.getElementById("height");
-        // h.placeholder = '2100';
-        // var i = document.getElementById("items");
-        // i.placeholder = '3 ';
-        // var fillC = document.getElementById("fillcolor");
-        // fillC.value = "#FFFFFF";
-        // var iconC = document.getElementById("iconcolor");
-        // iconC.value = "#666666";
-        // var textC = document.getElementById("textcolor");
-        // textC.value = "#800000";
+      // function testimonialchangeVersion(){
+      //   buttonVersion = "13";
+      //   document.getElementById("title").innerHTML = "Testimonial";
+      //   var ids = assignIds();
+      //   ids["itemsDiv"].style.display = "none";
+      //   ids["heightDiv"].style.display = "block";
+      //   ids["textcolorDiv"].style.display = "block";
+      //   ids["borderRadiusDiv"].style.display = "none";
+      //   ids["iconDiv"].style.display = "none";
+      //   ids["width"].placeholder = '6800';
+      //   ids["height"].placeholder = '2400';
+      //   ids["fillColor"].value = "#FFFFFF";
+      //   ids["iconColor"].value = "#800000";
+      //   ids["textColor"].value = "#666666";
+      //   ids["settings"].open=true;
+      // }
 
-        // settings.open=true;
-      }
-      function calenderchangeVersion(){
-        buttonVersion = "6";
-        document.getElementById("title").innerHTML = "Calender";
-        var ids = assignIds();
-        ids["itemsDiv"].style.display = "none";
-        ids["heightDiv"].style.display = "block";
-        ids["textcolorDiv"].style.display = "block";
-        ids["borderRadiusDiv"].style.display = "none";
-        ids["iconDiv"].style.display = "none";
-        ids["width"].placeholder = '2850';
-        ids["height"].placeholder = '675';
-        ids["fillColor"].value = "#FFFFFF";
-        ids["iconColor"].value = "#666666";
-        ids["textColor"].value = "#800000";
-        ids["settings"].open=true;
-        // const settings = document.getElementById("settings");
-
-        // var itemsDiv = document.getElementById("itemsDiv");
-        // itemsDiv.style.display = "none";
-        // var heightDiv = document.getElementById("heightDiv");
-        // heightDiv.style.display = "block";
-        // var textcolorDiv = document.getElementById("textcolorDiv");
-        // textcolorDiv.style.display = "block";
-        // var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
-        // borderRadiusDiv.style.display = "none";
-        // var iconDiv = document.getElementById("iconDiv");
-        // iconDiv.style.display = "none";
-
-        // var w = document.getElementById("width");
-        // w.placeholder = '2850';
-        // var h = document.getElementById("height");
-        // h.placeholder = '675';
-        // var fillC = document.getElementById("fillcolor");
-        // fillC.value = "#FFFFFF";
-        // var iconC = document.getElementById("iconcolor");
-        // iconC.value = "#666666";
-        // var textC = document.getElementById("textcolor");
-        // textC.value = "#800000";
-         
-        // settings.open=true;
-      }
-       function pageNavchangeVersion(){
-        buttonVersion = "7";
-        document.getElementById("title").innerHTML = "Page Navigation";
-        var ids = assignIds();
-        ids["itemsDiv"].style.display = "block";
-        ids["heightDiv"].style.display = "block";
-        ids["textcolorDiv"].style.display = "block";
-        ids["borderRadiusDiv"].style.display = "none";
-        ids["iconDiv"].style.display = "none";
-        ids["width"].placeholder = '100';
-        ids["height"].placeholder = '100';
-        ids["items"].placeholder = '5';
-        ids["fillColor"].value = "#800000";
-        ids["iconColor"].value = "#FFFFFF";
-        ids["textColor"].value = "#000000";
-        ids["settings"].open=true;
-        // const settings = document.getElementById("settings");
-
-        // var itemsDiv = document.getElementById("itemsDiv");
-        // itemsDiv.style.display = "block";
-        // var heightDiv = document.getElementById("heightDiv");
-        // heightDiv.style.display = "block";
-        // var textcolorDiv = document.getElementById("textcolorDiv");
-        // textcolorDiv.style.display = "block";
-        // var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
-        // borderRadiusDiv.style.display = "none";
-        // var iconDiv = document.getElementById("iconDiv");
-        // iconDiv.style.display = "none";
-
-        // var w = document.getElementById("width");
-        // w.placeholder = '100';
-        // var h = document.getElementById("height");
-        // h.placeholder = '100';
-        // var i = document.getElementById("items");
-        // i.placeholder = '5';
-        // var fillC = document.getElementById("fillcolor");
-        // fillC.value = "#800000";
-        // var iconC = document.getElementById("iconcolor");
-        // iconC.value = "#FFFFFF";
-        // var textC = document.getElementById("textcolor");
-        // textC.value = "#000000";
-
-        // settings.open=true;
-      }
-      function form1changeVersion(){
-        buttonVersion = "8";
-        document.getElementById("title").innerHTML = "Payment Details Card";
-        var ids = assignIds();
-        ids["itemsDiv"].style.display = "none";
-        ids["heightDiv"].style.display = "block";
-        ids["textcolorDiv"].style.display = "block";
-        ids["borderRadiusDiv"].style.display = "none";
-        ids["iconDiv"].style.display = "none";
-        ids["width"].placeholder = '950';
-        ids["height"].placeholder = '600';
-        ids["fillColor"].value = "#FFFFFF";
-        ids["iconColor"].value = "#666666";
-        ids["textColor"].value = "#000000";
-        ids["settings"].open=true;
-        // const settings = document.getElementById("settings");
-
-        // var itemsDiv = document.getElementById("itemsDiv");
-        // itemsDiv.style.display = "none";
-        // var heightDiv = document.getElementById("heightDiv");
-        // heightDiv.style.display = "block";
-        // var textcolorDiv = document.getElementById("textcolorDiv");
-        // textcolorDiv.style.display = "block";
-        // var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
-        // borderRadiusDiv.style.display = "none";
-        // var iconDiv = document.getElementById("iconDiv");
-        // iconDiv.style.display = "none";
-
-        // var w = document.getElementById("width");
-        // w.placeholder = '950';
-        // var h = document.getElementById("height");
-        // h.placeholder = '600';
-        // var fillC = document.getElementById("fillcolor");
-        // fillC.value = "#FFFFFF";
-        // var iconC = document.getElementById("iconcolor");
-        // iconC.value = "#666666";
-        // var textC = document.getElementById("textcolor");
-        // textC.value = "#000000";
-
-        // settings.open=true;
-      }
-      function form2changeVersion(){
-        buttonVersion = "9";
-        document.getElementById("title").innerHTML = "Address Details Card";
-        var ids = assignIds();
-        ids["itemsDiv"].style.display = "none";
-        ids["heightDiv"].style.display = "block";
-        ids["textcolorDiv"].style.display = "block";
-        ids["borderRadiusDiv"].style.display = "none";
-        ids["iconDiv"].style.display = "none";
-        ids["width"].placeholder = '930';
-        ids["height"].placeholder = '1250';
-        ids["fillColor"].value = "#FFFFFF";
-        ids["iconColor"].value = "#666666";
-        ids["textColor"].value = "#000000";
-        ids["settings"].open=true;
-        // const settings = document.getElementById("settings");
-
-        // var itemsDiv = document.getElementById("itemsDiv");
-        // itemsDiv.style.display = "none";
-        // var heightDiv = document.getElementById("heightDiv");
-        // heightDiv.style.display = "block";
-        // var textcolorDiv = document.getElementById("textcolorDiv");
-        // textcolorDiv.style.display = "block";
-        // var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
-        // borderRadiusDiv.style.display = "none";
-        // var iconDiv = document.getElementById("iconDiv");
-        // iconDiv.style.display = "none";
-
-        // var w = document.getElementById("width");
-        // w.placeholder = '930';
-        // var h = document.getElementById("height");
-        // h.placeholder = '1250';
-        // var fillC = document.getElementById("fillcolor");
-        // fillC.value = "#FFFFFF";
-        // var iconC = document.getElementById("iconcolor");
-        // iconC.value = "#666666";
-        // var textC = document.getElementById("textcolor");
-        // textC.value = "#000000";
-
-        // settings.open=true;
-      }
-      function form3changeVersion(){
-        buttonVersion = "10";
-        document.getElementById("title").innerHTML = "Employee Info Card";
-        var ids = assignIds();
-        ids["itemsDiv"].style.display = "none";
-        ids["heightDiv"].style.display = "block";
-        ids["textcolorDiv"].style.display = "block";
-        ids["borderRadiusDiv"].style.display = "none";
-        ids["iconDiv"].style.display = "none";
-        ids["width"].placeholder = '1400';
-        ids["height"].placeholder = '1460';
-        ids["fillColor"].value = "#FFFFFF";
-        ids["iconColor"].value = "#666666";
-        ids["textColor"].value = "#000000";
-        ids["settings"].open=true;
-        // const settings = document.getElementById("settings");
-
-        // var itemsDiv = document.getElementById("itemsDiv");
-        // itemsDiv.style.display = "none";
-        // var heightDiv = document.getElementById("heightDiv");
-        // heightDiv.style.display = "block";
-        // var textcolorDiv = document.getElementById("textcolorDiv");
-        // textcolorDiv.style.display = "block";
-        // var borderRadiusDiv = document.getElementById("borderRadiusDiv"); 
-        // borderRadiusDiv.style.display = "none";
-        // var iconDiv = document.getElementById("iconDiv");
-        // iconDiv.style.display = "none";
-
-        // var w = document.getElementById("width");
-        // w.placeholder = '1400';
-        // var h = document.getElementById("height");
-        // h.placeholder = '1460';
-        // var fillC = document.getElementById("fillcolor");
-        // fillC.value = "#FFFFFF";
-        // var iconC = document.getElementById("iconcolor");
-        // iconC.value = "#666666";
-        // var textC = document.getElementById("textcolor");
-        // textC.value = "#000000";
-
-        // settings.open=true;
-      }
-      function cardDisplaychangeVersion(){
-        buttonVersion = "11";
-        document.getElementById("title").innerHTML = "Card Display";
-        var ids = assignIds();
-        ids["itemsDiv"].style.display = "block";
-        ids["heightDiv"].style.display = "block";
-        ids["textcolorDiv"].style.display = "block";
-        ids["borderRadiusDiv"].style.display = "none";
-        ids["iconDiv"].style.display = "none";
-        ids["width"].placeholder = '1750';
-        ids["height"].placeholder = '2500';
-        ids["fillColor"].value = "#FFFFFF";
-        ids["iconColor"].value = "#800000";
-        ids["textColor"].value = "#666666";
-        ids["settings"].open=true;
-      }
-       function infoTilechangeVersion(){
-        buttonVersion = "12";
-        document.getElementById("title").innerHTML = "Info Tiles";
-        var ids = assignIds();
-        ids["itemsDiv"].style.display = "block";
-        ids["heightDiv"].style.display = "block";
-        ids["textcolorDiv"].style.display = "block";
-        ids["borderRadiusDiv"].style.display = "none";
-        ids["iconDiv"].style.display = "none";
-        ids["width"].placeholder = '1680';
-        ids["height"].placeholder = '1020';
-        ids["fillColor"].value = "#FFFFFF";
-        ids["iconColor"].value = "#800000";
-        ids["textColor"].value = "#666666";
-        ids["settings"].open=true;
-      }
-      function testimonalchangeVersion(){
-        buttonVersion = "13";
-        document.getElementById("title").innerHTML = "Testimonal";
-        var ids = assignIds();
-        ids["itemsDiv"].style.display = "none";
-        ids["heightDiv"].style.display = "block";
-        ids["textcolorDiv"].style.display = "block";
-        ids["borderRadiusDiv"].style.display = "none";
-        ids["iconDiv"].style.display = "none";
-        ids["width"].placeholder = '6800';
-        ids["height"].placeholder = '2400';
-        ids["fillColor"].value = "#FFFFFF";
-        ids["iconColor"].value = "#800000";
-        ids["textColor"].value = "#666666";
-        ids["settings"].open=true;
-      }
+      //  function checkBoxchangeVersion(){
+      //   buttonVersion = "14";
+      //   document.getElementById("title").innerHTML = "CheckBox List";
+      //   var ids = assignIds();
+      //   ids["itemsDiv"].style.display = "block";
+      //   ids["heightDiv"].style.display = "block";
+      //   ids["textcolorDiv"].style.display = "block";
+      //   ids["borderRadiusDiv"].style.display = "none";
+      //   ids["iconDiv"].style.display = "none";
+      //   ids["width"].placeholder = '400';
+      //   ids["height"].placeholder = '100';
+      //   ids["fillColor"].value = "#FFFFFF";
+      //   ids["iconColor"].value = "#800000";
+      //   ids["textColor"].value = "#666666";
+      //   ids["settings"].open=true;
+      // }
 
       function closeSettings(){
         const settings = document.getElementById("settings");
@@ -629,17 +458,7 @@
       </div>
     </div>
 
-    <div id= "images">
-      <div id="group1"> 
-        <div id="img1" class="sizedImage"><button id="button1" onclick=nav1changeVersion()><img src="nav1.png" id="image1"></button> <!--490,50--></div>
-        <div id="img2" class="sizedImage"><button id="button2" onclick=nav2changeVersion()><img src="nav2.png" id="image2"></button> <!--200,650--></div>
-      </div>
-      <div id = "group2">
-        <div id="img11" class="sizedImage"><button id="button11" onclick=cardDisplaychangeVersion()><img src="cardDisplay.png" id="image11"></button> <!--200,400--></div>
-        <div id="img12" class="sizedImage"><button id="button12" onclick=infoTilechangeVersion()><img src="infoTile.png" id="image12"></button> <!--600,200--></div>
-        <div id="img13" class="sizedImage"><button id="button13" onclick=testimonalchangeVersion()><img src="testimonal.png" id="image13"></button> <!--800,300--></div>
-      </div>
-       <dialog id="settings" close>
+    <dialog id="settings" close>
         <h2 id = "title">Settings</h2>
         <div id = "widthDiv"><label for="width">Width: </label>
         <input type="number" id="width" name="width" placeholder="100"></div>
@@ -675,17 +494,30 @@
         <button id = "submit" onclick = createMessage()>Submit</button>
         <button id = "close" onclick = closeSettings()>Close</button>
       </dialog>
+
+    <div id= "images">
+      <div id="group1"> 
+        <div id="img1" class="sizedImage"><button id="button1" onclick=changeVersion(4)><img src="nav1.png" id="image1"></button> <!--490,50--></div>
+        <div id="img2" class="sizedImage"><button id="button2" onclick=changeVersion(5)><img src="nav2.png" id="image2"></button> <!--200,650--></div>
+      </div>
+      <div id = "group2">
+        <div id="img11" class="sizedImage"><button id="button11" onclick=changeVersion(11)><img src="cardDisplay.png" id="image11"></button> <!--200,400--></div>
+        <div id="img12" class="sizedImage"><button id="button12" onclick=changeVersion(12)><img src="infoTile.png" id="image12"></button> <!--600,200--></div>
+        <div id="img13" class="sizedImage"><button id="button13" onclick=changeVersion(13)><img src="testimonal.png" id="image13"></button> <!--800,300--></div>
+      </div>
+       
       <div id = "group3">
-        <div id="img3" class="sizedImage"><button id="button3" onclick=form1changeVersion()><img src="paymentDetails.png" id="image3"> </button> <!--400,300--></div>
-        <div id="img4" class="sizedImage"><button id="button4" onclick=form2changeVersion()><img src="addressDetails.png" id="image4"></button> <!--400,500--></div>
-        <div id="img5" class="sizedImage"><button id="button5" onclick=form3changeVersion()><img src="employeeInfo.png" id="image5"></button> <!--400,500--></div>
+        <div id="img3" class="sizedImage"><button id="button3" onclick=changeVersion(8)><img src="paymentDetails.png" id="image3"> </button> <!--400,300--></div>
+        <div id="img4" class="sizedImage"><button id="button4" onclick=changeVersion(9)><img src="addressDetails.png" id="image4"></button> <!--400,500--></div>
+        <div id="img5" class="sizedImage"><button id="button5" onclick=changeVersion(10)><img src="employeeInfo.png" id="image5"></button> <!--400,500--></div>
+        <div id="img14" class="sizedImage"><button id="button14" onclick=changeVersion(14)><img src="checkBox.png" id="image14"></button> <!--400,500--></div>
       </div>
       <div id = "group4">
-        <div id="img6" class="sizedImage"><button id="button6" onclick = pageNavchangeVersion()><img src="pageNav.png" id="image6"></button> <!--500,100--></div>
-        <div id="img7" class="sizedImage"><button id="button7" onclick = calenderchangeVersion()><img src="calender.png" id="image7"></button> <!--300,100--></div>
-        <div id="img8" class="sizedImage"><button id="button8" onclick = dropDownchangeVersion()><img src="dropDown.png" id="image8"></button> <!--300,100--></div>
-        <div id="img9" class="sizedImage"><button id="button9" onclick = buttonStyle1changeVersion()><img src="buttonStyle1.png" id="image9"></button> <!--200,100--></div>
-        <div id="img10" class="sizedImage"><button id="button10" onclick = buttonStyle2changeVersion()><img src="buttonStyle2.png" id="image10"> </button> <!--100,100--></div>
+        <div id="img6" class="sizedImage"><button id="button6" onclick = changeVersion(7)><img src="pageNav.png" id="image6"></button> <!--500,100--></div>
+        <div id="img7" class="sizedImage"><button id="button7" onclick = changeVersion(6)><img src="calender.png" id="image7"></button> <!--300,100--></div>
+        <div id="img8" class="sizedImage"><button id="button8" onclick = changeVersion(3)><img src="dropDown.png" id="image8"></button> <!--300,100--></div>
+        <div id="img9" class="sizedImage"><button id="button9" onclick = changeVersion(1)><img src="buttonStyle1.png" id="image9"></button> <!--200,100--></div>
+        <div id="img10" class="sizedImage"><button id="button10" onclick = changeVersion(2)><img src="buttonStyle2.png" id="image10"> </button> <!--100,100--></div>
       </div>
     </div>
 

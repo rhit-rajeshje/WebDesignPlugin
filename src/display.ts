@@ -142,12 +142,15 @@ export function infoTile(width:number, height:number, fillColor:string, iconColo
     }
 }
 
-export function testimonal(width:number, height:number, fillColor:string, iconColor:string, textColor:string){
-     const cardBox = penpot.createRectangle();
+export function testimonial(width:number, height:number, fillColor:string, iconColor:string, textColor:string){
+    var contentList = [];
+    const cardBox = penpot.createRectangle();
     cardBox.x = penpot.viewport.center.x;
     cardBox.y = penpot.viewport.center.y;
     cardBox.resize(width,height); //(6800,2400)
     cardBox.fills = [{fillColor:fillColor}];
+    cardBox.name = "Testimonial";
+    contentList.push(cardBox);
 
     const paragraph = penpot.createText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ");
     if(paragraph){
@@ -158,6 +161,8 @@ export function testimonal(width:number, height:number, fillColor:string, iconCo
       paragraph.resize(width/1.97,height/3.2);
       paragraph.align = "center";
       paragraph.fills = [{fillColor:textColor}];
+      paragraph.name = "Paragraph";
+      contentList.push(paragraph);
     }
 
     const author = penpot.createText("-Lorem ipsum dolor");
@@ -170,6 +175,8 @@ export function testimonal(width:number, height:number, fillColor:string, iconCo
       author.fontWeight='700';
       author.align = "center";
       author.fills = [{fillColor:textColor}];
+      author.name = "Author";
+      contentList.push(author);
     }
 
     const iconColorString = "'"+iconColor+"'";
@@ -178,7 +185,9 @@ export function testimonal(width:number, height:number, fillColor:string, iconCo
     if(profilePic){
       profilePic.x = penpot.viewport.center.x+width/1.41;
       profilePic.y = penpot.viewport.center.y+height/3.75;
-      profilePic.resize(width/5.66,height/2.086);      
+      profilePic.resize(width/5.66,height/2.086);
+      profilePic.name = "Profile Pic";
+      contentList.push(profilePic);    
     }
 
     const arrowRightString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/></svg>';
@@ -187,6 +196,8 @@ export function testimonal(width:number, height:number, fillColor:string, iconCo
       arrowRight.x = penpot.viewport.center.x+width/1.070;
       arrowRight.y = penpot.viewport.center.y+height/2.58;
       arrowRight.resize(width/13.6,height/4.17);
+      arrowRight.name = "Arrow Right";
+      contentList.push(arrowRight);
     }
 
     const arrowLeftString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/></svg>';
@@ -195,6 +206,14 @@ export function testimonal(width:number, height:number, fillColor:string, iconCo
       arrowLeft.x = penpot.viewport.center.x+width/340;
       arrowLeft.y = penpot.viewport.center.y+height/2.58;
       arrowLeft.resize(width/13.6,height/4.17);
+      arrowLeft.name = "Arrow Left";
+      contentList.push(arrowLeft);
+    }
+
+    penpot.selection = contentList;
+    const testimonialGroup = penpot.group(penpot.selection);
+    if(testimonialGroup){
+        testimonialGroup.name = "Testimonial";
     }
 
 }

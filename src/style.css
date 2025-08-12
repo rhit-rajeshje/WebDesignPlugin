@@ -2,6 +2,8 @@
 
 body {
   line-height: 1.5;
+  min-width:700px;
+  min-height:400px;
 }
 button {
   background-color: white;
@@ -139,6 +141,14 @@ button {
 #img13{
   width:600px;
   height:250px;
+}
+#button14, #image14{
+  width:270px;
+  height:370px;
+}
+#img14{
+  width:300px;
+  height:470px;
 }
 
 /* #images{
