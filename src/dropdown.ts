@@ -232,3 +232,86 @@ export function pageNav(width:number, height:number, fillColor:string, iconColor
       }
     }
 }
+export function circlePageNav(width:number, height:number, fillColor:string, iconColor:string, textColor:string, items:number){
+    var contentList = [];
+    for(let i=0;i<items;i++){
+      var parts = [];
+      if(i!=0){
+        const divider = penpot.createRectangle();
+        divider.x = penpot.viewport.center.x+width+(width/.4)*(i-1);
+        divider.y = penpot.viewport.center.y+(height/2);
+        divider.resize(width/.66,height/33.33);
+        divider.name = "Divider";
+        parts.push(divider);
+        if(i<=(items/2)){
+          divider.fills = [{fillColor:iconColor}];}
+        else{
+          divider.fills = [{fillColor:fillColor}];}
+      }
+
+      
+      const circle= penpot.createEllipse();
+      circle.x = penpot.viewport.center.x+(width/.4)*i;
+      circle.y = penpot.viewport.center.y;
+      circle.resize(width,height); //(100,100)
+      circle.name = "Option";
+      parts.push(circle);
+      if(i<(items/2)){
+      circle.fills = [{fillColor:iconColor}];}
+      else{
+        circle.fills = [{fillColor:fillColor}];
+      }
+      if(i==(items/2)){
+        circle.strokes = [{strokeAlignment:"inner",strokeColor:iconColor,strokeWidth:10}];
+      }
+
+      const number = penpot.createText(String(i+1));
+      if(number){
+        number.x = penpot.viewport.center.x+(width/3.33)+(width/.4)*i;
+        number.y = penpot.viewport.center.y+(height/20);
+        number.fontSize = String(width/1.388);
+        number.fontFamily = 'Sour Gummy';
+        number.name = "Number";
+        parts.push(number);
+        if(i<(items/2)){
+        number.fills = [{fillColor:fillColor}];
+        }
+        else{
+          number.fills = [{fillColor:iconColor}];
+        }
+      }
+
+      const title = penpot.createText("Lorem ipsum");
+      if(title){
+        title.x = penpot.viewport.center.x -(width/5)+(width/.4)*i;
+        title.y = penpot.viewport.center.y + (height/.9);
+        title.fontFamily = 'Sour Gummy';
+        title.fontSize = String(width/4.16);
+        title.fills = [{fillColor:textColor}];
+        title.name = "Title";
+        parts.push(title);
+      }
+
+      const desc = penpot.createText("Lorem ipsum dolor sit amet");
+      if(desc){
+        desc.x = penpot.viewport.center.x -(width/2.22)+(width/.4)*i;
+        desc.y = penpot.viewport.center.y + (height/.769);
+        desc.fontFamily = 'Sour Gummy';
+        desc.fontSize = String(width/6.25);
+        desc.fills = [{fillColor:textColor}];
+        desc.name = "Desc.";
+        parts.push(desc);
+      }
+      penpot.selection = parts;
+      const optionGroup = penpot.group(penpot.selection);
+      if(optionGroup){
+        optionGroup.name = "Option - "+i;
+        contentList.push(optionGroup);
+      }
+    }
+    penpot.selection = contentList;
+    const circleNav = penpot.group(penpot.selection);
+    if(circleNav){
+      circleNav.name = "Circle Page Navigation";
+    }
+}

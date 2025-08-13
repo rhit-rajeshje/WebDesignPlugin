@@ -23,8 +23,11 @@
         var img12 = document.getElementById("img12");
         var img13 = document.getElementById("img13");
         var img14 = document.getElementById("img14");
+        var img15 = document.getElementById("img15");
+        var img16 = document.getElementById("img16");
+        var img17 = document.getElementById("img17");
 
-        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14];
+        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14,img15,img16,img17];
         for(let i=0; i<images.length;i++){
           if(changeVar.includes(i)){
             images[i].style.display = "inline-block";
@@ -40,17 +43,17 @@
         closeSettings()
       }
       function changeImage2(){
-        changeVar = [10,11,12];
+        changeVar = [10,11,12,16];
         declareVariables();
         closeSettings();
       }
       function changeImage3(){
-        changeVar = [2,3,4,13];
+        changeVar = [2,3,4,13,14];
         declareVariables();
         closeSettings();
       }
       function changeImage4(){
-        changeVar = [5,6,7,8,9];
+        changeVar = [5,15,6,7,8,9];
         declareVariables();
         closeSettings();
       }
@@ -117,7 +120,10 @@
         "11":[true,"block","block","block","none", "none",'1750','3','0','2500','#FFFFFF','#800000','#666666',"Card Display"],
         "12":[true,"block","block","block","none", "none",'1680','3','0','1020','#FFFFFF','#800000','#666666',"Info Tiles"],
         "13":[true,"none","block","block","none", "none",'6800','0','0','2400','#FFFFFF','#800000','#666666',"Testimonial"],
-        "14":[true,"block","block","block","none", "none",'400','5','0','100','#FFFFFF','#800000','#666666',"Checkbox List"]
+        "14":[true,"block","block","block","none", "none",'400','5','0','100','#FFFFFF','#800000','#666666',"Checkbox List"],
+        "15":[true,"block","block","block","none", "none",'650','3','0','150','#FFFFFF','#800000','#666666',"Radio List"],
+        "16":[true,"block","block","block","none", "none",'100','4','0','100','#FFFFFF','#800000','#666666',"Circle Page Navigation"],
+        "17":[true,"block","block","block","none", "none",'450','3','0','550','#FFFFFF','#800000','#666666',"Carousel Cards"]
       }
       
       function changeVersion(num){
@@ -503,6 +509,7 @@
       <div id = "group2">
         <div id="img11" class="sizedImage"><button id="button11" onclick=changeVersion(11)><img src="cardDisplay.png" id="image11"></button> <!--200,400--></div>
         <div id="img12" class="sizedImage"><button id="button12" onclick=changeVersion(12)><img src="infoTile.png" id="image12"></button> <!--600,200--></div>
+        <div id="img17" class="sizedImage"><button id="button17" onclick=changeVersion(17)><img src="carouselCards.png" id="image17"></button> <!--600,200--></div>
         <div id="img13" class="sizedImage"><button id="button13" onclick=changeVersion(13)><img src="testimonal.png" id="image13"></button> <!--800,300--></div>
       </div>
        
@@ -511,9 +518,11 @@
         <div id="img4" class="sizedImage"><button id="button4" onclick=changeVersion(9)><img src="addressDetails.png" id="image4"></button> <!--400,500--></div>
         <div id="img5" class="sizedImage"><button id="button5" onclick=changeVersion(10)><img src="employeeInfo.png" id="image5"></button> <!--400,500--></div>
         <div id="img14" class="sizedImage"><button id="button14" onclick=changeVersion(14)><img src="checkBox.png" id="image14"></button> <!--400,500--></div>
+        <div id="img15" class="sizedImage"><button id="button15" onclick=changeVersion(15)><img src="radioList.png" id="image15"></button> <!--200,200--></div>
       </div>
       <div id = "group4">
         <div id="img6" class="sizedImage"><button id="button6" onclick = changeVersion(7)><img src="pageNav.png" id="image6"></button> <!--500,100--></div>
+        <div id="img16" class="sizedImage"><button id="button16" onclick = changeVersion(16)><img src="circlePageNav.png" id="image16"></button> <!--500,100--></div>
         <div id="img7" class="sizedImage"><button id="button7" onclick = changeVersion(6)><img src="calender.png" id="image7"></button> <!--300,100--></div>
         <div id="img8" class="sizedImage"><button id="button8" onclick = changeVersion(3)><img src="dropDown.png" id="image8"></button> <!--300,100--></div>
         <div id="img9" class="sizedImage"><button id="button9" onclick = changeVersion(1)><img src="buttonStyle1.png" id="image9"></button> <!--200,100--></div>
@@ -521,7 +530,7 @@
       </div>
     </div>
 
-    <!-- <button type="button" data-appearance="primary" data-handler="create-text">
+    <!-- <button type="button" data-appearance="primary" data-handler="create-text"
       Create text
     </button> -->
 

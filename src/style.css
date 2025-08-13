@@ -150,7 +150,30 @@ button {
   width:300px;
   height:470px;
 }
-
+#button15, #image15{
+  width:270px;
+  height:270px;
+}
+#img15{
+  width:300px;
+  height:470px;
+}
+#button16, #image16{
+  width:320px;
+  height:100px;
+}
+#img16{
+  width:350px;
+  height:200px;
+}
+#button17, #image17{
+  width:550px;
+  height:200px;
+}
+#img17{
+  width:600px;
+  height:250px;
+}
 /* #images{
   display:flex;
   flex-direction:column;

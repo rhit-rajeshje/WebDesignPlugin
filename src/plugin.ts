@@ -1,10 +1,11 @@
 import {button1, button2} from './button.ts';
-import {dropdown, pageNav} from './dropdown.ts';
+import {circlePageNav, dropdown, pageNav} from './dropdown.ts';
 import { nav1, nav2 } from './nav.ts';
 import { calender } from './calender.ts';
 import { addressDetails, employeeInfo, paymentDetails } from './form.ts';
 import { cardDisplay, infoTile, testimonial } from './display.ts';
-import { checkBoxes } from './itemList.ts';
+import { checkBoxes, radioList } from './itemList.ts';
+import { carouselCards } from './carousel.ts';
 
 penpot.ui.open("Website Components Plugin", `?theme=${penpot.theme}`);
 
@@ -91,32 +92,23 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
     }
   }
   if(message.get("data-version")=="14"){
-    // if(fillColor&&iconColor&&textColor){
-    //   checkBoxes(width,height,fillColor,iconColor,textColor,items);
-    // }
-
-    const itemBox1 = penpot.createRectangle();
-    itemBox1.x = penpot.viewport.center.x;
-    itemBox1.y = penpot.viewport.center.y;
-    itemBox1.resize(650,150);
-    itemBox1.fills = [{fillColor:fillColor}];
-
-    const title1 = penpot.createText("Item 1");
-    if(title1){
-      title1.x = penpot.viewport.center.x+30;
-      title1.y = penpot.viewport.center.y+20;
-      title1.fontSize = '48';
-      title1.fontFamily = 'Sour Gummy';
-      title1.fills = [{fillColor:fillColor}];
+    if(fillColor&&iconColor&&textColor){
+      checkBoxes(width,height,fillColor,iconColor,textColor,items);
     }
-
-    const desc1 = penpot.createText("Description, Description, Description");
-    if(desc1){
-      desc1.x = penpot.viewport.center.x+30;
-      desc1.y = penpot.viewport.center.y+80;
-      desc1.fontSize = '24';
-      desc1.fontFamily = 'Sour Gummy';
-      desc1.fills = [{fillColor:fillColor}];
+  }
+  if(message.get("data-version")=="15"){
+    if(fillColor&&iconColor&&textColor){
+      radioList(width,height,fillColor,iconColor,textColor,items);
+    }
+  }
+  if(message.get("data-version")=="16"){
+    if(fillColor&&iconColor&&textColor){
+      circlePageNav(width,height,fillColor,iconColor,textColor,items);
+    }
+  }
+  if(message.get("data-version")=="17"){
+    if(fillColor&&iconColor&&textColor){
+      carouselCards(width,height,fillColor,iconColor,textColor,items);
     }
   }
 
