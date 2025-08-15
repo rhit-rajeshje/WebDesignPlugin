@@ -98,3 +98,75 @@ export function carouselCards(width:number, height:number, fillColor:string, ico
             carouselCardsGroup.name = "Carousel Cards";
         }
 }
+
+export function pageSelection(width:number, fillColor:string, iconColor:string, textColor:string, items:number){
+    let contentList = [];
+    const mainContainer = penpot.createRectangle();
+    mainContainer.x = penpot.viewport.center.x;
+    mainContainer.y = penpot.viewport.center.y;
+    mainContainer.resize(width,200*items);
+    mainContainer.fills = [{fillColor:fillColor}];
+    mainContainer.borderRadius = 70;
+    contentList.push(mainContainer);
+
+    const iconColorString = "'"+iconColor+"'";
+    let yPos=0;
+    for(let i=0;i<items;i++){
+      let parts = [];
+      const arrowString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>';
+      const arrow = penpot.createShapeFromSvg(arrowString);
+      if(arrow){
+        arrow.x = penpot.viewport.center.x+width/18.57;
+        arrow.y = penpot.viewport.center.y+(width/16.25) + (width/8.125)*i + yPos;
+        if(Math.floor(items/2)==i){
+          arrow.rotate(-90);
+          arrow.y+=(width/8.125);
+        }
+        arrow.resize(width/6.5,width/6.5);
+        arrow.name = "Arrow";
+        parts.push(arrow);
+      }
+
+      const pageTitle = penpot.createText("Page "+i);
+      if(pageTitle){
+        pageTitle.x = penpot.viewport.center.x + width/4.3;
+        pageTitle.y = penpot.viewport.center.y + width/9.28 + (width/8.125) *i + yPos;
+        pageTitle.fontSize = String(width/18);
+        pageTitle.fontFamily = 'Sour Gummy';
+        pageTitle.name = "Title";
+        parts.push(pageTitle);
+        
+      }
+
+      if(Math.floor(items/2)==i){
+        for(let j=0;j<3;j++){
+          const miniPage = penpot.createText("Mini Page");
+          if(miniPage){
+            miniPage.x = penpot.viewport.center.x + width/3.25;
+            miniPage.y = penpot.viewport.center.y + ((width/8.125)+(width/8.125)*i) +(width/11.81)*(j+1);
+            miniPage.fontSize = String(width/21.6);
+            miniPage.fontFamily = 'Sour Gummy';
+            miniPage.name = "Sub Page";
+            parts.push(miniPage);
+          }
+        }
+      }
+      if(Math.floor(items/2)==i){
+        yPos=width/4.3;
+      }
+
+      penpot.selection = parts;
+      const pageOption = penpot.group(penpot.selection);
+      if(pageOption){
+        pageOption.name = "Page - "+i;
+        contentList.push(pageOption);
+      }
+    }
+    
+    penpot.selection = contentList;
+    const pageSelection = penpot.group(penpot.selection);
+    if(pageSelection){
+      pageSelection.name = "Page Selection";
+    }
+
+}

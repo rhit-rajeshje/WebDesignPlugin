@@ -5,7 +5,7 @@ import { calender } from './calender.ts';
 import { addressDetails, employeeInfo, paymentDetails } from './form.ts';
 import { cardDisplay, infoTile, testimonial } from './display.ts';
 import { checkBoxes, radioList } from './itemList.ts';
-import { carouselCards } from './carousel.ts';
+import { carouselCards, pageSelection } from './carousel.ts';
 
 penpot.ui.open("Website Components Plugin", `?theme=${penpot.theme}`);
 
@@ -109,6 +109,11 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
   if(message.get("data-version")=="17"){
     if(fillColor&&iconColor&&textColor){
       carouselCards(width,height,fillColor,iconColor,textColor,items);
+    }
+  }
+  if(message.get("data-version")=="18"){
+    if(fillColor&&iconColor&&textColor){
+      pageSelection(width,fillColor,iconColor,textColor,items);
     }
   }
 
