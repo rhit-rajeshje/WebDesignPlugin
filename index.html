@@ -26,8 +26,11 @@
         var img15 = document.getElementById("img15");
         var img16 = document.getElementById("img16");
         var img17 = document.getElementById("img17");
+        var img18 = document.getElementById("img18");
+        var img19 = document.getElementById("img19");
+        var img19 = document.getElementById("img19");
 
-        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14,img15,img16,img17];
+        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14,img15,img16,img17,img18,img19,img20];
         for(let i=0; i<images.length;i++){
           if(changeVar.includes(i)){
             images[i].style.display = "inline-block";
@@ -38,7 +41,7 @@
         }
       }
       function changeImage1(){
-        changeVar = [0,1];
+        changeVar = [0,1,17,18,19];
         declareVariables();
         closeSettings()
       }
@@ -117,13 +120,17 @@
         "8":[true,"none","block","block","none", "none",'950','0','0','600','#FFFFFF','#666666','#000000',"Payment Details Card"],
         "9":[true,"none","block","block","none", "none",'930','0','0','1250','#FFFFFF','#666666','#000000',"Address Details Card"],
         "10":[true,"none","block","block","none", "none",'1400','0','0','1460','#FFFFFF','#666666','#000000',"Employee Info Card"],
-        "11":[true,"block","block","block","none", "none",'1750','3','0','2500','#FFFFFF','#800000','#666666',"Card Display"],
-        "12":[true,"block","block","block","none", "none",'1680','3','0','1020','#FFFFFF','#800000','#666666',"Info Tiles"],
+        "11":[true,"block","block","block","none", "none",'1750','3','0','2500','#FFFFFF','#800000','#666666',"Card Display Style 1"],
+        "12":[true,"block","block","block","none", "none",'1680',' 3','0','1020','#FFFFFF','#800000','#666666',"Info Tiles"],
         "13":[true,"none","block","block","none", "none",'6800','0','0','2400','#FFFFFF','#800000','#666666',"Testimonial"],
         "14":[true,"block","block","block","none", "none",'400','5','0','100','#FFFFFF','#800000','#666666',"Checkbox List"],
         "15":[true,"block","block","block","none", "none",'650','3','0','150','#FFFFFF','#800000','#666666',"Radio List"],
         "16":[true,"block","block","block","none", "none",'100','4','0','100','#FFFFFF','#800000','#666666',"Circle Page Navigation"],
-        "17":[true,"block","block","block","none", "none",'450','3','0','550','#FFFFFF','#800000','#666666',"Carousel Cards"]
+        "17":[true,"block","block","block","none", "none",'450','3','0','550','#FFFFFF','#800000','#666666',"Carousel Cards"],
+        "18":[true,"block","none","block","none", "none",'650','5','0','000','#FFFFFF','#800000','#666666',"Page Selection Style 1"],
+        "19":[true,"none","block","block","none", "block",'2200','0','0','200','#FFFFFF','#800000','#666666',"Navigation Bar Style 3"],
+        "20":[true,"block","none","block","none", "none",'400','5','0','000','#FFFFFF','#800000','#666666',"Page Selection Style 2"],
+
       }
       
       function changeVersion(num){
@@ -504,7 +511,10 @@
     <div id= "images">
       <div id="group1"> 
         <div id="img1" class="sizedImage"><button id="button1" onclick=changeVersion(4)><img src="nav1.png" id="image1"></button> <!--490,50--></div>
+        <div id="img19" class="sizedImage"><button id="button19" onclick=changeVersion(19)><img src="nav3.png" id="image19"></button> <!--490,50--></div>
         <div id="img2" class="sizedImage"><button id="button2" onclick=changeVersion(5)><img src="nav2.png" id="image2"></button> <!--200,650--></div>
+        <div id="img18" class="sizedImage"><button id="button18" onclick=changeVersion(18)><img src="pageSelection.png" id="image18"></button> <!--400,400--></div>
+        <div id="img20" class="sizedImage"><button id="button20" onclick=changeVersion(20)><img src="pageSelection2.png" id="image20"></button> <!--400,400--></div>
       </div>
       <div id = "group2">
         <div id="img11" class="sizedImage"><button id="button11" onclick=changeVersion(11)><img src="cardDisplay.png" id="image11"></button> <!--200,400--></div>

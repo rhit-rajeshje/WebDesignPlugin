@@ -76,7 +76,7 @@ export function cardDisplay(width:number, height:number, fillColor:string, iconC
     penpot.selection = contentList;
     const cardGroup = penpot.group(penpot.selection);
     if(cardGroup){
-      cardGroup.name = "Card Display";
+      cardGroup.name = "Card Display Style 1";
     }
 }
 
@@ -216,4 +216,76 @@ export function testimonial(width:number, height:number, fillColor:string, iconC
         testimonialGroup.name = "Testimonial";
     }
 
+}
+
+export function cardDisplay2(width:number, height:number, fillColor:string, iconColor:string, textColor:string, items:number){
+    var contentList = [];
+    for(let i=0;i<items;i++){
+      const card = penpot.createRectangle();
+      card.x = penpot.viewport.center.x + i*(width/.945);
+      card.y = penpot.viewport.center.y;
+      card.resize(width,height); //(1750,2500)
+      card.fills = [{fillColor:fillColor}];
+      card.name = "Card";
+
+      const header = penpot.createRectangle();
+      header.x = penpot.viewport.center.x +i*(width/.945);
+      header.y = penpot.viewport.center.y;
+      header.resize(width,height/1.3);
+      header.fills = [{fillColor:iconColor}];
+      header.name = "Header";
+
+      const title = penpot.createText("Main Title");
+      if(title){
+        title.x = penpot.viewport.center.x + 50 + i*(width/.945);
+        title.y = penpot.viewport.center.y + 1835;
+        title.fontSize = String(width/9.72);
+        title.fontFamily = 'Sour Gummy';
+        title.fills = [{fillColor:textColor}];
+        title.name = "Title";
+      }
+
+      const paragraph = penpot.createText("Lorem ipsum consectetur odio in condimentum tristique.");
+      if(paragraph){
+        paragraph.x = penpot.viewport.center.x+50 + i*(width/.945);
+        paragraph.y = penpot.viewport.center.y+2050;
+        paragraph.fontSize = String(width/21.875);
+        paragraph.resize(1025,140);
+        paragraph.fontFamily = 'Sour Gummy';
+        paragraph.fills = [{fillColor:textColor, fillOpacity:.6}];
+        paragraph.name = "Paragraph";
+      }
+
+      const button = penpot.createRectangle();
+      button.x = penpot.viewport.center.x+1111 + i*(width/.945);
+      button.y = penpot.viewport.center.y+2002;
+      button.resize(560,235);
+      button.borderRadius = width/43.75;
+      button.fills = [{fillColor:iconColor}];
+      button.name = "Button Box";
+
+      const buttonText = penpot.createText("Button"); 
+      if(buttonText){
+        buttonText.x = penpot.viewport.center.x+1175 + i*(width/.945);
+        buttonText.y = penpot.viewport.center.y+2055;
+        buttonText.fontSize = String(102);
+        buttonText.fontFamily = 'Sour Gummy';
+        buttonText.fills = [{fillColor:fillColor}];
+        buttonText.name = "Button Text";
+      }
+
+      if(title && paragraph && buttonText){
+        penpot.selection = [card, header, title, paragraph,button,buttonText];
+        const group = penpot.group(penpot.selection);
+        if(group){
+          group.name = "Card - "+i;
+          contentList.push(group);
+        }
+      }
+    }
+    penpot.selection = contentList;
+    const cardGroup = penpot.group(penpot.selection);
+    if(cardGroup){
+      cardGroup.name = "Card Display Style 2";
+    }
 }

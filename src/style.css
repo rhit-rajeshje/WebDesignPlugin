@@ -46,6 +46,15 @@ button {
   height:470px;
 }
 
+#button19, #image19{
+  width:430px;
+  height:60px;
+}
+#img19{
+  width:450px;
+  height:470px;
+}
+
 #button3, #image3{
   width:270px;
   height:200px;
@@ -173,6 +182,14 @@ button {
 #img17{
   width:600px;
   height:250px;
+}
+#button18, #image18{
+  width:400px;
+  height:400px;
+}
+#img18{
+  width:450px;
+  height:450px;
 }
 /* #images{
   display:flex;

@@ -1,11 +1,11 @@
 import {button1, button2} from './button.ts';
 import {circlePageNav, dropdown, pageNav} from './dropdown.ts';
-import { nav1, nav2 } from './nav.ts';
+import { nav1, nav2, nav3 } from './nav.ts';
 import { calender } from './calender.ts';
 import { addressDetails, employeeInfo, paymentDetails } from './form.ts';
 import { cardDisplay, infoTile, testimonial } from './display.ts';
 import { checkBoxes, radioList } from './itemList.ts';
-import { carouselCards, pageSelection } from './carousel.ts';
+import { carouselCards, pageSelection, pageSelection2 } from './carousel.ts';
 
 penpot.ui.open("Website Components Plugin", `?theme=${penpot.theme}`);
 
@@ -114,6 +114,16 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
   if(message.get("data-version")=="18"){
     if(fillColor&&iconColor&&textColor){
       pageSelection(width,fillColor,iconColor,textColor,items);
+    }
+  }
+  if(message.get("data-version")=="19"){
+    if(fillColor&&iconColor&&textColor&&iconListNames){
+      nav3(width,height,fillColor,iconColor,textColor,iconListNames);
+    }
+  }
+  if(message.get("data-version")=="20"){
+    if(fillColor&&iconColor&&textColor){
+      pageSelection2(width,fillColor,iconColor,textColor,items);
     }
   }
 

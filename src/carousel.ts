@@ -107,6 +107,7 @@ export function pageSelection(width:number, fillColor:string, iconColor:string, 
     mainContainer.resize(width,200*items);
     mainContainer.fills = [{fillColor:fillColor}];
     mainContainer.borderRadius = 70;
+    mainContainer.name = "Page Selection Container";
     contentList.push(mainContainer);
 
     const iconColorString = "'"+iconColor+"'";
@@ -134,6 +135,7 @@ export function pageSelection(width:number, fillColor:string, iconColor:string, 
         pageTitle.fontSize = String(width/18);
         pageTitle.fontFamily = 'Sour Gummy';
         pageTitle.name = "Title";
+        pageTitle.fills = [{fillColor:textColor}];
         parts.push(pageTitle);
         
       }
@@ -147,6 +149,7 @@ export function pageSelection(width:number, fillColor:string, iconColor:string, 
             miniPage.fontSize = String(width/21.6);
             miniPage.fontFamily = 'Sour Gummy';
             miniPage.name = "Sub Page";
+            miniPage.fills = [{fillColor:textColor}];
             parts.push(miniPage);
           }
         }
@@ -169,4 +172,103 @@ export function pageSelection(width:number, fillColor:string, iconColor:string, 
       pageSelection.name = "Page Selection";
     }
 
+}
+
+export function pageSelection2(width:number, fillColor:string, iconColor:string, textColor:string, items:number){
+    let contentList = [];
+    const mainContainer = penpot.createRectangle();
+    mainContainer.x = penpot.viewport.center.x;
+    mainContainer.y = penpot.viewport.center.y;
+    mainContainer.resize(width,(width/3.33)*items); //(400,600)
+    mainContainer.fills = [{fillColor:fillColor}];
+    mainContainer.borderRadius = 20;
+    mainContainer.name = "Page Selection Container";
+    contentList.push(mainContainer);
+
+    const iconColorString = "'"+iconColor+"'";
+    const menuString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></svg>';
+    const menu = penpot.createShapeFromSvg(menuString);
+    if(menu){
+        menu.x = penpot.viewport.center.x + width/20;
+        menu.y = penpot.viewport.center.y + width/26.66;
+        menu.resize(width/7.27,width/7.27);
+        menu.name = "Menu";
+        contentList.push(menu); 
+    }
+
+    let yPos = 0;
+    for(let i=0;i<items;i++){
+        let parts = [];
+        const divider = penpot.createRectangle();
+        divider.x = penpot.viewport.center.x + width/20;
+        divider.y = penpot.viewport.center.y + width/4 + (width/5.33)*i+yPos;
+        divider.resize(width/1.14,width/80);
+        divider.fills = [{fillColor:iconColor}];
+        divider.name = "Divider";
+        parts.push(divider);
+
+        if(i==2){
+            const arrowUpString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/></svg>';
+            const arrowUp = penpot.createShapeFromSvg(arrowUpString);
+             if(arrowUp){
+                arrowUp.x = penpot.viewport.center.x + width/1.21;
+                arrowUp.y = penpot.viewport.center.y + width/3.8 +(width/5.33)*i+yPos;
+                arrowUp.resize(width/8.88,width/8.88);
+                arrowUp.name = "Arrow Up";
+                parts.push(arrowUp);
+            }
+        }
+        else{
+            const arrowDownString = '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill='+iconColorString+' class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/></svg>';
+            const arrowDown = penpot.createShapeFromSvg(arrowDownString);
+            if(arrowDown){
+                arrowDown.x = penpot.viewport.center.x + width/1.21;
+                arrowDown.y = penpot.viewport.center.y + width/3.8 +(width/5.33)*i+yPos;
+                arrowDown.resize(width/8.88,width/8.88);
+                arrowDown.name = "Arrow Down";
+                parts.push(arrowDown);
+            }
+        }
+
+        const pageTitle = penpot.createText("Page "+ (i+1));
+        if(pageTitle){ 
+            pageTitle.x = penpot.viewport.center.x + width/16;
+            pageTitle.y = penpot.viewport.center.y + width/3.63 +(width/5.33)*i+yPos;
+            pageTitle.fontSize = String(width/13.33);
+            pageTitle.fontFamily = 'Sour Gummy';
+            pageTitle.fills = [{fillColor:textColor}];
+            pageTitle.name = "Page Title" + (i+1);
+            parts.push(pageTitle);
+        }
+
+        if(i==2){
+            for(let j=0; j<3;j++){
+                const miniPage = penpot.createText("Mini Page "+(j+1));
+                if(miniPage){
+                    miniPage.x = penpot.viewport.center.x + width/8.88;
+                    miniPage.y = penpot.viewport.center.y + width/1.29 + (width/13.33)*j;
+                    miniPage.fontSize = String(width/16);
+                    miniPage.fontFamily = 'Sour Gummy';
+                    miniPage.fills = [{fillColor:textColor}];
+                    miniPage.name = "Mini Page Title";
+                    parts.push(miniPage);
+                }
+            }
+            yPos=width/3.8;
+        }
+
+        penpot.selection = parts;
+        const pageGroup = penpot.group(penpot.selection);
+        if(pageGroup){
+            pageGroup.name = "Page" + (i+1);
+            contentList.push(pageGroup);
+        }
+    }
+
+    penpot.selection = contentList;
+    const pageSelectionGroup = penpot.group(penpot.selection);
+    if(pageSelectionGroup){
+        pageSelectionGroup.name = "Page Selection Style 2";
+    }
+    
 }
