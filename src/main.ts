@@ -47,8 +47,25 @@ document.querySelector("[id = 'submit']")?.addEventListener("click", () => {
   const items = document.getElementById('submit')?.dataset.items;
   const version = document.getElementById('submit')?.dataset.version;
   const iconListNames = document.getElementById('submit')?.dataset.icons;
+  const xTitle = document.getElementById('submit')?.dataset.xtitle;
+  const yTitle = document.getElementById('submit')?.dataset.ytitle;
+  const xData = document.getElementById('submit')?.dataset.xdata;
+  const yData = document.getElementById('submit')?.dataset.ydata;
 
-  const dataMap = new Map([["data-width",width],["data-height",height],["data-borderRadius",borderRadius],["data-fillColor",fillColor],["data-iconColor",iconColor],["data-textColor",textColor],["data-items", items],["data-version",version], ["data-icons",iconListNames]]);
+  const dataMap = new Map([["data-width",width],
+    ["data-height",height],
+    ["data-borderRadius",borderRadius],
+    ["data-fillColor",fillColor],
+    ["data-iconColor",iconColor],
+    ["data-textColor",textColor],
+    ["data-items", items],
+    ["data-version",version], 
+    ["data-icons",iconListNames],
+    ["data-xtitle",xTitle],
+    ["data-ytitle",yTitle],
+    ["data-xdata",xData],
+    ["data-ydata",yData]
+  ]);
 
   parent.postMessage(dataMap, "*");
   console.table(dataMap);

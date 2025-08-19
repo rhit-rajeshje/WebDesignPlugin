@@ -3,9 +3,10 @@ import {circlePageNav, dropdown, pageNav} from './dropdown.ts';
 import { nav1, nav2, nav3 } from './nav.ts';
 import { calender } from './calender.ts';
 import { addressDetails, employeeInfo, paymentDetails } from './form.ts';
-import { cardDisplay, infoTile, testimonial } from './display.ts';
+import { cardDisplay, infoTile, testimonial, cardDisplay2 } from './display.ts';
 import { checkBoxes, radioList } from './itemList.ts';
 import { carouselCards, pageSelection, pageSelection2 } from './carousel.ts';
+import { chartBarHorizontal } from './chart.ts';
 
 penpot.ui.open("Website Components Plugin", `?theme=${penpot.theme}`);
 
@@ -19,8 +20,11 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
   const textColor = message.get("data-textColor");
   const items = Number(message.get("data-items"));
   const iconListNames = message.get("data-icons")?.split(",").reverse();
-  console.log(iconListNames);
-  console.log(items);
+  const xTitle = message.get("data-xtitle");
+  const yTitle = message.get("data-ytitle");
+  const xData = message.get("data-xdata")?.split(",");
+  const yData = message.get("data-ydata")?.split(",").reverse();
+
   if (message.get("data-version")=="1") {
     if(fillColor && iconColor){
       button1(width,height,borderRadius,fillColor,iconColor);
@@ -126,6 +130,16 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
       pageSelection2(width,fillColor,iconColor,textColor,items);
     }
   }
+  if(message.get("data-version")=="21"){
+    if(fillColor&&iconColor&&textColor){
+      cardDisplay2(width,height,fillColor,iconColor,textColor,items);
+      }
+    }
+  if(message.get("data-version")=="22"){
+    if(fillColor&&iconColor&&textColor && xTitle && xData && yTitle && yData){
+      chartBarHorizontal(width,height,fillColor,iconColor,textColor,xTitle,xData,yTitle,yData);
+      }
+    }
 
 });
 

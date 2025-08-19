@@ -231,14 +231,14 @@ export function cardDisplay2(width:number, height:number, fillColor:string, icon
       const header = penpot.createRectangle();
       header.x = penpot.viewport.center.x +i*(width/.945);
       header.y = penpot.viewport.center.y;
-      header.resize(width,height/1.3);
+      header.resize(width,height/1.43);
       header.fills = [{fillColor:iconColor}];
       header.name = "Header";
 
       const title = penpot.createText("Main Title");
       if(title){
-        title.x = penpot.viewport.center.x + 50 + i*(width/.945);
-        title.y = penpot.viewport.center.y + 1835;
+        title.x = penpot.viewport.center.x + width/35 + i*(width/.945);
+        title.y = penpot.viewport.center.y + height/1.36;
         title.fontSize = String(width/9.72);
         title.fontFamily = 'Sour Gummy';
         title.fills = [{fillColor:textColor}];
@@ -247,30 +247,32 @@ export function cardDisplay2(width:number, height:number, fillColor:string, icon
 
       const paragraph = penpot.createText("Lorem ipsum consectetur odio in condimentum tristique.");
       if(paragraph){
-        paragraph.x = penpot.viewport.center.x+50 + i*(width/.945);
-        paragraph.y = penpot.viewport.center.y+2050;
+        paragraph.x = penpot.viewport.center.x+width/35 + i*(width/.945);
+        paragraph.y = penpot.viewport.center.y+height/1.21;
         paragraph.fontSize = String(width/21.875);
-        paragraph.resize(1025,140);
+        paragraph.resize(width/1.7,height/17.85);
         paragraph.fontFamily = 'Sour Gummy';
         paragraph.fills = [{fillColor:textColor, fillOpacity:.6}];
         paragraph.name = "Paragraph";
       }
 
       const button = penpot.createRectangle();
-      button.x = penpot.viewport.center.x+1111 + i*(width/.945);
-      button.y = penpot.viewport.center.y+2002;
-      button.resize(560,235);
+      button.x = penpot.viewport.center.x+width/1.57 + i*(width/.945);
+      button.y = penpot.viewport.center.y+height/1.248;
+      button.resize(width/3.125,height/10.63);
       button.borderRadius = width/43.75;
       button.fills = [{fillColor:iconColor}];
       button.name = "Button Box";
 
       const buttonText = penpot.createText("Button"); 
       if(buttonText){
-        buttonText.x = penpot.viewport.center.x+1175 + i*(width/.945);
-        buttonText.y = penpot.viewport.center.y+2055;
-        buttonText.fontSize = String(102);
+        buttonText.x = penpot.viewport.center.x+width/1.489 + i*(width/.945);
+        buttonText.y = penpot.viewport.center.y+height/1.216;
+        buttonText.fontSize = String(width/17.15);
         buttonText.fontFamily = 'Sour Gummy';
         buttonText.fills = [{fillColor:fillColor}];
+        buttonText.resize(width/4.216,height/20);
+        buttonText.align = "center";
         buttonText.name = "Button Text";
       }
 
