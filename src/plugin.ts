@@ -134,13 +134,12 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
     if(fillColor&&iconColor&&textColor){
       cardDisplay2(width,height,fillColor,iconColor,textColor,items);
       }
-    }
+  }
   if(message.get("data-version")=="22"){
     if(fillColor&&iconColor&&textColor && xTitle && xData && yTitle && yData){
       chartBarHorizontal(width,height,fillColor,iconColor,textColor,xTitle,xData,yTitle,yData);
       }
-    }
-
+  }
 });
 
 // Update the theme in the iframe

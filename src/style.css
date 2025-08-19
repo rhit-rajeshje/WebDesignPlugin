@@ -16,7 +16,7 @@ button {
 }
 
 .item{
-  padding-top: 30px;
+  padding-top: 30px; 
   padding-bottom:30px;
   padding-left: 10px;
   padding-right:10px;
@@ -136,7 +136,6 @@ button {
   height:200px;
 }
 
-
 #button11, #image11{
   width:550px;
   height:350px;
@@ -163,6 +162,7 @@ button {
   width:600px;
   height:250px;
 }
+
 #button13, #image13{
   width:500px;
   height:200px;
@@ -171,6 +171,7 @@ button {
   width:600px;
   height:250px;
 }
+
 #button14, #image14{
   width:270px;
   height:370px;
@@ -179,6 +180,7 @@ button {
   width:300px;
   height:470px;
 }
+
 #button15, #image15{
   width:270px;
   height:270px;
@@ -187,6 +189,7 @@ button {
   width:300px;
   height:470px;
 }
+
 #button16, #image16{
   width:320px;
   height:100px;
@@ -195,6 +198,7 @@ button {
   width:350px;
   height:200px;
 }
+
 #button17, #image17{
   width:550px;
   height:200px;
@@ -203,6 +207,7 @@ button {
   width:600px;
   height:250px;
 }
+
 #button18, #image18{
   width:400px;
   height:400px;
@@ -211,65 +216,3 @@ button {
   width:450px;
   height:450px;
 }
-/* #images{
-  display:flex;
-  flex-direction:column;
-} */
-/* #images img{
-  margin:10px;
-} */
-
-/*Kind of glitchy and needs to be fixed*/
-/* @media only screen and (max-width: 600px) {
-  #images img, #images button {
-    width:420px;
-    height:230px;
-  }
-}
-@media only screen and (min-width: 601px) {
-  #images img, #images button {
-    width:550px;
-    height:270px;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  #images img, #images button {
-    width:800px;
-    height:450px;
-  }
-}
-
-#group1{
-  position: relative;
-  z-index:1;
-}
-#group2{
-  position:relative;
-  z-index:2;
-}
-  
-#img1{ 
-  position: absolute;
- } 
- #img2{ 
-  position: absolute;
- } 
- #img3{ 
-  position: absolute;
- } 
- #img4{ 
-  position: absolute;
- } 
-#img5{ 
-  position: absolute;
- } 
- #img6{ 
-  position: absolute;
- } 
-#img7{ 
-  position: relative;
- } 
-#img8{ 
-  position: relative;
- }  */
- 

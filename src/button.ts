@@ -38,12 +38,14 @@ export function button1(width: number, height:number, borderRadius:number, fillC
 
     const buttonText2 = penpot.createText("Button");
     if(buttonText2){
-    buttonText2.x = penpot.viewport.center.x+35;
-    buttonText2.y = penpot.viewport.center.y+23;
-    buttonText2.fontSize= '45';
-    buttonText2.fontFamily = 'Sour Gummy';
-    buttonText2.fills = [{fillColor: iconColor}];
-    buttonBoard2.insertChild(0, buttonText2);}
+        buttonText2.x = penpot.viewport.center.x+35;
+        buttonText2.y = penpot.viewport.center.y+23;
+        buttonText2.fontSize= '45';
+        buttonText2.fontFamily = 'Sour Gummy';
+        buttonText2.fills = [{fillColor: iconColor}];
+        buttonBoard2.insertChild(0, buttonText2);
+    }
+
     buttonBoard2.insertChild(0, button2);
     buttonBoard2.addInteraction('mouse-enter', {type: 'navigate-to', destination: buttonBoard});
     buttonBoard.addInteraction('mouse-leave', {type: 'navigate-to', destination: buttonBoard2});
@@ -74,7 +76,6 @@ const circleBoard = penpot.createBoard();
 
     const fillColorString = "'"+fillColor+"'";
     const svgString = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill=' + fillColorString + ' class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg>';
-    //const arrowRight = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FF8577" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg>');
     const arrowRight = penpot.createShapeFromSvg(svgString);
     if(arrowRight){
     arrowRight.x = penpot.viewport.center.x+width/4;
@@ -102,7 +103,6 @@ const circleBoard = penpot.createBoard();
     
     const iconColorString = "'"+iconColor+"'";
     const svgString2 = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill=' + iconColorString + ' class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg>';
-    //const arrowRight2 = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFFFFF" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg>');
     const arrowRight2 = penpot.createShapeFromSvg(svgString2);
     if(arrowRight2){
     arrowRight2.x = penpot.viewport.center.x+width/4;

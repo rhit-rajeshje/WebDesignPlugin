@@ -82,7 +82,6 @@ export function chartBarHorizontal(width:number,height:number,fillColor:string,i
         contentList.push(yAxisGroup);
       }
 
-      // var benchMarks = [1,75,140,205,270,335,400,465];
       let benchMarks = [];
       for(let i=0;i<xData.length;i++){
         benchMarks.push(width/3+i*distanceX);
