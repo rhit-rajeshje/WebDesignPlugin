@@ -31,8 +31,10 @@
         var img20 = document.getElementById("img20");
         var img21 = document.getElementById("img21");
         var img22 = document.getElementById("img22");
+        var img23 = document.getElementById("img23");
+        var img24 = document.getElementById("img24");
 
-        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14,img15,img16,img17,img18,img19,img20,img21,img22];
+        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14,img15,img16,img17,img18,img19,img20,img21,img22,img23,img24];
         for(let i=0; i<images.length;i++){
           if(changeVar.includes(i)){
             images[i].style.display = "inline-block";
@@ -58,7 +60,7 @@
         closeSettings();
       }
       function changeImage4(){
-        changeVar = [5,15,6,7,8,9,21];
+        changeVar = [5,15,6,7,8,9,21,22,23];
         declareVariables();
         closeSettings();
       }
@@ -67,6 +69,7 @@
       function assignIds(){
         var settings = document.getElementById("settings");
         var itemsDiv = document.getElementById("itemsDiv");
+        var widthDiv = document.getElementById("widthDiv");
         var heightDiv = document.getElementById("heightDiv");
         var textcolorDiv = document.getElementById("textcolorDiv");
         var borderRadiusDiv = document.getElementById("borderRadiusDiv");
@@ -83,6 +86,7 @@
         var ids = new Map();
         ids.set('settings',settings);
         ids.set('itemsDivs',itemsDiv);
+        ids.set('widthDiv',widthDiv);
         ids.set('heightDiv',heightDiv);
         ids.set('textcolorDiv',textcolorDiv);
         ids.set('borderRadiusDiv',borderRadiusDiv);
@@ -98,28 +102,30 @@
         return ids;
       }
       let idSettings = {
-        "1":[true,"none","block","none","block","none", "none",'200','7','40','100','#800000','#FFFFFF','#666666',"Button Style 1"],
-        "2":[true,"none","block","none","block", "none","none",'100','7','100','100','#800000','#FFFFFF','#666666',"Button Style 2"],
-        "3":[true,"block","none","none","none", "none","none",'800','7','0','0','#FFFFFF','#666666','#800000',"Dropdown"],
-        "4":[true,"none","block","block","none", "block","none",'2200','7','0','200','#FFFFFF','#666666','#800000',"Navigation Bar Style 1"],
-        "5":[true,"block","block","block","none", "block","none",'800','3','0','2100','#FFFFFF','#666666','#800000',"Navigation Bar Style 2"],
-        "6":[true,"none","block","block","none", "none","none",'2850','0','0','675','#FFFFFF','#666666','#800000',"Calender"],
-        "7":[true,"block","block","block","none", "none","none",'100','5','0','100','#800000','#FFFFFF','#000000',"Page Navigation"],
-        "8":[true,"none","block","block","none", "none","none",'950','0','0','600','#FFFFFF','#666666','#000000',"Payment Details Card"],
-        "9":[true,"none","block","block","none", "none","none",'930','0','0','1250','#FFFFFF','#666666','#000000',"Address Details Card"],
-        "10":[true,"none","block","block","none", "none","none",'1400','0','0','1460','#FFFFFF','#666666','#000000',"Employee Info Card"],
-        "11":[true,"block","block","block","none", "none","none",'1750','3','0','2500','#FFFFFF','#800000','#666666',"Card Display Style 1"],
-        "12":[true,"block","block","block","none", "none","none",'1680',' 3','0','1020','#FFFFFF','#800000','#666666',"Info Tiles"],
-        "13":[true,"none","block","block","none", "none","none",'6800','0','0','2400','#FFFFFF','#800000','#666666',"Testimonial"],
-        "14":[true,"block","block","block","none", "none","none",'400','5','0','100','#FFFFFF','#800000','#666666',"Checkbox List"],
-        "15":[true,"block","block","block","none", "none","none",'650','3','0','150','#FFFFFF','#800000','#666666',"Radio List"],
-        "16":[true,"block","block","block","none", "none","none",'100','4','0','100','#FFFFFF','#800000','#666666',"Circle Page Navigation"],
-        "17":[true,"block","block","block","none", "none","none",'450','3','0','550','#FFFFFF','#800000','#666666',"Carousel Cards"],
-        "18":[true,"block","none","block","none", "none","none",'650','5','0','000','#FFFFFF','#800000','#666666',"Page Selection Style 1"],
-        "19":[true,"none","block","block","none", "block","none",'2200','0','0','200','#FFFFFF','#800000','#666666',"Navigation Bar Style 3"],
-        "20":[true,"block","none","block","none", "none","none",'400','5','0','000','#FFFFFF','#800000','#666666',"Page Selection Style 2"],
-        "21":[true,"block","block","block","none", "none","none",'1750','3','0','2500','#FFFFFF','#800000','#666666',"Card Display Style 2"],
-        "22":[true,"none","block","block","none", "none","block",'15','3','0','500','#FFFFFF','#800000','#666666',"Chart Bar-Horizontal"],
+        "1":[true,"none","block","block","none","block","none", "none",'200','7','40','100','#800000','#FFFFFF','#666666',"Button Style 1"],
+        "2":[true,"none","block","block","none","block", "none","none",'100','7','100','100','#800000','#FFFFFF','#666666',"Button Style 2"],
+        "3":[true,"block","block","none","none","none", "none","none",'800','7','0','0','#FFFFFF','#666666','#800000',"Dropdown"],
+        "4":[true,"none","block","block","block","none", "block","none",'2200','7','0','200','#FFFFFF','#666666','#800000',"Navigation Bar Style 1"],
+        "5":[true,"block","block","block","block","none", "block","none",'800','3','0','2100','#FFFFFF','#666666','#800000',"Navigation Bar Style 2"],
+        "6":[true,"none","block","block","block","none", "none","none",'2850','0','0','675','#FFFFFF','#666666','#800000',"Calender"],
+        "7":[true,"block","block","block","block","none", "none","none",'100','5','0','100','#800000','#FFFFFF','#000000',"Page Navigation"],
+        "8":[true,"none","block","block","block","none", "none","none",'950','0','0','600','#FFFFFF','#666666','#000000',"Payment Details Card"],
+        "9":[true,"none","block","block","block","none", "none","none",'930','0','0','1250','#FFFFFF','#666666','#000000',"Address Details Card"],
+        "10":[true,"none","block","block","block","none", "none","none",'1400','0','0','1460','#FFFFFF','#666666','#000000',"Employee Info Card"],
+        "11":[true,"block","block","block","block","none", "none","none",'1750','3','0','2500','#FFFFFF','#800000','#666666',"Card Display Style 1"],
+        "12":[true,"block","block","block","block","none", "none","none",'1680',' 3','0','1020','#FFFFFF','#800000','#666666',"Info Tiles"],
+        "13":[true,"none","block","block","block","none", "none","none",'6800','0','0','2400','#FFFFFF','#800000','#666666',"Testimonial"],
+        "14":[true,"block","block","block","block","none", "none","none",'400','5','0','100','#FFFFFF','#800000','#666666',"Checkbox List"],
+        "15":[true,"block","block","block","block","none", "none","none",'650','3','0','150','#FFFFFF','#800000','#666666',"Radio List"],
+        "16":[true,"block","block","block","block","none", "none","none",'100','4','0','100','#FFFFFF','#800000','#666666',"Circle Page Navigation"],
+        "17":[true,"block","block","block","block","none", "none","none",'450','3','0','550','#FFFFFF','#800000','#666666',"Carousel Cards"],
+        "18":[true,"block","block","none","block","none", "none","none",'650','5','0','000','#FFFFFF','#800000','#666666',"Page Selection Style 1"],
+        "19":[true,"none","block","block","block","none", "block","none",'2200','0','0','200','#FFFFFF','#800000','#666666',"Navigation Bar Style 3"],
+        "20":[true,"block","block","none","block","none", "none","none",'400','5','0','000','#FFFFFF','#800000','#666666',"Page Selection Style 2"],
+        "21":[true,"block","block","block","block","none", "none","none",'1750','3','0','2500','#FFFFFF','#800000','#666666',"Card Display Style 2"],
+        "22":[true,"none","none","none","block","none", "none","block",'15','3','0','500','#FFFFFF','#800000','#666666',"Chart Bar-Horizontal"],
+        "23":[true,"none","none","none","block","none", "none","block",'15','3','0','500','#FFFFFF','#800000','#666666',"Chart Bar-Vertical"],
+        "24":[true,"none","none","none","block","none", "none","block",'15','3','0','500','#FFFFFF','#800000','#666666',"Line Chart"]
       }
       
       function changeVersion(num){
@@ -132,18 +138,18 @@
           if(i==0){
             v.open = settingList[i];
           }
-          else if(i>=1 && i<=6){
+          else if(i>=1 && i<=7){
             v.style.display = settingList[i];
           }
-          else if(i>=7 && i<=10){
+          else if(i>=8 && i<=11){
             v.placeholder = settingList[i];
           }
-          else if(i>=11 && i<=13){
+          else if(i>=12 && i<=14){
             v.value = settingList[i];
           }
           i++;
         }
-        document.getElementById("title").innerHTML=settingList[14];
+        document.getElementById("title").innerHTML=settingList[15];
       }
 
       function closeSettings(){
@@ -310,6 +316,8 @@
         <div id="img9" class="sizedImage"><button id="button9" onclick = changeVersion(1)><img src="buttonStyle1.png" id="image9"></button> <!--200,100--></div>
         <div id="img10" class="sizedImage"><button id="button10" onclick = changeVersion(2)><img src="buttonStyle2.png" id="image10"> </button> <!--100,100--></div>
         <div id="img22" class="sizedImage"><button id="button22" onclick = changeVersion(22)><img src="chartBarHorizontal.png" id="image22"> </button> <!--100,100--></div>
+        <div id="img23" class="sizedImage"><button id="button23" onclick = changeVersion(23)><img src="chartBarVertical.png" id="image23"> </button> <!--100,100--></div>
+        <div id="img24" class="sizedImage"><button id="button24" onclick = changeVersion(24)><img src="lineChart.png" id="image24"> </button> <!--100,100--></div>
       </div>
     </div>
 
