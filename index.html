@@ -33,8 +33,9 @@
         var img22 = document.getElementById("img22");
         var img23 = document.getElementById("img23");
         var img24 = document.getElementById("img24");
+        var img25 = document.getElementById("img25");
 
-        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14,img15,img16,img17,img18,img19,img20,img21,img22,img23,img24];
+        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14,img15,img16,img17,img18,img19,img20,img21,img22,img23,img24,img25];
         for(let i=0; i<images.length;i++){
           if(changeVar.includes(i)){
             images[i].style.display = "inline-block";
@@ -50,7 +51,7 @@
         closeSettings()
       }
       function changeImage2(){
-        changeVar = [10,11,12,16,20];
+        changeVar = [10,11,12,16,20,24];
         declareVariables();
         closeSettings();
       }
@@ -125,7 +126,8 @@
         "21":[true,"block","block","block","block","none", "none","none",'1750','3','0','2500','#FFFFFF','#800000','#666666',"Card Display Style 2"],
         "22":[true,"none","none","none","block","none", "none","block",'15','3','0','500','#FFFFFF','#800000','#666666',"Chart Bar-Horizontal"],
         "23":[true,"none","none","none","block","none", "none","block",'15','3','0','500','#FFFFFF','#800000','#666666',"Chart Bar-Vertical"],
-        "24":[true,"none","none","none","block","none", "none","block",'15','3','0','500','#FFFFFF','#800000','#666666',"Line Chart"]
+        "24":[true,"none","none","none","block","none", "none","block",'15','3','0','500','#FFFFFF','#800000','#666666',"Line Chart"],
+        "25":[true,"block","block","block","block","none", "none","none",'580','3','0','540','#FFFFFF','#800000','#666666',"Review Cards"],
       }
       
       function changeVersion(num){
@@ -299,6 +301,7 @@
         <div id="img17" class="sizedImage"><button id="button17" onclick=changeVersion(17)><img src="carouselCards.png" id="image17"></button> <!--600,200--></div>
         <div id="img13" class="sizedImage"><button id="button13" onclick=changeVersion(13)><img src="testimonal.png" id="image13"></button> <!--800,300--></div>
         <div id="img21" class="sizedImage"><button id="button21" onclick=changeVersion(21)><img src="cardDisplay2.png" id="image21"></button> <!--200,400--></div>
+        <div id="img25" class="sizedImage"><button id="button25" onclick=changeVersion(25)><img src="reviewCards.png" id="image25"></button> <!--500,400--></div>
       </div>
        
       <div id = "group3">

@@ -172,6 +172,15 @@ button {
   height:400px;
 }
 
+#button25, #image25{
+  width:650px;
+  height:250px;
+}
+#img25{
+  width:700px;
+  height:300px;
+}
+
 #button12, #image12{
   width:600px;
   height:200px;

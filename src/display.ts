@@ -292,3 +292,78 @@ export function cardDisplay2(width:number, height:number, fillColor:string, icon
     }
 }
 
+export function reviewCards(width:number,height:number, fillColor:string, iconColor:string, textColor:string, items:number){
+
+    let contentList = [];
+    for(let j=0;j<items;j++){
+        let parts = [];
+        const cardBox = penpot.createRectangle();
+        cardBox.x = penpot.viewport.center.x;
+        cardBox.y = penpot.viewport.center.y;
+        cardBox.resize(width,height);
+        cardBox.borderRadius = width/11.6;
+        cardBox.shadows = [{blur:.3}];
+        cardBox.fills = [{fillColor:fillColor}];
+        parts.push(cardBox);
+
+        const circle  = penpot.createEllipse();
+        circle.x = penpot.viewport.center.x + width/3.22;
+        circle.y = penpot.viewport.center.y - height/4.69;
+        circle.fills = [{fillColor:fillColor}];
+        circle.resize(width/2.57,height/2.29);
+        circle.shadows = [{blur:.3}];
+        parts.push(circle);
+        
+        const iconColorString = "'"+iconColor+"'";
+        const profile = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>');
+        if(profile){
+        profile.x = penpot.viewport.center.x + width/2.82;
+        profile.y = penpot.viewport.center.y - height/6.35;
+        profile.resize(width/3.314,height/3.085);
+        parts.push(profile);
+        }
+
+        const paragraph = penpot.createText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ");
+        if(paragraph){
+        paragraph.x = penpot.viewport.center.x + width/9.66;
+        paragraph.y = penpot.viewport.center.y + height/4;
+        paragraph.resize(width/1.2,height/1.74);
+        paragraph.fontSize = '27';
+        paragraph.fontFamily = 'Sour Gummy';
+        paragraph.align = "center";
+        paragraph.fills = [{fillColor:textColor}];
+        parts.push(paragraph);
+        }
+
+        let stars = [];
+        for(let i=0;i<5;i++){
+        const star = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-star-fill" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>');
+        if(star){
+            star.x = penpot.viewport.center.x + width/8.92 + (width/6.1)*i;
+            star.y = penpot.viewport.center.y + height/1.367;
+            star.resize(width/6.82,height/6.35);
+            star.name = "Star" + (i+1);
+            stars.push(star);
+        }
+        }
+        penpot.selection = stars;
+        const starsGroup = penpot.group(penpot.selection);
+        if(starsGroup){
+            starsGroup.name = "Stars";
+            parts.push(starsGroup);
+        }
+
+        penpot.selection = parts;
+        const reviewCardGroup = penpot.group(penpot.selection);
+        if(reviewCardGroup){
+            reviewCardGroup.name = "Review Card "+(j+1);
+            contentList.push(reviewCardGroup);
+        }
+    }
+
+    penpot.selection = contentList;
+    const reviewGroup = penpot.group(penpot.selection);
+    if(reviewGroup){
+        reviewGroup.name = "Review Cards";
+    }
+}
