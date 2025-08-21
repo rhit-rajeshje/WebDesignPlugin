@@ -3,68 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Penpot plugin example</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Website Component Plugin</title>
   </head>
   <body>
     <script>
-      let changeVar = [];
-      function declareVariables(){
-        var img1 = document.getElementById("img1");
-        var img2 = document.getElementById("img2");
-        var img3 = document.getElementById("img3");
-        var img4 = document.getElementById("img4");
-        var img5 = document.getElementById("img5");
-        var img6 = document.getElementById("img6");
-        var img7 = document.getElementById("img7");
-        var img8 = document.getElementById("img8");
-        var img9 = document.getElementById("img9");
-        var img10 = document.getElementById("img10");
-        var img11 = document.getElementById("img11");
-        var img12 = document.getElementById("img12");
-        var img13 = document.getElementById("img13");
-        var img14 = document.getElementById("img14");
-        var img15 = document.getElementById("img15");
-        var img16 = document.getElementById("img16");
-        var img17 = document.getElementById("img17");
-        var img18 = document.getElementById("img18");
-        var img19 = document.getElementById("img19");
-        var img20 = document.getElementById("img20");
-        var img21 = document.getElementById("img21");
-        var img22 = document.getElementById("img22");
-        var img23 = document.getElementById("img23");
-        var img24 = document.getElementById("img24");
-        var img25 = document.getElementById("img25");
+      // let changeVar = [];
+      // function declareVariables(){
+      //   var img1 = document.getElementById("img1");
+      //   var img2 = document.getElementById("img2");
+      //   var img3 = document.getElementById("img3");
+      //   var img4 = document.getElementById("img4");
+      //   var img5 = document.getElementById("img5");
+      //   var img6 = document.getElementById("img6");
+      //   var img7 = document.getElementById("img7");
+      //   var img8 = document.getElementById("img8");
+      //   var img9 = document.getElementById("img9");
+      //   var img10 = document.getElementById("img10");
+      //   var img11 = document.getElementById("img11");
+      //   var img12 = document.getElementById("img12");
+      //   var img13 = document.getElementById("img13");
+      //   var img14 = document.getElementById("img14");
+      //   var img15 = document.getElementById("img15");
+      //   var img16 = document.getElementById("img16");
+      //   var img17 = document.getElementById("img17");
+      //   var img18 = document.getElementById("img18");
+      //   var img19 = document.getElementById("img19");
+      //   var img20 = document.getElementById("img20");
+      //   var img21 = document.getElementById("img21");
+      //   var img22 = document.getElementById("img22");
+      //   var img23 = document.getElementById("img23");
+      //   var img24 = document.getElementById("img24");
+      //   var img25 = document.getElementById("img25");
 
-        var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14,img15,img16,img17,img18,img19,img20,img21,img22,img23,img24,img25];
-        for(let i=0; i<images.length;i++){
-          if(changeVar.includes(i)){
-            images[i].style.display = "inline-block";
-          }
-          else{
-            images[i].style.display="none";
-          }
-        }
-      }
-      function changeImage1(){
-        changeVar = [0,1,17,18,19];
-        declareVariables();
-        closeSettings()
-      }
-      function changeImage2(){
-        changeVar = [10,11,12,16,20,24];
-        declareVariables();
-        closeSettings();
-      }
-      function changeImage3(){
-        changeVar = [2,3,4,13,14];
-        declareVariables();
-        closeSettings();
-      }
-      function changeImage4(){
-        changeVar = [5,15,6,7,8,9,21,22,23];
-        declareVariables();
-        closeSettings();
-      }
+      //   var images = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14,img15,img16,img17,img18,img19,img20,img21,img22,img23,img24,img25];
+      //   for(let i=0; i<images.length;i++){
+      //     if(changeVar.includes(i)){
+      //       images[i].style.display = "inline-block";
+      //     }
+      //     else{
+      //       images[i].style.display="none";
+      //     }
+      //   }
+      // }
+      // function changeImage1(){
+      //   changeVar = [0,1,17,18,19];
+      //   declareVariables();
+      //   closeSettings()
+      // }
+      // function changeImage2(){
+      //   changeVar = [10,11,12,16,20,24];
+      //   declareVariables();
+      //   closeSettings();
+      // }
+      // function changeImage3(){
+      //   changeVar = [2,3,4,13,14];
+      //   declareVariables();
+      //   closeSettings();
+      // }
+      // function changeImage4(){
+      //   changeVar = [5,15,6,7,8,9,21,22,23];
+      //   declareVariables();
+      //   closeSettings();
+      // }
 
       let buttonVersion = "1";
       function assignIds(){
@@ -103,16 +106,16 @@
         return ids;
       }
       let idSettings = {
-        "1":[true,"none","block","block","none","block","none", "none",'200','7','40','100','#800000','#FFFFFF','#666666',"Button Style 1"],
-        "2":[true,"none","block","block","none","block", "none","none",'100','7','100','100','#800000','#FFFFFF','#666666',"Button Style 2"],
-        "3":[true,"block","block","none","none","none", "none","none",'800','7','0','0','#FFFFFF','#666666','#800000',"Dropdown"],
-        "4":[true,"none","block","block","block","none", "block","none",'2200','7','0','200','#FFFFFF','#666666','#800000',"Navigation Bar Style 1"],
-        "5":[true,"block","block","block","block","none", "block","none",'800','3','0','2100','#FFFFFF','#666666','#800000',"Navigation Bar Style 2"],
-        "6":[true,"none","block","block","block","none", "none","none",'2850','0','0','675','#FFFFFF','#666666','#800000',"Calender"],
-        "7":[true,"block","block","block","block","none", "none","none",'100','5','0','100','#800000','#FFFFFF','#000000',"Page Navigation"],
-        "8":[true,"none","block","block","block","none", "none","none",'950','0','0','600','#FFFFFF','#666666','#000000',"Payment Details Card"],
-        "9":[true,"none","block","block","block","none", "none","none",'930','0','0','1250','#FFFFFF','#666666','#000000',"Address Details Card"],
-        "10":[true,"none","block","block","block","none", "none","none",'1400','0','0','1460','#FFFFFF','#666666','#000000',"Employee Info Card"],
+        "1":[true,"none","block","block","block","none", "block","none",'2200','7','0','200','#FFFFFF','#666666','#800000',"Navigation Bar Style 1"],
+        "2":[true,"block","block","block","block","none", "block","none",'800','3','0','2100','#FFFFFF','#666666','#800000',"Navigation Bar Style 2"],
+        "3":[true,"none","block","block","block","none", "none","none",'950','0','0','600','#FFFFFF','#666666','#000000',"Payment Details Card"],
+        "4":[true,"none","block","block","block","none", "none","none",'930','0','0','1250','#FFFFFF','#666666','#000000',"Address Details Card"],
+        "5":[true,"none","block","block","block","none", "none","none",'1400','0','0','1460','#FFFFFF','#666666','#000000',"Employee Info Card"],
+        "6":[true,"block","block","block","block","none", "none","none",'100','5','0','100','#800000','#FFFFFF','#000000',"Page Navigation"],
+        "7":[true,"none","block","block","block","none", "none","none",'2850','0','0','675','#FFFFFF','#666666','#800000',"Calender"],
+        "8":[true,"block","block","none","none","none", "none","none",'800','7','0','0','#FFFFFF','#666666','#800000',"Dropdown"],
+        "9":[true,"none","block","block","none","block","none", "none",'200','7','40','100','#800000','#FFFFFF','#666666',"Button Style 1"],
+        "10":[true,"none","block","block","none","block", "none","none",'100','7','100','100','#800000','#FFFFFF','#666666',"Button Style 2"],
         "11":[true,"block","block","block","block","none", "none","none",'1750','3','0','2500','#FFFFFF','#800000','#666666',"Card Display Style 1"],
         "12":[true,"block","block","block","block","none", "none","none",'1680',' 3','0','1020','#FFFFFF','#800000','#666666',"Info Tiles"],
         "13":[true,"none","block","block","block","none", "none","none",'6800','0','0','2400','#FFFFFF','#800000','#666666',"Testimonial"],
@@ -221,7 +224,7 @@
       }
 
     </script>
-    <div id="sideNavBar">
+    <!-- <div id="sideNavBar">
       <div class = "item">
       <button onclick="changeImage1()"><img src="navIcon.png" width = "40px" height= "40px"></button>
       <p>Navigation</p>
@@ -238,7 +241,7 @@
       <button onclick="changeImage4()"><img src="elementIcon.png" width = "40px" height= "40px"></button>
       <p>Elements</p>
       </div>
-    </div>
+    </div> -->
 
     <dialog id="settings" close>
         <h2 id = "title">Settings</h2>
@@ -285,44 +288,108 @@
 
         <button id = "submit" onclick = createMessage()>Submit</button>
         <button id = "close" onclick = closeSettings()>Close</button>
-      </dialog>
+      </dialog> 
 
-    <div id= "images">
+    <!-- <div id= "images">
       <div id="group1"> 
-        <div id="img1" class="sizedImage"><button id="button1" onclick=changeVersion(4)><img src="nav1.png" id="image1"></button> <!--490,50--></div>
-        <div id="img19" class="sizedImage"><button id="button19" onclick=changeVersion(19)><img src="nav3.png" id="image19"></button> <!--490,50--></div>
-        <div id="img2" class="sizedImage"><button id="button2" onclick=changeVersion(5)><img src="nav2.png" id="image2"></button> <!--200,650--></div>
-        <div id="img18" class="sizedImage"><button id="button18" onclick=changeVersion(18)><img src="pageSelection.png" id="image18"></button> <!--400,400--></div>
-        <div id="img20" class="sizedImage"><button id="button20" onclick=changeVersion(20)><img src="pageSelection2.png" id="image20"></button> <!--400,400--></div>
+        <div id="img1" class="sizedImage"><button id="button1" onclick=changeVersion(4)><img src="nav1.png" id="image1"></button> <!- -490,50- -></div>
+        <div id="img19" class="sizedImage"><button id="button19" onclick=changeVersion(19)><img src="nav3.png" id="image19"></button> <!- -490,50- -></div>
+        <div id="img2" class="sizedImage"><button id="button2" onclick=changeVersion(5)><img src="nav2.png" id="image2"></button> <!- -200,650- -></div>
+        <div id="img18" class="sizedImage"><button id="button18" onclick=changeVersion(18)><img src="pageSelection.png" id="image18"></button> <!- -400,400- -></div>
+        <div id="img20" class="sizedImage"><button id="button20" onclick=changeVersion(20)><img src="pageSelection2.png" id="image20"></button> <!- -400,400- -></div>
       </div>
       <div id = "group2">
-        <div id="img11" class="sizedImage"><button id="button11" onclick=changeVersion(11)><img src="cardDisplay.png" id="image11"></button> <!--200,400--></div>
-        <div id="img12" class="sizedImage"><button id="button12" onclick=changeVersion(12)><img src="infoTile.png" id="image12"></button> <!--600,200--></div>
-        <div id="img17" class="sizedImage"><button id="button17" onclick=changeVersion(17)><img src="carouselCards.png" id="image17"></button> <!--600,200--></div>
-        <div id="img13" class="sizedImage"><button id="button13" onclick=changeVersion(13)><img src="testimonal.png" id="image13"></button> <!--800,300--></div>
-        <div id="img21" class="sizedImage"><button id="button21" onclick=changeVersion(21)><img src="cardDisplay2.png" id="image21"></button> <!--200,400--></div>
-        <div id="img25" class="sizedImage"><button id="button25" onclick=changeVersion(25)><img src="reviewCards.png" id="image25"></button> <!--500,400--></div>
+        <div id="img11" class="sizedImage"><button id="button11" onclick=changeVersion(11)><img src="cardDisplay.png" id="image11"></button> <!- -200,400- -></div>
+        <div id="img12" class="sizedImage"><button id="button12" onclick=changeVersion(12)><img src="infoTile.png" id="image12"></button> <!- -600,200- -></div>
+        <div id="img17" class="sizedImage"><button id="button17" onclick=changeVersion(17)><img src="carouselCards.png" id="image17"></button> <!- -600,200- -></div>
+        <div id="img13" class="sizedImage"><button id="button13" onclick=changeVersion(13)><img src="testimonal.png" id="image13"></button> <!- -800,300- -></div>
+        <div id="img21" class="sizedImage"><button id="button21" onclick=changeVersion(21)><img src="cardDisplay2.png" id="image21"></button> <!- -200,400- -></div>
+        <div id="img25" class="sizedImage"><button id="button25" onclick=changeVersion(25)><img src="reviewCards.png" id="image25"></button> <!- -500,400- -></div>
       </div>
        
       <div id = "group3">
-        <div id="img3" class="sizedImage"><button id="button3" onclick=changeVersion(8)><img src="paymentDetails.png" id="image3"> </button> <!--400,300--></div>
-        <div id="img4" class="sizedImage"><button id="button4" onclick=changeVersion(9)><img src="addressDetails.png" id="image4"></button> <!--400,500--></div>
-        <div id="img5" class="sizedImage"><button id="button5" onclick=changeVersion(10)><img src="employeeInfo.png" id="image5"></button> <!--400,500--></div>
-        <div id="img14" class="sizedImage"><button id="button14" onclick=changeVersion(14)><img src="checkBox.png" id="image14"></button> <!--400,500--></div>
-        <div id="img15" class="sizedImage"><button id="button15" onclick=changeVersion(15)><img src="radioList.png" id="image15"></button> <!--200,200--></div>
-      </div>
+        <div id="img3" class="sizedImage"><button id="button3" onclick=changeVersion(8)><img src="paymentDetails.png" id="image3"> </button> <!- -400,300- -></div>
+        <div id="img4" class="sizedImage"><button id="button4" onclick=changeVersion(9)><img src="addressDetails.png" id="image4"></button> <!- -400,500- -></div>
+        <div id="img5" class="sizedImage"><button id="button5" onclick=changeVersion(10)><img src="employeeInfo.png" id="image5"></button> <!- -400,500- -></div>
+        <div id="img14" class="sizedImage"><button id="button14" onclick=changeVersion(14)><img src="checkBox.png" id="image14"></button> <!- -400,500- -></div>
+        <div id="img15" class="sizedImage"><button id="button15" onclick=changeVersion(15)><img src="radioList.png" id="image15"></button> <!- -200,200- -></div>
+      </div> 
       <div id = "group4">
-        <div id="img6" class="sizedImage"><button id="button6" onclick = changeVersion(7)><img src="pageNav.png" id="image6"></button> <!--500,100--></div>
-        <div id="img16" class="sizedImage"><button id="button16" onclick = changeVersion(16)><img src="circlePageNav.png" id="image16"></button> <!--500,100--></div>
-        <div id="img7" class="sizedImage"><button id="button7" onclick = changeVersion(6)><img src="calender.png" id="image7"></button> <!--300,100--></div>
-        <div id="img8" class="sizedImage"><button id="button8" onclick = changeVersion(3)><img src="dropDown.png" id="image8"></button> <!--300,100--></div>
-        <div id="img9" class="sizedImage"><button id="button9" onclick = changeVersion(1)><img src="buttonStyle1.png" id="image9"></button> <!--200,100--></div>
-        <div id="img10" class="sizedImage"><button id="button10" onclick = changeVersion(2)><img src="buttonStyle2.png" id="image10"> </button> <!--100,100--></div>
-        <div id="img22" class="sizedImage"><button id="button22" onclick = changeVersion(22)><img src="chartBarHorizontal.png" id="image22"> </button> <!--100,100--></div>
-        <div id="img23" class="sizedImage"><button id="button23" onclick = changeVersion(23)><img src="chartBarVertical.png" id="image23"> </button> <!--100,100--></div>
-        <div id="img24" class="sizedImage"><button id="button24" onclick = changeVersion(24)><img src="lineChart.png" id="image24"> </button> <!--100,100--></div>
+        <div id="img6" class="sizedImage"><button id="button6" onclick = changeVersion(7)><img src="pageNav.png" id="image6"></button> <!- -500,100- -></div>
+        <div id="img16" class="sizedImage"><button id="button16" onclick = changeVersion(16)><img src="circlePageNav.png" id="image16"></button> <!- -500,100- -></div>
+        <div id="img7" class="sizedImage"><button id="button7" onclick = changeVersion(6)><img src="calender.png" id="image7"></button> <!- -300,100- -></div>
+        <div id="img8" class="sizedImage"><button id="button8" onclick = changeVersion(3)><img src="dropDown.png" id="image8"></button> <!- -300,100- -></div>
+        <div id="img9" class="sizedImage"><button id="button9" onclick = changeVersion(1)><img src="buttonStyle1.png" id="image9"></button> <!- -200,100- -></div>
+        <div id="img10" class="sizedImage"><button id="button10" onclick = changeVersion(2)><img src="buttonStyle2.png" id="image10"> </button> <!- -100,100- -></div>
+        <div id="img22" class="sizedImage"><button id="button22" onclick = changeVersion(22)><img src="chartBarHorizontal.png" id="image22"> </button> <!- -100,100- -></div>
+        <div id="img23" class="sizedImage"><button id="button23" onclick = changeVersion(23)><img src="chartBarVertical.png" id="image23"> </button> <!- -100,100- -></div>
+        <div id="img24" class="sizedImage"><button id="button24" onclick = changeVersion(24)><img src="lineChart.png" id="image24"> </button> <!- -100,100- -></div>
       </div>
+    </div> -->
+
+
+    <button type="button" class="collapsible">Navigation</button>
+    <div class="content">
+    <div id="group1"> 
+            <div id="img1" class="sizedImage"><button id="button1" onclick=changeVersion(1)><img src="/images/nav1.png" id="image1"></button> <!--490,50--></div>
+            <div id="img19" class="sizedImage"><button id="button19" onclick=changeVersion(19)><img src="/images/nav3.png" id="image19"></button> <!--490,50--></div>
+            <div id="img2" class="sizedImage"><button id="button2" onclick=changeVersion(2)><img src="/images/nav2.png" id="image2"></button> <!--200,650--></div>
+            <div id="img18" class="sizedImage"><button id="button18" onclick=changeVersion(18)><img src="/images/pageSelection.png" id="image18"></button> <!--400,400--></div>
+            <div id="img20" class="sizedImage"><button id="button20" onclick=changeVersion(20)><img src="/images/pageSelection2.png" id="image20"></button> <!--400,400--></div>
+          </div>
     </div>
+    <button type="button" class="collapsible">Content</button>
+    <div class="content">
+      <div id = "group2">
+            <div id="img11" class="sizedImage"><button id="button11" onclick=changeVersion(11)><img src="/images/cardDisplay.png" id="image11"></button> <!--200,400--></div>
+            <div id="img12" class="sizedImage"><button id="button12" onclick=changeVersion(12)><img src="/images/infoTile.png" id="image12"></button> <!--600,200--></div>
+            <div id="img17" class="sizedImage"><button id="button17" onclick=changeVersion(17)><img src="/images/carouselCards.png" id="image17"></button> <!--600,200--></div>
+            <div id="img13" class="sizedImage"><button id="button13" onclick=changeVersion(13)><img src="/images/testimonal.png" id="image13"></button> <!--800,300--></div>
+            <div id="img21" class="sizedImage"><button id="button21" onclick=changeVersion(21)><img src="/images/cardDisplay.png" id="image21"></button> <!--200,400--></div>
+            <div id="img25" class="sizedImage"><button id="button25" onclick=changeVersion(25)><img src="/images/reviewCards.png" id="image25"></button> <!--500,400--></div>
+          </div>
+    </div>
+    <button type="button" class="collapsible">Forms</button>
+    <div class="content">
+      <div id = "group3">
+            <div id="img3" class="sizedImage"><button id="button3" onclick=changeVersion(3)><img src="/images/paymentDetails.png" id="image3"> </button> <!--400,300--></div>
+            <div id="img4" class="sizedImage"><button id="button4" onclick=changeVersion(4)><img src="/images/addressDetails.png" id="image4"></button> <!--400,500--></div>
+            <div id="img5" class="sizedImage"><button id="button5" onclick=changeVersion(5)><img src="/images/employeeInfo.png" id="image5"></button> <!--400,500--></div>
+            <div id="img14" class="sizedImage"><button id="button14" onclick=changeVersion(14)><img src="/images/checkBox.png" id="image14"></button> <!--400,500--></div>
+            <div id="img15" class="sizedImage"><button id="button15" onclick=changeVersion(15)><img src="/images/radioList.png" id="image15"></button> <!--200,200--></div>
+          </div> 
+      </div>
+    <button type="button" class="collapsible">Elements</button>
+    <div class="content">
+      <div id = "group4">
+            <div id="img6" class="sizedImage"><button id="button6" onclick = changeVersion(6)><img src="/images/pageNav.png" id="image6"></button> <!--500,100--></div>
+            <div id="img16" class="sizedImage"><button id="button16" onclick = changeVersion(16)><img src="/images/circlePageNav.png" id="image16"></button> <!--500,100--></div>
+            <div id="img7" class="sizedImage"><button id="button7" onclick = changeVersion(7)><img src="/images/calender.png" id="image7"></button> <!--300,100--></div>
+            <div id="img8" class="sizedImage"><button id="button8" onclick = changeVersion(8)><img src="/images/dropDown.png" id="image8"></button> <!--300,100--></div>
+            <div id="img9" class="sizedImage"><button id="button9" onclick = changeVersion(9)><img src="/images/buttonStyle1.png" id="image9"></button> <!--200,100--></div>
+            <div id="img10" class="sizedImage"><button id="button10" onclick = changeVersion(10)><img src="/images/buttonStyle2.png" id="image10"> </button> <!--100,100--></div>
+            <div id="img22" class="sizedImage"><button id="button22" onclick = changeVersion(22)><img src="/images/chartBarHorizontal.png" id="image22"> </button> <!--100,100--></div>
+            <div id="img23" class="sizedImage"><button id="button23" onclick = changeVersion(23)><img src="/images/chartBarVertical.png" id="image23"> </button> <!--100,100--></div>
+            <div id="img24" class="sizedImage"><button id="button24" onclick = changeVersion(24)><img src="/images/lineChart.png" id="image24"> </button> <!--100,100--></div>
+          </div>
+    </div>
+
+    <script>
+      let coll = document.getElementsByClassName("collapsible");
+      for (let i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          let content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+            closeSettings();
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+    </script>
+
 
     <script type="module" src="/src/main.ts"></script>
   </body>

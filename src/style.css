@@ -5,11 +5,8 @@ body {
   min-width:700px;
   min-height:400px;
 }
-button {
-  background-color: white;
-}
 
-#sideNavBar{
+/* #sideNavBar{
   display:flex;
   flex-direction:column;
   float:right;
@@ -20,7 +17,7 @@ button {
   padding-bottom:30px;
   padding-left: 10px;
   padding-right:10px;
-}
+} */
 
 #group1, #group2, #group3, #group4{
   display:flex;
@@ -28,18 +25,46 @@ button {
   flex-wrap:wrap;
 }
 
+.collapsible {
+  background-color: #800000;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 30px;
+  font-family: 'Sour Gummy';
+}
+
+.active, .collapsible:hover {
+  background-color: #b10000;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #dfe0e2;
+}
+
+/*------------------------------------------------------------Nav----------------------------------------------------------*/
+
 #button1, #image1{
   width:430px;
   height:40px;
+  background-color: transparent;
 }
 #img1{
   width:450px;
-  height:470px;
+  height:300px;
 }
 
 #button2, #image2{
   width:145px;
   height:460px;
+  background-color: transparent;
 }
 #img2{
   width:400px;
@@ -49,15 +74,101 @@ button {
 #button19, #image19{
   width:430px;
   height:60px;
+  background-color: transparent;
 }
 #img19{
   width:450px;
   height:470px;
 }
 
+#button18, #image18{
+  width:350px;
+  height:350px;
+  background-color: transparent;
+}
+#img18{
+  width:450px;
+  height:450px;
+}
+
+#button20, #image20{
+  width:350px;
+  height:470px;
+  background-color: transparent;
+}
+#img20{
+  width:500px;
+  height:500px;
+}
+
+/*------------------------------------------------------------Content ----------------------------------------------------------*/
+
+#button11, #image11{
+  width:650px;
+  height:350px;
+  background-color: transparent;
+}
+#img11{
+  width:650px;
+  height:400px;
+}
+
+#button12, #image12{
+  width:650px;
+  height:200px;
+  background-color: transparent;
+}
+#img12{
+  width:650px;
+  height:250px;
+}
+
+#button17, #image17{
+  width:575px;
+  height:200px;
+  background-color: transparent;
+}
+#img17{
+  width:600px;
+  height:250px;
+}
+
+#button13, #image13{
+  width:500px;
+  height:200px;
+  background-color: transparent;
+}
+#img13{
+  width:600px;
+  height:250px;
+}
+
+#button21, #image21{
+  width:600px;
+  height:350px;
+  background-color: transparent;
+}
+#img21{
+  width:650px;
+  height:400px;
+}
+
+#button25, #image25{
+  width:650px;
+  height:250px;
+  background-color: transparent;
+}
+#img25{
+  width:700px;
+  height:300px;
+}
+
+/*------------------------------------------------------------Forms ----------------------------------------------------------*/
+
 #button3, #image3{
   width:270px;
   height:200px;
+  background-color: transparent;
 }
 #img3{
   width:300px;
@@ -67,6 +178,7 @@ button {
 #button4, #image4{
   width:270px;
   height:370px;
+  background-color: transparent;
 }
 #img4{
   width:300px;
@@ -76,132 +188,17 @@ button {
 #button5, #image5{
   width:270px;
   height:370px;
+  background-color: transparent;
 }
 #img5{
   width:300px;
   height:470px;
-}
-
-#button6, #image6{
-  width:250px;
-  height:60px;
-}
-#img6{
-  width:300px;
-  height:200px;
-}
-
-#button7, #image7{
-  width:250px;
-  height:100px;
-}
-#img7{
-  width:300px;
-  height:200px;
-}
-
-#button8, #image8{
-  width:250px;
-  height:100px;
-}
-#img8{
-  width:300px;
-  height:200px;
-}
-
-#button9, #image9{
-  width:250px;
-  height:150px;
-}
-#img9{
-  width:300px;
-  height:200px;
-}
-
-#button10, #image10{
-  width:200px;
-  height:200px;
-}
-#img10{
-  width:300px;
-  height:200px;
-}
-
-#button22, #image22{
-  width:200px;
-  height:200px;
-}
-#img22{
-  width:300px;
-  height:200px;
-}
-
-#button23, #image23{
-  width:250px;
-  height:200px;
-}
-#img23{
-  width:300px;
-  height:200px;
-}
-
-#button24, #image24{
-  width:200px;
-  height:200px;
-}
-#img24{
-  width:300px;
-  height:200px;
-}
-
-#button11, #image11{
-  width:550px;
-  height:350px;
-}
-#img11{
-  width:600px;
-  height:400px;
-}
-
-#button21, #image21{
-  width:550px;
-  height:350px;
-}
-#img21{
-  width:600px;
-  height:400px;
-}
-
-#button25, #image25{
-  width:650px;
-  height:250px;
-}
-#img25{
-  width:700px;
-  height:300px;
-}
-
-#button12, #image12{
-  width:600px;
-  height:200px;
-}
-#img12{
-  width:600px;
-  height:250px;
-}
-
-#button13, #image13{
-  width:500px;
-  height:200px;
-}
-#img13{
-  width:600px;
-  height:250px;
-}
+} 
 
 #button14, #image14{
   width:270px;
   height:370px;
+  background-color: transparent;
 }
 #img14{
   width:300px;
@@ -211,35 +208,117 @@ button {
 #button15, #image15{
   width:270px;
   height:270px;
+  background-color: transparent;
 }
 #img15{
   width:300px;
   height:470px;
 }
 
+/*------------------------------------------------------------Elements------------------------------------------------------*/
+
+#button6, #image6{
+  width:250px;
+  height:60px;
+  background-color: transparent;
+}
+#img6{
+  width:300px;
+  height:200px;
+}
+
 #button16, #image16{
   width:320px;
   height:100px;
+  background-color: transparent;
 }
 #img16{
   width:350px;
   height:200px;
 }
 
-#button17, #image17{
-  width:550px;
+#button7, #image7{
+  width:250px;
+  height:100px;
+  background-color: transparent;
+}
+#img7{
+  width:300px;
   height:200px;
 }
-#img17{
-  width:600px;
+
+#button8, #image8{
+  width:250px;
+  height:100px;
+  background-color: transparent;
+}
+#img8{
+  width:300px;
+  height:200px;
+}
+
+#button9, #image9{
+  width:250px;
+  height:150px;
+  background-color: transparent;
+}
+#img9{
+  width:300px;
   height:250px;
 }
 
-#button18, #image18{
-  width:400px;
-  height:400px;
+#button10, #image10{
+  width:200px;
+  height:200px;
+  background-color: transparent;
 }
-#img18{
-  width:450px;
-  height:450px;
+#img10{
+  width:300px;
+  height:250px;
 }
+
+#button22, #image22{
+  width:200px;
+  height:200px;
+  background-color: transparent;
+}
+#img22{
+  width:300px;
+  height:250px;
+}
+
+#button23, #image23{
+  width:250px;
+  height:200px;
+  background-color: transparent;
+}
+#img23{
+  width:300px;
+  height:250px;
+}
+
+#button24, #image24{
+  width:200px;
+  height:200px;
+  background-color: transparent;
+}
+#img24{
+  width:300px;
+  height:250px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
