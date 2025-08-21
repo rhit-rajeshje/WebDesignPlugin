@@ -1,4 +1,4 @@
-# Penpot Plugin Starter Template
+# Website Component Plugin
 
 This repository is designed to be your starting point for creating plugins for Penpot. It includes everything you need to get started quickly with development and build processes, so you can focus solely on coding. The template uses Vite as the bundler and comes pre-configured with TypeScript, though you can write your code in vanilla JavaScript if you prefer, while keeping TypeScript to handle Penpot typings in the `plugin.ts` file.
 
@@ -139,3 +139,8 @@ npm run build
 After successfully building your plugin, now you're ready to use your chosen platform to deploy it.
 
 Check our <a href="https://help.penpot.app/plugins/deployment/" target="_blank">Deployment guide</a> for more information about how to deploy your plugin in multiple platforms.
+
+## Extra Resources
+- [Penpot Plugin Starter Template](https://github.com/penpot/penpot-plugin-starter-template)
+- [Penpot Plugin API Docs](https://penpot-plugins-api-doc.pages.dev/)
+- [Penpot Plugin Library](https://penpot.app/penpothub/plugins)

@@ -19,6 +19,10 @@ body {
   padding-right:10px;
 } */
 
+#instructions{
+   width:90%;
+}
+
 #group1, #group2, #group3, #group4{
   display:flex;
   justify-content: normal;
@@ -29,7 +33,7 @@ body {
   background-color: #800000;
   color: white;
   cursor: pointer;
-  padding: 18px;
+  padding: 50px;
   width: 100%;
   border: none;
   text-align: left;

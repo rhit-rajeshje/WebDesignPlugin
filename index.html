@@ -162,6 +162,11 @@
         settings.open=false;
       }
 
+      function closeInstructions(){
+        const settings = document.getElementById("instructions");
+        settings.open=false;
+      }
+
       function createMessage(){
         var width= document.getElementById("width").value;
         var height= document.getElementById("height").value;
@@ -326,6 +331,15 @@
         <div id="img24" class="sizedImage"><button id="button24" onclick = changeVersion(24)><img src="lineChart.png" id="image24"> </button> <!- -100,100- -></div>
       </div>
     </div> -->
+
+    <dialog open id="instructions">
+      <h1>Website Component Plugin</h1>
+      <h2>What does this Plugin do?</h2>
+      <p>This Plugin helps add components easily for your UI Website Mockups. Each Element has customizable styling options.</p>
+      <h2>Resizing Elements</h2>
+      <p>Each element allows for custom width and height before inserting- in order get the best result, width and height dimensions typed should match the ratio of the example width and height. In addition, once insert, click 'K' on your keyboard and drag the corners to resize elements</p>
+      <button id = "close" onclick = closeInstructions()>Close</button>
+    </dialog>
 
 
     <button type="button" class="collapsible">Navigation</button>
