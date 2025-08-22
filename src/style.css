@@ -311,18 +311,12 @@ body {
   height:250px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#button26, #image26{
+  width:200px;
+  height:150px;
+  background-color: transparent;
+}
+#img26{
+  width:300px;
+  height:200px;
+}

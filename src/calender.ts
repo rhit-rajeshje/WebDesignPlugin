@@ -134,3 +134,80 @@ export function calender(width:number, height:number, fillColor:string, iconColo
     calenderBoard.addInteraction('click', {type: 'navigate-to', destination: calenderBoard2});
     calenderBoard2.addInteraction('click', {type: 'navigate-to', destination: calenderBoard});
 }
+
+
+export function dialogBox(width:number, height:number, fillColor:string, iconColor:string){
+    const dialogBox = penpot.createRectangle();
+    dialogBox.x = penpot.viewport.center.x;
+    dialogBox.y = penpot.viewport.center.y;
+    dialogBox.resize(780,500);
+    dialogBox.fills = [{fillColor:fillColor}];
+    dialogBox.borderRadius = 50;
+
+    const dialogBoxTitle = penpot.createText("Dialog Box");
+    if(dialogBoxTitle){
+        dialogBoxTitle.x = penpot.viewport.center.x+275;
+        dialogBoxTitle.y = penpot.viewport.center.y+30;
+        dialogBoxTitle.fontSize = '45';
+        dialogBoxTitle.fontFamily = 'Sour Gummy';
+        dialogBoxTitle.fills = [{fillColor:iconColor}];
+    }
+
+    const paragraph = penpot.createText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ");
+    if(paragraph){
+        paragraph.x = penpot.viewport.center.x + 60;
+        paragraph.y = penpot.viewport.center.y + 140;
+        paragraph.resize(660,100);
+        paragraph.fills = [{fillColor:iconColor}];
+        paragraph.fontFamily = 'Sour Gummy';
+        paragraph.fontSize = '20';
+        paragraph.align = "center";
+    }
+
+    const divider = penpot.createRectangle();
+    divider.x = penpot.viewport.center.x + 15;
+    divider.y = penpot.viewport.center.y + 105;
+    divider.resize(750,5);
+    divider.fills = [{fillColor:iconColor, fillOpacity:.4}];
+
+    const subtext = penpot.createText("Subtext");
+    if(subtext){
+        subtext.x = penpot.viewport.center.x + 70;
+        subtext.y = penpot.viewport.center.y + 260;
+        subtext.fills = [{fillColor:iconColor}];
+        subtext.fontFamily = 'Sour Gummy';
+        subtext.fontSize = '20';
+    }
+
+    const textBox = penpot.createRectangle();
+    textBox.x = penpot.viewport.center.x + 60;
+    textBox.y = penpot.viewport.center.y + 285;
+    textBox.resize(660,85);
+    textBox.fills = [{fillColor:iconColor, fillOpacity:.25}];
+    textBox.borderRadius = 20;
+
+    const button = penpot.createRectangle();
+    button.x = penpot.viewport.center.x + 545;
+    button.y = penpot.viewport.center.y + 400;
+    button.resize(175,65);
+    button.fills = [{fillColor:iconColor, fillOpacity:.5 }];
+    button.borderRadius = 15;
+
+    const submit = penpot.createText("Submit");
+    if(submit){ 
+        submit.x = penpot.viewport.center.x +585;
+        submit.y = penpot.viewport.center.y + 415;
+        submit.fontSize = '30';
+        submit.fontFamily = 'Sour Gummy';
+        submit.align = "center";
+        submit.fills = [{fillColor:fillColor}];
+    }
+
+    const iconColorString = "'"+iconColor+"'";
+    const cross = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill='+iconColorString+' class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/></svg>');
+    if(cross){
+        cross.x = penpot.viewport.center.x +660;
+        cross.y = penpot.viewport.center.y+15;
+        cross.resize(75,75);
+    }
+}

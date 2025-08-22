@@ -1,7 +1,7 @@
 import {button1, button2} from './button.ts';
 import {circlePageNav, dropdown, pageNav} from './dropdown.ts';
 import { nav1, nav2, nav3 } from './nav.ts';
-import { calender } from './calender.ts';
+import { calender, dialogBox } from './calender.ts';
 import { addressDetails, employeeInfo, paymentDetails } from './form.ts';
 import { cardDisplay, infoTile, testimonial, cardDisplay2, reviewCards } from './display.ts';
 import { checkBoxes, radioList } from './itemList.ts';
@@ -147,6 +147,11 @@ penpot.ui.onMessage<Map<string,string>>((message) => {
   if(message.get("data-version")=="25"){
     if(fillColor&&iconColor&&textColor){
       reviewCards(width,height,fillColor,iconColor,textColor,items);
+    }
+  }
+  if(message.get("data-version")=="26"){
+    if(fillColor&&iconColor&&textColor){
+      dialogBox(width,height,fillColor,iconColor);
     }
   }
 });
